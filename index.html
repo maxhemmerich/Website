@@ -1,192 +1,145 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Retro resume and portfolio for Max Hemmerich.">
-  <title>Max Hemmerich Resume</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body data-view="overview">
-  <a class="skip-link" href="#main-content">Skip to content</a>
+<!-- Replace your current Projects Directory section with this block. -->
+<section class="panel-section" id="projects" aria-labelledby="projects-title">
+  <div class="section-heading-row">
+    <h2 id="projects-title">Projects Directory</h2>
+    <p class="section-note">[+] Separate project pages. The main resume stays one page.</p>
+  </div>
 
-  <div class="desktop-shell">
-    <header class="desktop-icons" aria-label="Desktop shortcuts">
-      <a class="desktop-icon" href="#view-panel">
-        <span class="desktop-icon-art desktop-icon-id" aria-hidden="true">ID</span>
-        <span class="desktop-icon-label">Choose View</span>
-      </a>
-      <a class="desktop-icon" href="#experience">
-        <span class="desktop-icon-art desktop-icon-folder" aria-hidden="true"></span>
-        <span class="desktop-icon-label">Experience</span>
-      </a>
-      <a class="desktop-icon" href="#projects">
-        <span class="desktop-icon-art desktop-icon-cv" aria-hidden="true">CV</span>
-        <span class="desktop-icon-label">Projects</span>
-      </a>
-      <a class="desktop-icon" href="mailto:max.hemmerich@outlook.com">
-        <span class="desktop-icon-art desktop-icon-mail" aria-hidden="true">@</span>
-        <span class="desktop-icon-label">Email Max</span>
-      </a>
-    </header>
+  <div class="project-grid" id="project-grid">
+    <article class="project-card" data-views="overview research clinical data analytics">
+      <p class="project-type">[app] AI / RESEARCH TOOLS</p>
+      <h3>Distill</h3>
+      <p>
+        An AI reading interface that turns web articles and raw text into
+        document-, section-, and paragraph-level summaries while retaining
+        citations and source context.
+      </p>
+      <ul>
+        <li>Built for faster review of long-form articles, research, and web content.</li>
+        <li>Supports URL input, raw text input, and a structured three-pane reading workflow.</li>
+        <li>Strong fit for clinical, research operations, and data-facing audiences.</li>
+      </ul>
+      <p class="project-stack">Next.js · TypeScript · OpenAI API</p>
+      <p class="project-links">
+        <a href="https://distill.wiki" target="_blank" rel="noopener noreferrer">[open] Live site</a>
+        <a href="https://github.com/maxhemmerich/distill" target="_blank" rel="noopener noreferrer">[dir] Source</a>
+        <a href="projects/project-template.html?project=distill">[file] Case study</a>
+      </p>
+    </article>
 
-    <main id="main-content" class="workspace">
-      <section class="window" aria-labelledby="window-title">
-        <div class="title-bar">
-          <div class="title-left">
-            <span class="title-mark" aria-hidden="true">▣</span>
-            <h1 id="window-title">MAX_HEMMERICH_RESUME.EXE</h1>
-          </div>
-          <div class="window-controls" aria-label="Window controls">
-            <span class="control">[_]</span>
-            <span class="control">[+]</span>
-            <span class="control">[X]</span>
-          </div>
-        </div>
+    <article class="project-card" data-views="overview data analytics automation systems">
+      <p class="project-type">[app] ANALYTICS / DECISION SUPPORT</p>
+      <h3>Sports Betting Dashboard</h3>
+      <p>
+        A dashboard for identifying profitable bets, reviewing signals, and
+        tracking performance over time through a clearer betting workflow.
+      </p>
+      <ul>
+        <li>Surfaces candidate bets to make rather than raw data alone.</li>
+        <li>Frames performance tracking and monitoring in a recruiter-friendly way.</li>
+        <li>Best used to show dashboard design, analytical thinking, and decision support.</li>
+      </ul>
+      <p class="project-stack">Dashboarding · Analytics · Tracking</p>
+      <p class="project-links">
+        <a href="projects/project-template.html?project=sports-betting-dashboard">[file] Case study</a>
+      </p>
+    </article>
 
-        <nav class="menu-bar" aria-label="Primary">
-          <a href="#view-panel">View</a>
-          <a href="#experience">Experience</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
+    <article class="project-card" data-views="overview data analytics automation systems">
+      <p class="project-type">[sys] MODELING / AUTOMATION</p>
+      <h3>Polymarket Trading System</h3>
+      <p>
+        An end-to-end workflow for market discovery, signal collection,
+        probability modeling, backtesting, monitoring, and optional execution.
+      </p>
+      <ul>
+        <li>Includes data collection, model scoring, and backtest reporting.</li>
+        <li>Demonstrates practical automation with risk-aware workflow design.</li>
+        <li>Good fit for data, systems, and automation-oriented reviewers.</li>
+      </ul>
+      <p class="project-stack">Python · Modeling · Backtesting · Monitoring</p>
+      <p class="project-links">
+        <a href="projects/project-template.html?project=polymarket">[file] Case study</a>
+      </p>
+    </article>
 
-        <div class="window-body">
-          <section id="view-panel" class="panel chooser-panel" aria-labelledby="chooser-title">
-            <div class="chooser-heading">
-              <div class="prompt-box" aria-hidden="true">?</div>
-              <div>
-                <h2 id="chooser-title">Who is viewing this resume?</h2>
-                <p>Choose a role family. The page will prioritize the most relevant summary, skills, experience, and projects.</p>
-              </div>
-            </div>
+    <article class="project-card" data-views="overview automation systems data analytics">
+      <p class="project-type">[game] FULL-STACK / REAL-TIME SYSTEMS</p>
+      <h3>Territory Conquest Game</h3>
+      <p>
+        A real-time multiplayer territory strategy game with procedural map
+        generation, AI opponents, and server-authoritative game state handling.
+      </p>
+      <ul>
+        <li>Shows architecture, rendering, multiplayer synchronization, and game logic.</li>
+        <li>Includes turn timing, lobby management, bots, and tactical combat rules.</li>
+        <li>Useful as a proof-of-range project for technical audiences.</li>
+      </ul>
+      <p class="project-stack">Node.js · Socket.io · HTML5 Canvas</p>
+      <p class="project-links">
+        <a href="https://github.com/maxhemmerich/Dominion" target="_blank" rel="noopener noreferrer">[dir] Source</a>
+        <a href="projects/project-template.html?project=territory-conquest">[file] Case study</a>
+      </p>
+    </article>
 
-            <div class="view-tabs" role="tablist" aria-label="Resume views">
-              <button class="view-tab is-active" type="button" role="tab" aria-selected="true" data-view-target="overview">Overview</button>
-              <button class="view-tab" type="button" role="tab" aria-selected="false" data-view-target="clinical">Clinical Research</button>
-              <button class="view-tab" type="button" role="tab" aria-selected="false" data-view-target="data">Data &amp; Analytics</button>
-              <button class="view-tab" type="button" role="tab" aria-selected="false" data-view-target="operations">Research Operations</button>
-              <button class="view-tab" type="button" role="tab" aria-selected="false" data-view-target="automation">Automation &amp; Systems</button>
-            </div>
+    <article class="project-card" data-views="automation systems data analytics">
+      <p class="project-type">[ml] TRADING / EXPERIMENTAL SYSTEMS</p>
+      <h3>Binance NN</h3>
+      <p>
+        A neural-network trading experiment exploring model-driven signals and
+        automated market decision support.
+      </p>
+      <p class="project-stack">Machine Learning · Trading · Forecasting</p>
+      <p class="project-links">
+        <a href="projects/project-template.html?project=binance-nn">[file] Case study</a>
+      </p>
+    </article>
 
-            <p class="status-line" id="view-status">Showing the Overview profile. Content has been reprioritized.</p>
-          </section>
+    <article class="project-card" data-views="automation systems data analytics">
+      <p class="project-type">[tool] TRADING / ANALYSIS</p>
+      <h3>Trading</h3>
+      <p>
+        A broader trading-oriented build focused on analysis, workflow design,
+        and opportunity review.
+      </p>
+      <p class="project-stack">Analysis · Workflow · Monitoring</p>
+      <p class="project-links">
+        <a href="projects/project-template.html?project=trading">[file] Case study</a>
+      </p>
+    </article>
 
-          <section class="hero panel panel-dark" aria-labelledby="hero-name">
-            <div class="hero-copy">
-              <p class="terminal-path">C:\CANDIDATES\MAX_HEMMERICH&gt; open profile</p>
-              <p class="eyebrow">MAX HEMMERICH</p>
-              <h2 id="hero-name" class="hero-title">Research Operations &amp; Data Analyst</h2>
-              <p class="hero-summary" data-view-content="overview">Research operations professional with experience improving data quality, reporting, workflow coordination, and stakeholder communication across healthcare and research settings.</p>
-              <p class="hero-summary is-hidden" data-view-content="clinical">Clinical research professional with experience supporting regulated workflows, patient-facing coordination, study documentation, and quality-focused execution in healthcare environments.</p>
-              <p class="hero-summary is-hidden" data-view-content="data">Data and analytics professional focused on reporting, data quality, structured analysis, process measurement, and turning messy operational data into decision-ready outputs.</p>
-              <p class="hero-summary is-hidden" data-view-content="operations">Research operations specialist experienced in workflow management, cross-functional coordination, documentation, process improvement, and keeping complex teams aligned.</p>
-              <p class="hero-summary is-hidden" data-view-content="automation">Automation-minded analyst who improves reliability and speed through better systems, repeatable processes, structured data flows, and practical tooling.</p>
-              <div class="hero-actions">
-                <a class="button-95 button-primary" href="resume.pdf">Print / Save PDF</a>
-                <a class="button-95" href="#projects">Open Projects</a>
-              </div>
-            </div>
+    <article class="project-card" data-views="automation systems data analytics">
+      <p class="project-type">[tool] INTERNAL BUILD / WORKFLOW</p>
+      <h3>Chalk</h3>
+      <p>
+        A technical workflow build that can serve as an additional systems or
+        internal-tool example once you finalize the public-facing description.
+      </p>
+      <p class="project-stack">Workflow Design · Internal Tooling</p>
+      <p class="project-links">
+        <a href="projects/project-template.html?project=chalk">[file] Case study</a>
+      </p>
+    </article>
+  </div>
+</section>
 
-            <aside class="info-card" aria-label="Contact details">
-              <dl>
-                <div>
-                  <dt>Location</dt>
-                  <dd>Toronto, ON · Open to Ottawa</dd>
-                </div>
-                <div>
-                  <dt>Email</dt>
-                  <dd><a href="mailto:max.hemmerich@outlook.com">max.hemmerich@outlook.com</a></dd>
-                </div>
-                <div>
-                  <dt>LinkedIn</dt>
-                  <dd><a href="https://www.linkedin.com/in/max-hemmerich" target="_blank" rel="noopener noreferrer">/in/max-hemmerich</a></dd>
-                </div>
-                <div>
-                  <dt>Languages</dt>
-                  <dd>English · Functional French</dd>
-                </div>
-              </dl>
-            </aside>
-          </section>
+<!-- Add this script block before </body> if you want project cards to reprioritize by recruiter view. -->
+<script>
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const currentView = (params.get('view') || 'overview').toLowerCase();
+  const grid = document.getElementById('project-grid');
+  if (!grid) return;
 
-          <section id="skills" class="panel" aria-labelledby="skills-title">
-            <div class="section-heading">
-              <h2 id="skills-title">Core Technical Skills</h2>
-              <p>[dir] Readable, recruiter-friendly, and easy to scan.</p>
-            </div>
-            <ul class="skill-grid" role="list">
-              <li>Clinical &amp; research coordination</li>
-              <li>Data cleaning &amp; reporting</li>
-              <li>Excel, SQL, Python, R</li>
-              <li>Workflow documentation</li>
-              <li>Stakeholder communication</li>
-              <li>Process improvement</li>
-              <li>Dashboard thinking</li>
-              <li>Automation-minded operations</li>
-            </ul>
-          </section>
+  const cards = Array.from(grid.querySelectorAll('.project-card'));
+  const scored = cards.map((card, index) => {
+    const views = (card.getAttribute('data-views') || '').toLowerCase();
+    const exact = views.includes(currentView) ? 1 : 0;
+    return { card, index, exact };
+  });
 
-          <section id="experience" class="panel" aria-labelledby="experience-title">
-            <div class="section-heading">
-              <h2 id="experience-title">Selected Experience</h2>
-              <p>[-] Prioritized for readable review, not wall-of-text density.</p>
-            </div>
-            <div class="timeline">
-              <article class="timeline-item">
-                <h3>CAMH</h3>
-                <p class="timeline-meta">Healthcare / research environment · Toronto</p>
-                <ul>
-                  <li>Supported operational and analytical work requiring accuracy, documentation discipline, and coordination.</li>
-                  <li>Improved clarity of information flow, reporting, and repeatable processes across teams.</li>
-                </ul>
-              </article>
-              <article class="timeline-item">
-                <h3>Research &amp; data-focused work</h3>
-                <p class="timeline-meta">Cross-functional analytics, operations, and support</p>
-                <ul>
-                  <li>Worked across structured data, workflow tracking, and practical problem solving.</li>
-                  <li>Balanced detail orientation with speed, readability, and business usefulness.</li>
-                </ul>
-              </article>
-            </div>
-          </section>
-
-          <section id="projects" class="panel" aria-labelledby="projects-title">
-            <div class="section-heading">
-              <h2 id="projects-title">Projects Directory</h2>
-              <p>[+] Separate project pages. The main resume stays one page.</p>
-            </div>
-            <div class="project-grid">
-              <a class="project-card" href="projects/project-template.html">
-                <span class="project-kicker">[dir]</span>
-                <h3>Operations Improvement Case Study</h3>
-                <p>Open case study.</p>
-              </a>
-              <a class="project-card" href="projects/project-template.html">
-                <span class="project-kicker">[dir]</span>
-                <h3>Analytics Reporting Project</h3>
-                <p>Open case study.</p>
-              </a>
-              <a class="project-card" href="projects/project-template.html">
-                <span class="project-kicker">[dir]</span>
-                <h3>Automation Workflow Build</h3>
-                <p>Open case study.</p>
-              </a>
-              <a class="project-card" href="projects/project-template.html">
-                <span class="project-kicker">[dir]</span>
-                <h3>Clinical / Research Support Example</h3>
-                <p>Open case study.</p>
-              </a>
-            </div>
-          </section>
-
-          <section id="contact" class="panel compact-panel" aria-labelledby="contact-title">
-            <div class="section-heading">
-              <h2 id="contact-title">Contact</h2>
-              <p>[X] Reach out for recruiter review, interview requests, or portfolio walkthroughs.</p>
-            </div>
-            <div class="contact-row">
-              <a class="button-95 button-primary" href="mailto:max.hemmerich@outlook.com">Email</a>
-              <a cla
+  scored
+    .sort((a, b) => b.exact - a.exact || a.index - b.index)
+    .forEach(({ card }) => grid.appendChild(card));
+})();
+</script>
