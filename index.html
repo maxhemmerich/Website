@@ -4,456 +4,347 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Max Hemmerich | Resume</title>
+  <meta name="description" content="Portfolio and resume of Max Hemmerich, with role-focused views for clinical research, data, operations, and automation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <main id="main-content" class="desktop-shell">
-    <section class="main-window" aria-label="Resume window">
+  <div class="desktop-shell">
+    <aside class="desktop-icons" aria-label="Desktop shortcuts">
+      <a class="desktop-shortcut" href="#intro">
+        <span class="desktop-shortcut__icon" aria-hidden="true">[ME]</span>
+        <span class="desktop-shortcut__label">Profile</span>
+      </a>
+      <a class="desktop-shortcut" href="#experience">
+        <span class="desktop-shortcut__icon" aria-hidden="true">[TXT]</span>
+        <span class="desktop-shortcut__label">Experience</span>
+      </a>
+      <a class="desktop-shortcut" href="#projects">
+        <span class="desktop-shortcut__icon" aria-hidden="true">[DIR]</span>
+        <span class="desktop-shortcut__label">Projects</span>
+      </a>
+      <a class="desktop-shortcut" href="#contact">
+        <span class="desktop-shortcut__icon" aria-hidden="true">[@]</span>
+        <span class="desktop-shortcut__label">Contact</span>
+      </a>
+    </aside>
+
+    <main class="main-window" id="main">
       <header class="window-titlebar">
         <div class="window-title">MAX_HEMMERICH_RESUME.EXE</div>
         <div class="window-controls" aria-hidden="true">
-          <span>[_]</span>
+          <span>_</span>
           <span>[+]</span>
           <span>[X]</span>
         </div>
       </header>
 
       <nav class="menu-bar" aria-label="Primary">
-        <a href="#viewer">View</a>
-        <a href="#experience">Experience</a>
+        <a href="#intro">File</a>
         <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <section class="panel-section" id="viewer" aria-labelledby="viewer-title">
-        <div class="viewer-header">
-          <div class="viewer-icon" aria-hidden="true">?</div>
-          <div>
-            <h1 id="viewer-title">Who is viewing this resume?</h1>
-            <p>
-              Choose a role family. The page will prioritize the most relevant summary,
-              skills, experience, and projects.
-            </p>
+      <section class="panel-strip" id="intro">
+        <div class="role-switcher">
+          <div class="role-switcher__header">
+            <h2>Select focus</h2>
+            <p>Switch the page emphasis by role.</p>
+          </div>
+
+          <div class="role-buttons" role="tablist" aria-label="Resume focus">
+            <button class="role-button" role="tab" type="button" aria-selected="true" data-view="overview">Overview</button>
+            <button class="role-button" role="tab" type="button" aria-selected="false" data-view="clinical">Clinical</button>
+            <button class="role-button" role="tab" type="button" aria-selected="false" data-view="data">Data</button>
+            <button class="role-button" role="tab" type="button" aria-selected="false" data-view="operations">Operations</button>
+            <button class="role-button" role="tab" type="button" aria-selected="false" data-view="automation">Automation</button>
           </div>
         </div>
-
-        <div class="view-switcher" role="tablist" aria-label="Resume audience selector">
-          <button class="view-button is-active" type="button" data-view="overview" role="tab" aria-selected="true">Overview</button>
-          <button class="view-button" type="button" data-view="clinical" role="tab" aria-selected="false">Clinical Research</button>
-          <button class="view-button" type="button" data-view="data" role="tab" aria-selected="false">Data &amp; Analytics</button>
-          <button class="view-button" type="button" data-view="operations" role="tab" aria-selected="false">Research Operations</button>
-          <button class="view-button" type="button" data-view="automation" role="tab" aria-selected="false">Automation &amp; Systems</button>
-        </div>
-
-        <p class="view-status" id="view-status">Showing the Overview profile. Content has been reprioritized.</p>
       </section>
 
-      <section class="hero-panel" aria-labelledby="hero-name">
-        <div class="hero-copy">
-          <p class="terminal-line">C:\CANDIDATES\MAX_HEMMERICH&gt; open profile</p>
-          <p class="hero-name" id="hero-name">MAX HEMMERICH</p>
-          <h2 class="hero-title" id="hero-title">Research Operations &amp; Data Analyst</h2>
-          <p class="hero-summary" id="hero-summary">
-            Research operations professional with experience improving data quality, reporting,
-            workflow coordination, and stakeholder communication across healthcare and research settings.
+      <section class="hero-shell">
+        <article class="hero-panel">
+          <p class="hero-panel__path">C:\CANDIDATES\MAX_HEMMERICH&gt; OPEN PROFILE</p>
+          <p class="hero-panel__eyebrow" id="hero-eyebrow">MAX HEMMERICH</p>
+          <h1 id="hero-title">Clinical Operations, Analytics & Automation</h1>
+          <p id="hero-summary">
+            Cross-functional builder with experience in clinical research support, data quality, operations, workflow design,
+            and practical automation. I focus on making messy processes clearer, faster, and easier to run.
           </p>
 
           <div class="hero-actions">
-            <a class="ui-button ui-button-primary" href="#" onclick="window.print(); return false;">Print / Save PDF</a>
-            <a class="ui-button" href="#projects">Open Projects</a>
+            <button class="action-button action-button--primary" type="button" onclick="window.print()">Print / Save PDF</button>
+            <a class="action-button" href="#projects">Open Projects</a>
           </div>
-        </div>
+        </article>
 
-        <aside class="hero-meta" aria-label="Contact summary">
-          <div class="meta-block">
-            <p class="meta-label">LOCATION</p>
+        <aside class="sidebar-stack">
+          <section class="sidebar-card">
+            <span class="sidebar-card__label">Location</span>
             <p>Toronto, ON · Open to Ottawa</p>
-          </div>
-          <div class="meta-block">
-            <p class="meta-label">EMAIL</p>
+          </section>
+
+          <section class="sidebar-card" id="contact">
+            <span class="sidebar-card__label">Email</span>
             <p><a href="mailto:max.hemmerich@outlook.com">max.hemmerich@outlook.com</a></p>
-          </div>
-          <div class="meta-block">
-            <p class="meta-label">LINKEDIN</p>
+          </section>
+
+          <section class="sidebar-card">
+            <span class="sidebar-card__label">LinkedIn</span>
             <p><a href="https://www.linkedin.com/in/max-hemmerich" target="_blank" rel="noopener noreferrer">/in/max-hemmerich</a></p>
-          </div>
-          <div class="meta-block">
-            <p class="meta-label">LANGUAGES</p>
+          </section>
+
+          <section class="sidebar-card">
+            <span class="sidebar-card__label">Languages</span>
             <p>English · Functional French</p>
-          </div>
+          </section>
         </aside>
       </section>
 
-      <section class="panel-section" id="skills" aria-labelledby="skills-title">
-        <div class="section-heading-row">
-          <h2 id="skills-title">Core Technical Skills</h2>
-          <p class="section-note">[dir] Readable, recruiter-friendly, and easy to scan.</p>
-        </div>
+      <section class="content-grid">
+        <section class="window-panel">
+          <div class="window-panel__title">[TXT] Summary</div>
+          <div class="window-panel__body">
+            <p id="profile-summary">
+              I work at the intersection of healthcare operations, data handling, documentation, and process improvement.
+              My strengths are structured thinking, reliable execution, and turning vague operational needs into usable systems.
+            </p>
+          </div>
+        </section>
 
-        <div class="skills-grid" id="skills-grid">
-          <div class="skill-chip">Clinical &amp; research coordination</div>
-          <div class="skill-chip">Data cleaning &amp; reporting</div>
-          <div class="skill-chip">Excel, SQL, Python, R</div>
-          <div class="skill-chip">Workflow documentation</div>
-          <div class="skill-chip">Stakeholder communication</div>
-          <div class="skill-chip">Process improvement</div>
-          <div class="skill-chip">Dashboard thinking</div>
-          <div class="skill-chip">Automation-minded operations</div>
-        </div>
+        <section class="window-panel" id="skills">
+          <div class="window-panel__title">[SYS] Core Skills</div>
+          <div class="window-panel__body">
+            <ul class="skills-list" id="skills-list">
+              <li>Clinical research coordination support</li>
+              <li>Data cleaning, QA, and structured review</li>
+              <li>Workflow mapping and operational improvement</li>
+              <li>Documentation and SOP-style writing</li>
+              <li>Automation logic and systems thinking</li>
+              <li>Excel, SQL, dashboards, and reporting tools</li>
+            </ul>
+          </div>
+        </section>
       </section>
 
-      <section class="panel-section" id="experience" aria-labelledby="experience-title">
-        <div class="section-heading-row">
-          <h2 id="experience-title">Selected Experience</h2>
-          <p class="section-note">[-] Prioritized for readable review, not wall-of-text density.</p>
-        </div>
-
-        <div class="experience-list" id="experience-list">
-          <article class="experience-card">
-            <h3>CAMH</h3>
-            <p class="experience-subtitle">Healthcare / research environment · Toronto</p>
-            <ul>
-              <li>Supported operational and analytical work requiring accuracy, documentation discipline, and coordination.</li>
-              <li>Improved clarity of information flow, reporting, and repeatable processes across teams.</li>
-            </ul>
+      <section class="window-panel" id="experience">
+        <div class="window-panel__title">[LOG] Experience</div>
+        <div class="window-panel__body timeline" id="experience-list">
+          <article class="timeline-item">
+            <div class="timeline-item__meta">
+              <p class="timeline-item__date">Recent</p>
+              <p class="timeline-item__tag">Operations / Research / Data</p>
+            </div>
+            <div class="timeline-item__content">
+              <h3>Healthcare and research support work</h3>
+              <p>
+                Worked across environments where accuracy, documentation, coordination, and clear process execution mattered.
+                Contributed to structured work involving records, communication, and reliable follow-through.
+              </p>
+            </div>
           </article>
 
-          <article class="experience-card">
-            <h3>Research &amp; data-focused work</h3>
-            <p class="experience-subtitle">Cross-functional analytics, operations, and support</p>
-            <ul>
-              <li>Worked across structured data, workflow tracking, and practical problem solving.</li>
-              <li>Balanced detail orientation with speed, readability, and business usefulness.</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="panel-section" id="projects" aria-labelledby="projects-title">
-        <div class="section-heading-row">
-          <h2 id="projects-title">Projects Directory</h2>
-          <p class="section-note">[+] Separate project pages. The main resume stays one page.</p>
-        </div>
-
-        <div class="project-grid" id="project-grid">
-          <article class="project-card" data-views="overview clinical operations data">
-            <p class="project-type">[app] AI / RESEARCH TOOLS</p>
-            <h3>Distill</h3>
-            <p>
-              An AI reading interface that turns web articles and raw text into
-              document-, section-, and paragraph-level summaries while retaining
-              citations and source context.
-            </p>
-            <ul>
-              <li>Built for faster review of long-form articles, research, and web content.</li>
-              <li>Supports URL input, raw text input, and a structured three-pane reading workflow.</li>
-              <li>Strong fit for clinical, research operations, and data-facing audiences.</li>
-            </ul>
-            <p class="project-stack">Next.js · TypeScript · OpenAI API</p>
-            <p class="project-links">
-              <a href="https://distill.wiki" target="_blank" rel="noopener noreferrer">[open] Live site</a>
-              <a href="https://github.com/maxhemmerich/distill" target="_blank" rel="noopener noreferrer">[dir] Source</a>
-              <a href="projects/distill.html">[file] Case study</a>
-            </p>
+          <article class="timeline-item">
+            <div class="timeline-item__meta">
+              <p class="timeline-item__date">Ongoing</p>
+              <p class="timeline-item__tag">Automation / Systems</p>
+            </div>
+            <div class="timeline-item__content">
+              <h3>Workflow and tooling development</h3>
+              <p>
+                Built and refined internal tools, templates, and process logic to reduce manual effort, improve consistency,
+                and make repeated tasks easier to execute.
+              </p>
+            </div>
           </article>
 
-          <article class="project-card" data-views="overview data automation">
-            <p class="project-type">[app] ANALYTICS / DECISION SUPPORT</p>
-            <h3>Sports Betting Dashboard</h3>
-            <p>
-              A dashboard for identifying profitable bets, reviewing signals, and
-              tracking performance over time through a clearer betting workflow.
-            </p>
-            <ul>
-              <li>Surfaces candidate bets to make rather than raw data alone.</li>
-              <li>Frames performance tracking and monitoring in a recruiter-friendly way.</li>
-              <li>Best used to show dashboard design, analytical thinking, and decision support.</li>
-            </ul>
-            <p class="project-stack">Dashboarding · Analytics · Tracking</p>
-            <p class="project-links">
-              <a href="projects/sports-betting-dashboard.html">[file] Case study</a>
-            </p>
-          </article>
-
-          <article class="project-card" data-views="overview data automation operations">
-            <p class="project-type">[sys] MODELING / AUTOMATION</p>
-            <h3>Polymarket Trading System</h3>
-            <p>
-              An end-to-end workflow for market discovery, signal collection,
-              probability modeling, backtesting, monitoring, and optional execution.
-            </p>
-            <ul>
-              <li>Includes data collection, model scoring, and backtest reporting.</li>
-              <li>Demonstrates practical automation with risk-aware workflow design.</li>
-              <li>Good fit for data, systems, and automation-oriented reviewers.</li>
-            </ul>
-            <p class="project-stack">Python · Modeling · Backtesting · Monitoring</p>
-            <p class="project-links">
-              <a href="projects/polymarket.html">[file] Case study</a>
-            </p>
-          </article>
-
-          <article class="project-card" data-views="overview automation data">
-            <p class="project-type">[game] FULL-STACK / REAL-TIME SYSTEMS</p>
-            <h3>Territory Conquest Game</h3>
-            <p>
-              A real-time multiplayer territory strategy game with procedural map
-              generation, AI opponents, and server-authoritative game state handling.
-            </p>
-            <ul>
-              <li>Shows architecture, rendering, multiplayer synchronization, and game logic.</li>
-              <li>Includes turn timing, lobby management, bots, and tactical combat rules.</li>
-            </ul>
-            <p class="project-stack">Node.js · Socket.io · HTML5 Canvas</p>
-            <p class="project-links">
-              <a href="https://github.com/maxhemmerich/Dominion" target="_blank" rel="noopener noreferrer">[dir] Source</a>
-              <a href="projects/territory-conquest.html">[file] Case study</a>
-            </p>
+          <article class="timeline-item">
+            <div class="timeline-item__meta">
+              <p class="timeline-item__date">Ongoing</p>
+              <p class="timeline-item__tag">Analysis</p>
+            </div>
+            <div class="timeline-item__content">
+              <h3>Data-oriented problem solving</h3>
+              <p>
+                Used structured analysis to compare options, audit information, surface patterns, and support decisions with
+                clearer evidence.
+              </p>
+            </div>
           </article>
         </div>
       </section>
 
-      <section class="panel-section" id="contact" aria-labelledby="contact-title">
-        <div class="section-heading-row">
-          <h2 id="contact-title">Contact</h2>
-          <p class="section-note">[X] Reach out for recruiter review, interview requests, or portfolio walkthroughs.</p>
-        </div>
+      <section class="window-panel" id="projects">
+        <div class="window-panel__title">[DIR] Projects</div>
+        <div class="window-panel__body">
+          <div class="projects-grid" id="projects-grid">
+            <a class="project-card" href="projects/project-template.html">
+              <span class="project-card__kicker">[dir]</span>
+              <h3>Project Case Study</h3>
+              <p>Template for a detailed project page with context, work, constraints, and outcomes.</p>
+            </a>
 
-        <div class="contact-actions">
-          <a class="ui-button ui-button-primary" href="mailto:max.hemmerich@outlook.com">Email</a>
-          <a class="ui-button" href="https://www.linkedin.com/in/max-hemmerich" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="project-card" href="projects/project-template.html">
+              <span class="project-card__kicker">[sql]</span>
+              <h3>Data Workflow Example</h3>
+              <p>Example slot for a data cleanup, reporting, or QA-oriented project write-up.</p>
+            </a>
+
+            <a class="project-card" href="projects/project-template.html">
+              <span class="project-card__kicker">[ops]</span>
+              <h3>Operations Improvement</h3>
+              <p>Example slot for a process redesign, documentation system, or operational efficiency project.</p>
+            </a>
+
+            <a class="project-card" href="projects/project-template.html">
+              <span class="project-card__kicker">[bot]</span>
+              <h3>Automation Build</h3>
+              <p>Example slot for an automation workflow, internal tool, or systems integration project.</p>
+            </a>
+          </div>
         </div>
       </section>
-    </section>
-  </main>
+
+      <footer class="status-bar">
+        <span>READY</span>
+        <span id="status-view">VIEW: OVERVIEW</span>
+        <span>LAST UPDATED: 2026</span>
+      </footer>
+    </main>
+  </div>
 
   <script>
     (function () {
-      const buttons = Array.from(document.querySelectorAll('.view-button'));
-      const title = document.getElementById('hero-title');
-      const summary = document.getElementById('hero-summary');
-      const status = document.getElementById('view-status');
-      const skillsGrid = document.getElementById('skills-grid');
-      const experienceList = document.getElementById('experience-list');
-      const projectGrid = document.getElementById('project-grid');
-
-      const viewConfig = {
+      const views = {
         overview: {
-          title: 'Research Operations & Data Analyst',
-          summary: 'Research operations professional with experience improving data quality, reporting, workflow coordination, and stakeholder communication across healthcare and research settings.',
-          status: 'Showing the Overview profile. Content has been reprioritized.',
+          title: "Clinical Operations, Analytics & Automation",
+          eyebrow: "MAX HEMMERICH",
+          summary: "Cross-functional builder with experience in clinical research support, data quality, operations, workflow design, and practical automation. I focus on making messy processes clearer, faster, and easier to run.",
+          profile: "I work at the intersection of healthcare operations, data handling, documentation, and process improvement. My strengths are structured thinking, reliable execution, and turning vague operational needs into usable systems.",
           skills: [
-            'Clinical & research coordination',
-            'Data cleaning & reporting',
-            'Excel, SQL, Python, R',
-            'Workflow documentation',
-            'Stakeholder communication',
-            'Process improvement',
-            'Dashboard thinking',
-            'Automation-minded operations'
+            "Clinical research coordination support",
+            "Data cleaning, QA, and structured review",
+            "Workflow mapping and operational improvement",
+            "Documentation and SOP-style writing",
+            "Automation logic and systems thinking",
+            "Excel, SQL, dashboards, and reporting tools"
           ],
-          experience: `
-            <article class="experience-card">
-              <h3>CAMH</h3>
-              <p class="experience-subtitle">Healthcare / research environment · Toronto</p>
-              <ul>
-                <li>Supported operational and analytical work requiring accuracy, documentation discipline, and coordination.</li>
-                <li>Improved clarity of information flow, reporting, and repeatable processes across teams.</li>
-              </ul>
-            </article>
-            <article class="experience-card">
-              <h3>Research & data-focused work</h3>
-              <p class="experience-subtitle">Cross-functional analytics, operations, and support</p>
-              <ul>
-                <li>Worked across structured data, workflow tracking, and practical problem solving.</li>
-                <li>Balanced detail orientation with speed, readability, and business usefulness.</li>
-              </ul>
-            </article>
-          `,
-          projectOrder: ['Distill', 'Sports Betting Dashboard', 'Polymarket Trading System', 'Territory Conquest Game']
+          status: "VIEW: OVERVIEW"
         },
         clinical: {
-          title: 'Clinical Research & Operations Candidate',
-          summary: 'Candidate with healthcare-adjacent operations experience, documentation discipline, and strong interest in clinical research support, coordination, and structured information review.',
-          status: 'Showing the Clinical Research profile. Content has been reprioritized.',
+          title: "Clinical Research & Study Support",
+          eyebrow: "CLINICAL FOCUS",
+          summary: "Experience aligned with documentation-heavy, accuracy-sensitive environments where clear coordination, protocol awareness, follow-up, and reliable record handling matter.",
+          profile: "Strong fit for clinical and research-facing roles that require careful documentation, operational consistency, communication, and dependable execution in regulated or semi-regulated settings.",
           skills: [
-            'Clinical research support',
-            'Documentation accuracy',
-            'Participant-facing professionalism',
-            'Protocol-minded work',
-            'Data review',
-            'Stakeholder communication',
-            'Operations coordination',
-            'Structured information handling'
+            "Clinical and research documentation support",
+            "Study coordination assistance",
+            "Accurate record handling and review",
+            "Cross-team communication",
+            "Participant/process tracking",
+            "Detail-oriented execution"
           ],
-          experience: `
-            <article class="experience-card">
-              <h3>CAMH</h3>
-              <p class="experience-subtitle">Clinical / healthcare environment</p>
-              <ul>
-                <li>Worked in a setting where accuracy, professionalism, and consistent documentation mattered.</li>
-                <li>Supported work aligned with coordination, information handling, and operational reliability.</li>
-              </ul>
-            </article>
-            <article class="experience-card">
-              <h3>Research-oriented work style</h3>
-              <p class="experience-subtitle">Detail-oriented, process-aware, analytical</p>
-              <ul>
-                <li>Strong fit for environments requiring careful review, follow-through, and organized communication.</li>
-              </ul>
-            </article>
-          `,
-          projectOrder: ['Distill', 'Sports Betting Dashboard', 'Polymarket Trading System', 'Territory Conquest Game']
+          status: "VIEW: CLINICAL"
         },
         data: {
-          title: 'Data & Analytics Candidate',
-          summary: 'Analytically oriented candidate with experience in reporting, data handling, dashboard thinking, and converting raw information into usable decisions and summaries.',
-          status: 'Showing the Data & Analytics profile. Content has been reprioritized.',
+          title: "Data, QA & Reporting",
+          eyebrow: "DATA FOCUS",
+          summary: "Analytical work centered on data cleanup, structured review, error spotting, comparisons, dashboards, and converting inconsistent information into something decision-ready.",
+          profile: "Best suited for roles involving analytics support, reporting, operations analysis, QA, and practical data work where clean structure and good judgment matter more than buzzwords.",
           skills: [
-            'Excel, SQL, Python, R',
-            'Data cleaning',
-            'Reporting',
-            'Dashboard thinking',
-            'Analytical prioritization',
-            'Pattern review',
-            'Decision support',
-            'Readable output design'
+            "Data validation and QA review",
+            "Spreadsheet and reporting workflows",
+            "Structured comparisons and audit logic",
+            "Dashboard-friendly thinking",
+            "SQL / tabular analysis mindset",
+            "Process metrics and issue tracking"
           ],
-          experience: `
-            <article class="experience-card">
-              <h3>Analytics & reporting work</h3>
-              <p class="experience-subtitle">Data review, structured output, practical analysis</p>
-              <ul>
-                <li>Worked on information organization, reporting clarity, and turning messy inputs into usable outputs.</li>
-                <li>Focused on readability, prioritization, and practical usefulness for stakeholders.</li>
-              </ul>
-            </article>
-            <article class="experience-card">
-              <h3>Cross-functional problem solving</h3>
-              <p class="experience-subtitle">Operations + analysis</p>
-              <ul>
-                <li>Bridged process work and analytical thinking rather than treating them as separate lanes.</li>
-              </ul>
-            </article>
-          `,
-          projectOrder: ['Sports Betting Dashboard', 'Polymarket Trading System', 'Distill', 'Territory Conquest Game']
+          status: "VIEW: DATA"
         },
         operations: {
-          title: 'Research Operations Professional',
-          summary: 'Operations-focused candidate with strengths in documentation, coordination, process consistency, and keeping information workflows clear, trackable, and useful.',
-          status: 'Showing the Research Operations profile. Content has been reprioritized.',
+          title: "Operations & Process Improvement",
+          eyebrow: "OPERATIONS FOCUS",
+          summary: "Operationally minded work focused on reducing friction, clarifying procedures, improving consistency, and making recurring tasks easier to execute across teams.",
+          profile: "A strong fit for operations roles that need someone practical, process-oriented, and comfortable handling ambiguity while improving systems, handoffs, and documentation.",
           skills: [
-            'Workflow coordination',
-            'Documentation discipline',
-            'Cross-team communication',
-            'Process improvement',
-            'Information flow',
-            'Task tracking',
-            'Reporting support',
-            'Operational reliability'
+            "Workflow mapping",
+            "Process standardization",
+            "Documentation systems",
+            "Operational troubleshooting",
+            "Cross-functional coordination",
+            "Execution reliability"
           ],
-          experience: `
-            <article class="experience-card">
-              <h3>CAMH</h3>
-              <p class="experience-subtitle">Operations in a healthcare / research-adjacent setting</p>
-              <ul>
-                <li>Supported structured work requiring consistency, communication, and organized follow-through.</li>
-                <li>Contributed to clearer reporting and repeatable operational processes.</li>
-              </ul>
-            </article>
-            <article class="experience-card">
-              <h3>Operations & workflow improvement</h3>
-              <p class="experience-subtitle">Documentation, clarity, repeatability</p>
-              <ul>
-                <li>Strong fit for roles focused on workflow support, coordination, and process reliability.</li>
-              </ul>
-            </article>
-          `,
-          projectOrder: ['Distill', 'Polymarket Trading System', 'Sports Betting Dashboard', 'Territory Conquest Game']
+          status: "VIEW: OPERATIONS"
         },
         automation: {
-          title: 'Automation & Systems Builder',
-          summary: 'Technically curious builder with experience across workflow automation, modeling pipelines, real-time systems, and applied tooling for better decision support.',
-          status: 'Showing the Automation & Systems profile. Content has been reprioritized.',
+          title: "Automation & Systems Builder",
+          eyebrow: "AUTOMATION FOCUS",
+          summary: "Builder-oriented work across workflow automation, tooling, structured logic, and system design for repetitive tasks, internal processes, and decision support.",
+          profile: "Best for roles where automation, tooling, and system design support operations, analysis, or internal productivity. I like turning repeated manual work into something lighter and more reliable.",
           skills: [
-            'Automation thinking',
-            'Python workflows',
-            'System design',
-            'Model pipelines',
-            'Backtesting',
-            'Real-time architecture',
-            'Technical experimentation',
-            'Tool-building'
+            "Workflow automation",
+            "Internal tools and templates",
+            "Logic design and systems thinking",
+            "Process simplification",
+            "Technical troubleshooting",
+            "Practical AI-assisted workflows"
           ],
-          experience: `
-            <article class="experience-card">
-              <h3>Technical builds</h3>
-              <p class="experience-subtitle">Automation, systems, modeling, and experimentation</p>
-              <ul>
-                <li>Built tools and experiments spanning analytical workflows, monitoring, and system logic.</li>
-                <li>Comfortable moving between structured analysis and implementation details.</li>
-              </ul>
-            </article>
-            <article class="experience-card">
-              <h3>Applied problem solving</h3>
-              <p class="experience-subtitle">Useful systems over theory-heavy abstraction</p>
-              <ul>
-                <li>Focused on creating practical outputs, not just prototypes or conceptual writeups.</li>
-              </ul>
-            </article>
-          `,
-          projectOrder: ['Territory Conquest Game', 'Polymarket Trading System', 'Sports Betting Dashboard', 'Distill']
+          status: "VIEW: AUTOMATION"
         }
       };
 
-      function updateProjects(order) {
-        if (!projectGrid) return;
-        const cards = Array.from(projectGrid.querySelectorAll('.project-card'));
-        cards.sort((a, b) => {
-          const aTitle = a.querySelector('h3')?.textContent?.trim() || '';
-          const bTitle = b.querySelector('h3')?.textContent?.trim() || '';
-          return order.indexOf(aTitle) - order.indexOf(bTitle);
+      const titleEl = document.getElementById("hero-title");
+      const eyebrowEl = document.getElementById("hero-eyebrow");
+      const summaryEl = document.getElementById("hero-summary");
+      const profileEl = document.getElementById("profile-summary");
+      const skillsListEl = document.getElementById("skills-list");
+      const statusViewEl = document.getElementById("status-view");
+      const buttons = document.querySelectorAll(".role-button");
+
+      function renderView(name) {
+        const view = views[name] || views.overview;
+        eyebrowEl.textContent = view.eyebrow;
+        titleEl.textContent = view.title;
+        summaryEl.textContent = view.summary;
+        profileEl.textContent = view.profile;
+        statusViewEl.textContent = view.status;
+
+        skillsListEl.innerHTML = "";
+        view.skills.forEach(function (skill) {
+          const li = document.createElement("li");
+          li.textContent = skill;
+          skillsListEl.appendChild(li);
         });
-        cards.forEach(card => projectGrid.appendChild(card));
+
+        buttons.forEach(function (button) {
+          const active = button.dataset.view === name;
+          button.setAttribute("aria-selected", active ? "true" : "false");
+          button.classList.toggle("is-active", active);
+        });
+
+        const url = new URL(window.location.href);
+        if (name === "overview") {
+          url.searchParams.delete("view");
+        } else {
+          url.searchParams.set("view", name);
+        }
+        window.history.replaceState({}, "", url);
       }
 
-      function setView(viewKey) {
-        const config = viewConfig[viewKey] || viewConfig.overview;
-
-        buttons.forEach(button => {
-          const active = button.dataset.view === viewKey;
-          button.classList.toggle('is-active', active);
-          button.setAttribute('aria-selected', active ? 'true' : 'false');
-        });
-
-        title.textContent = config.title;
-        summary.textContent = config.summary;
-        status.textContent = config.status;
-
-        skillsGrid.innerHTML = config.skills
-          .map(skill => `<div class="skill-chip">${skill}</div>`)
-          .join('');
-
-        experienceList.innerHTML = config.experience;
-        updateProjects(config.projectOrder);
-
-        const params = new URLSearchParams(window.location.search);
-        params.set('view', viewKey);
-        history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
-      }
-
-      buttons.forEach(button => {
-        button.addEventListener('click', function () {
-          setView(this.dataset.view);
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          renderView(button.dataset.view);
         });
       });
 
-      const params = new URLSearchParams(window.location.search);
-      const initialView = params.get('view') || 'overview';
-      setView(initialView);
+      const initial = new URLSearchParams(window.location.search).get("view") || "overview";
+      renderView(initial);
     })();
   </script>
 </body>
