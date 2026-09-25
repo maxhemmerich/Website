@@ -1,6 +1,6 @@
 /* Art direction: Windows 95 / Y2K desktop resume.
    Palette: dark gray, teal, and light gray.
-   Typography: Courier-style mono for maximum scan readability.
+   Typography: retro chrome + readable body text.
    Density: compact but not cramped. */
 
 :root {
@@ -33,6 +33,8 @@
   --text-lg: clamp(1.1rem, 0.95rem + 0.8vw, 1.45rem);
   --text-xl: clamp(1.9rem, 1.3rem + 2vw, 3.3rem);
   --content-width: 980px;
+  --font-ui: "Courier New", "JetBrains Mono", "Fira Code", monospace;
+  --font-body: Arial, Helvetica, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -40,7 +42,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Courier New", "JetBrains Mono", "Fira Code", monospace;
+  font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: 1.45;
   color: var(--text-main);
@@ -49,6 +51,19 @@ body {
     linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
     linear-gradient(180deg, var(--bg-teal), var(--bg-teal-deep));
   background-size: 8px 8px, 8px 8px, 100% 100%;
+}
+
+.title-bar,
+.menu-bar,
+.view-tab,
+.button-95,
+.taskbar,
+.desktop-icon,
+.status-line,
+.terminal-path,
+.eyebrow,
+.info-card dt {
+  font-family: var(--font-ui);
 }
 
 a { color: #0b1b7a; }
@@ -205,9 +220,9 @@ button, a { min-height: 44px; }
 }
 
 .window-body {
-  padding: 0.9rem;
+  padding: 0.8rem;
   display: grid;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .panel {
@@ -217,12 +232,12 @@ button, a { min-height: 44px; }
   padding: 0.9rem;
 }
 
-.chooser-panel { padding: 0.85rem; }
+.chooser-panel { padding: 0.7rem; }
 .chooser-heading {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-3);
-  margin-bottom: var(--space-3);
+  gap: 0.7rem;
+  margin-bottom: 0.7rem;
 }
 .prompt-box {
   width: 46px;
@@ -280,8 +295,8 @@ button, a { min-height: 44px; }
   color: var(--text-inverse);
 }
 .status-line {
-  margin-top: 0.55rem;
-  padding: 0.55rem 0.75rem;
+  margin-top: 0.4rem;
+  padding: 0.42rem 0.6rem;
   background: var(--panel-light);
   border-left: 2px solid var(--border-mid);
   color: var(--text-soft);
@@ -295,10 +310,10 @@ button, a { min-height: 44px; }
 }
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.7fr) minmax(250px, 300px);
-  gap: 1rem;
+  grid-template-columns: minmax(0, 1.8fr) 240px;
+  gap: 0.9rem;
   align-items: start;
-  padding: 1.15rem;
+  padding: 0.95rem;
 }
 .terminal-path,
 .eyebrow {
@@ -308,12 +323,19 @@ button, a { min-height: 44px; }
 .terminal-path { margin-bottom: var(--space-3); }
 .eyebrow { margin-bottom: var(--space-2); }
 .hero-title {
-  font-size: var(--text-xl);
-  line-height: 1.05;
-  margin-bottom: var(--space-3);
+  font-family: var(--font-body);
+  font-size: clamp(2.2rem, 1.7rem + 1.8vw, 3.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  max-width: 10ch;
 }
 .hero-summary {
-  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.15rem);
+  font-family: var(--font-body);
+  font-size: 1.08rem;
+  line-height: 1.55;
+  max-width: 44ch;
 }
 .hero-actions {
   margin-top: var(--space-4);
@@ -339,7 +361,11 @@ button, a { min-height: 44px; }
   text-transform: uppercase;
   font-weight: 700;
 }
-.info-card dd { margin: 0; }
+.info-card dd {
+  margin: 0;
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
 
 .is-hidden { display: none; }
 .section-heading {
@@ -364,6 +390,15 @@ button, a { min-height: 44px; }
   border: 2px solid var(--border-mid);
   box-shadow: inset 1px 1px 0 #ffffff;
   padding: 0.75rem;
+}
+.skill-grid li,
+.timeline-item li,
+.timeline-item p,
+.project-card p,
+.chooser-heading p,
+.panel p {
+  font-family: var(--font-body);
+  line-height: 1.5;
 }
 .timeline {
   display: grid;
@@ -392,6 +427,7 @@ button, a { min-height: 44px; }
   margin-bottom: var(--space-2);
   color: var(--window-blue);
   font-weight: 700;
+  font-family: var(--font-ui);
 }
 .project-grid-narrow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .static-card { cursor: default; }
@@ -448,72 +484,4 @@ button, a { min-height: 44px; }
   outline-offset: 3px;
 }
 
-@media (max-width: 980px) {
-  .view-tabs,
-  .skill-grid,
-  .project-grid,
-  .project-grid-narrow {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .hero,
-  .two-column-panel,
-  .section-heading {
-    grid-template-columns: 1fr;
-    display: grid;
-  }
-  .section-heading { align-items: start; }
-}
-
-@media (max-width: 700px) {
-  .workspace,
-  .project-page,
-  .desktop-icons {
-    padding: var(--space-3);
-  }
-  .desktop-icons {
-    justify-content: center;
-    gap: var(--space-3);
-  }
-  .desktop-icon { width: 68px; }
-  .view-tabs,
-  .skill-grid,
-  .project-grid,
-  .project-grid-narrow {
-    grid-template-columns: 1fr;
-  }
-  .title-bar,
-  .menu-bar,
-  .window-body,
-  .panel,
-  .hero {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-  .hero-title {
-    font-size: clamp(1.8rem, 8vw, 2.7rem);
-  }
-  .taskbar {
-    position: static;
-  }
-}
-
-@media print {
-  .desktop-icons,
-  .menu-bar,
-  .taskbar,
-  .hero-actions,
-  .view-tabs,
-  .status-line {
-    display: none !important;
-  }
-  body {
-    background: #ffffff;
-  }
-  .window,
-  .panel,
-  .timeline-item,
-  .project-card,
-  .info-card {
-    box-shadow: none;
-  }
-}
+@media (max-width: 980px
