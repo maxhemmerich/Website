@@ -123,23 +123,3 @@
   </div>
 </section>
 
-<!-- Add this script block before </body> if you want project cards to reprioritize by recruiter view. -->
-<script>
-(function () {
-  const params = new URLSearchParams(window.location.search);
-  const currentView = (params.get('view') || 'overview').toLowerCase();
-  const grid = document.getElementById('project-grid');
-  if (!grid) return;
-
-  const cards = Array.from(grid.querySelectorAll('.project-card'));
-  const scored = cards.map((card, index) => {
-    const views = (card.getAttribute('data-views') || '').toLowerCase();
-    const exact = views.includes(currentView) ? 1 : 0;
-    return { card, index, exact };
-  });
-
-  scored
-    .sort((a, b) => b.exact - a.exact || a.index - b.index)
-    .forEach(({ card }) => grid.appendChild(card));
-})();
-</script>
