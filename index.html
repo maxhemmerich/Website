@@ -1,125 +1,460 @@
-<!-- Replace your current Projects Directory section with this block. -->
-<section class="panel-section" id="projects" aria-labelledby="projects-title">
-  <div class="section-heading-row">
-    <h2 id="projects-title">Projects Directory</h2>
-    <p class="section-note">[+] Separate project pages. The main resume stays one page.</p>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Max Hemmerich | Resume</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <div class="project-grid" id="project-grid">
-    <article class="project-card" data-views="overview research clinical data analytics">
-      <p class="project-type">[app] AI / RESEARCH TOOLS</p>
-      <h3>Distill</h3>
-      <p>
-        An AI reading interface that turns web articles and raw text into
-        document-, section-, and paragraph-level summaries while retaining
-        citations and source context.
-      </p>
-      <ul>
-        <li>Built for faster review of long-form articles, research, and web content.</li>
-        <li>Supports URL input, raw text input, and a structured three-pane reading workflow.</li>
-        <li>Strong fit for clinical, research operations, and data-facing audiences.</li>
-      </ul>
-      <p class="project-stack">Next.js · TypeScript · OpenAI API</p>
-      <p class="project-links">
-        <a href="https://distill.wiki" target="_blank" rel="noopener noreferrer">[open] Live site</a>
-        <a href="https://github.com/maxhemmerich/distill" target="_blank" rel="noopener noreferrer">[dir] Source</a>
-        <a href="projects/project-template.html?project=distill">[file] Case study</a>
-      </p>
-    </article>
+  <main id="main-content" class="desktop-shell">
+    <section class="main-window" aria-label="Resume window">
+      <header class="window-titlebar">
+        <div class="window-title">MAX_HEMMERICH_RESUME.EXE</div>
+        <div class="window-controls" aria-hidden="true">
+          <span>[_]</span>
+          <span>[+]</span>
+          <span>[X]</span>
+        </div>
+      </header>
 
-    <article class="project-card" data-views="overview data analytics automation systems">
-      <p class="project-type">[app] ANALYTICS / DECISION SUPPORT</p>
-      <h3>Sports Betting Dashboard</h3>
-      <p>
-        A dashboard for identifying profitable bets, reviewing signals, and
-        tracking performance over time through a clearer betting workflow.
-      </p>
-      <ul>
-        <li>Surfaces candidate bets to make rather than raw data alone.</li>
-        <li>Frames performance tracking and monitoring in a recruiter-friendly way.</li>
-        <li>Best used to show dashboard design, analytical thinking, and decision support.</li>
-      </ul>
-      <p class="project-stack">Dashboarding · Analytics · Tracking</p>
-      <p class="project-links">
-        <a href="projects/project-template.html?project=sports-betting-dashboard">[file] Case study</a>
-      </p>
-    </article>
+      <nav class="menu-bar" aria-label="Primary">
+        <a href="#viewer">View</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-    <article class="project-card" data-views="overview data analytics automation systems">
-      <p class="project-type">[sys] MODELING / AUTOMATION</p>
-      <h3>Polymarket Trading System</h3>
-      <p>
-        An end-to-end workflow for market discovery, signal collection,
-        probability modeling, backtesting, monitoring, and optional execution.
-      </p>
-      <ul>
-        <li>Includes data collection, model scoring, and backtest reporting.</li>
-        <li>Demonstrates practical automation with risk-aware workflow design.</li>
-        <li>Good fit for data, systems, and automation-oriented reviewers.</li>
-      </ul>
-      <p class="project-stack">Python · Modeling · Backtesting · Monitoring</p>
-      <p class="project-links">
-        <a href="projects/project-template.html?project=polymarket">[file] Case study</a>
-      </p>
-    </article>
+      <section class="panel-section" id="viewer" aria-labelledby="viewer-title">
+        <div class="viewer-header">
+          <div class="viewer-icon" aria-hidden="true">?</div>
+          <div>
+            <h1 id="viewer-title">Who is viewing this resume?</h1>
+            <p>
+              Choose a role family. The page will prioritize the most relevant summary,
+              skills, experience, and projects.
+            </p>
+          </div>
+        </div>
 
-    <article class="project-card" data-views="overview automation systems data analytics">
-      <p class="project-type">[game] FULL-STACK / REAL-TIME SYSTEMS</p>
-      <h3>Territory Conquest Game</h3>
-      <p>
-        A real-time multiplayer territory strategy game with procedural map
-        generation, AI opponents, and server-authoritative game state handling.
-      </p>
-      <ul>
-        <li>Shows architecture, rendering, multiplayer synchronization, and game logic.</li>
-        <li>Includes turn timing, lobby management, bots, and tactical combat rules.</li>
-        <li>Useful as a proof-of-range project for technical audiences.</li>
-      </ul>
-      <p class="project-stack">Node.js · Socket.io · HTML5 Canvas</p>
-      <p class="project-links">
-        <a href="https://github.com/maxhemmerich/Dominion" target="_blank" rel="noopener noreferrer">[dir] Source</a>
-        <a href="projects/project-template.html?project=territory-conquest">[file] Case study</a>
-      </p>
-    </article>
+        <div class="view-switcher" role="tablist" aria-label="Resume audience selector">
+          <button class="view-button is-active" type="button" data-view="overview" role="tab" aria-selected="true">Overview</button>
+          <button class="view-button" type="button" data-view="clinical" role="tab" aria-selected="false">Clinical Research</button>
+          <button class="view-button" type="button" data-view="data" role="tab" aria-selected="false">Data &amp; Analytics</button>
+          <button class="view-button" type="button" data-view="operations" role="tab" aria-selected="false">Research Operations</button>
+          <button class="view-button" type="button" data-view="automation" role="tab" aria-selected="false">Automation &amp; Systems</button>
+        </div>
 
-    <article class="project-card" data-views="automation systems data analytics">
-      <p class="project-type">[ml] TRADING / EXPERIMENTAL SYSTEMS</p>
-      <h3>Binance NN</h3>
-      <p>
-        A neural-network trading experiment exploring model-driven signals and
-        automated market decision support.
-      </p>
-      <p class="project-stack">Machine Learning · Trading · Forecasting</p>
-      <p class="project-links">
-        <a href="projects/project-template.html?project=binance-nn">[file] Case study</a>
-      </p>
-    </article>
+        <p class="view-status" id="view-status">Showing the Overview profile. Content has been reprioritized.</p>
+      </section>
 
-    <article class="project-card" data-views="automation systems data analytics">
-      <p class="project-type">[tool] TRADING / ANALYSIS</p>
-      <h3>Trading</h3>
-      <p>
-        A broader trading-oriented build focused on analysis, workflow design,
-        and opportunity review.
-      </p>
-      <p class="project-stack">Analysis · Workflow · Monitoring</p>
-      <p class="project-links">
-        <a href="projects/project-template.html?project=trading">[file] Case study</a>
-      </p>
-    </article>
+      <section class="hero-panel" aria-labelledby="hero-name">
+        <div class="hero-copy">
+          <p class="terminal-line">C:\CANDIDATES\MAX_HEMMERICH&gt; open profile</p>
+          <p class="hero-name" id="hero-name">MAX HEMMERICH</p>
+          <h2 class="hero-title" id="hero-title">Research Operations &amp; Data Analyst</h2>
+          <p class="hero-summary" id="hero-summary">
+            Research operations professional with experience improving data quality, reporting,
+            workflow coordination, and stakeholder communication across healthcare and research settings.
+          </p>
 
-    <article class="project-card" data-views="automation systems data analytics">
-      <p class="project-type">[tool] INTERNAL BUILD / WORKFLOW</p>
-      <h3>Chalk</h3>
-      <p>
-        A technical workflow build that can serve as an additional systems or
-        internal-tool example once you finalize the public-facing description.
-      </p>
-      <p class="project-stack">Workflow Design · Internal Tooling</p>
-      <p class="project-links">
-        <a href="projects/project-template.html?project=chalk">[file] Case study</a>
-      </p>
-    </article>
-  </div>
-</section>
+          <div class="hero-actions">
+            <a class="ui-button ui-button-primary" href="#" onclick="window.print(); return false;">Print / Save PDF</a>
+            <a class="ui-button" href="#projects">Open Projects</a>
+          </div>
+        </div>
 
+        <aside class="hero-meta" aria-label="Contact summary">
+          <div class="meta-block">
+            <p class="meta-label">LOCATION</p>
+            <p>Toronto, ON · Open to Ottawa</p>
+          </div>
+          <div class="meta-block">
+            <p class="meta-label">EMAIL</p>
+            <p><a href="mailto:max.hemmerich@outlook.com">max.hemmerich@outlook.com</a></p>
+          </div>
+          <div class="meta-block">
+            <p class="meta-label">LINKEDIN</p>
+            <p><a href="https://www.linkedin.com/in/max-hemmerich" target="_blank" rel="noopener noreferrer">/in/max-hemmerich</a></p>
+          </div>
+          <div class="meta-block">
+            <p class="meta-label">LANGUAGES</p>
+            <p>English · Functional French</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="panel-section" id="skills" aria-labelledby="skills-title">
+        <div class="section-heading-row">
+          <h2 id="skills-title">Core Technical Skills</h2>
+          <p class="section-note">[dir] Readable, recruiter-friendly, and easy to scan.</p>
+        </div>
+
+        <div class="skills-grid" id="skills-grid">
+          <div class="skill-chip">Clinical &amp; research coordination</div>
+          <div class="skill-chip">Data cleaning &amp; reporting</div>
+          <div class="skill-chip">Excel, SQL, Python, R</div>
+          <div class="skill-chip">Workflow documentation</div>
+          <div class="skill-chip">Stakeholder communication</div>
+          <div class="skill-chip">Process improvement</div>
+          <div class="skill-chip">Dashboard thinking</div>
+          <div class="skill-chip">Automation-minded operations</div>
+        </div>
+      </section>
+
+      <section class="panel-section" id="experience" aria-labelledby="experience-title">
+        <div class="section-heading-row">
+          <h2 id="experience-title">Selected Experience</h2>
+          <p class="section-note">[-] Prioritized for readable review, not wall-of-text density.</p>
+        </div>
+
+        <div class="experience-list" id="experience-list">
+          <article class="experience-card">
+            <h3>CAMH</h3>
+            <p class="experience-subtitle">Healthcare / research environment · Toronto</p>
+            <ul>
+              <li>Supported operational and analytical work requiring accuracy, documentation discipline, and coordination.</li>
+              <li>Improved clarity of information flow, reporting, and repeatable processes across teams.</li>
+            </ul>
+          </article>
+
+          <article class="experience-card">
+            <h3>Research &amp; data-focused work</h3>
+            <p class="experience-subtitle">Cross-functional analytics, operations, and support</p>
+            <ul>
+              <li>Worked across structured data, workflow tracking, and practical problem solving.</li>
+              <li>Balanced detail orientation with speed, readability, and business usefulness.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel-section" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading-row">
+          <h2 id="projects-title">Projects Directory</h2>
+          <p class="section-note">[+] Separate project pages. The main resume stays one page.</p>
+        </div>
+
+        <div class="project-grid" id="project-grid">
+          <article class="project-card" data-views="overview clinical operations data">
+            <p class="project-type">[app] AI / RESEARCH TOOLS</p>
+            <h3>Distill</h3>
+            <p>
+              An AI reading interface that turns web articles and raw text into
+              document-, section-, and paragraph-level summaries while retaining
+              citations and source context.
+            </p>
+            <ul>
+              <li>Built for faster review of long-form articles, research, and web content.</li>
+              <li>Supports URL input, raw text input, and a structured three-pane reading workflow.</li>
+              <li>Strong fit for clinical, research operations, and data-facing audiences.</li>
+            </ul>
+            <p class="project-stack">Next.js · TypeScript · OpenAI API</p>
+            <p class="project-links">
+              <a href="https://distill.wiki" target="_blank" rel="noopener noreferrer">[open] Live site</a>
+              <a href="https://github.com/maxhemmerich/distill" target="_blank" rel="noopener noreferrer">[dir] Source</a>
+              <a href="projects/project-template.html">[file] Case study</a>
+            </p>
+          </article>
+
+          <article class="project-card" data-views="overview data automation">
+            <p class="project-type">[app] ANALYTICS / DECISION SUPPORT</p>
+            <h3>Sports Betting Dashboard</h3>
+            <p>
+              A dashboard for identifying profitable bets, reviewing signals, and
+              tracking performance over time through a clearer betting workflow.
+            </p>
+            <ul>
+              <li>Surfaces candidate bets to make rather than raw data alone.</li>
+              <li>Frames performance tracking and monitoring in a recruiter-friendly way.</li>
+              <li>Best used to show dashboard design, analytical thinking, and decision support.</li>
+            </ul>
+            <p class="project-stack">Dashboarding · Analytics · Tracking</p>
+            <p class="project-links">
+              <a href="projects/project-template.html">[file] Case study</a>
+            </p>
+          </article>
+
+          <article class="project-card" data-views="overview data automation operations">
+            <p class="project-type">[sys] MODELING / AUTOMATION</p>
+            <h3>Polymarket Trading System</h3>
+            <p>
+              An end-to-end workflow for market discovery, signal collection,
+              probability modeling, backtesting, monitoring, and optional execution.
+            </p>
+            <ul>
+              <li>Includes data collection, model scoring, and backtest reporting.</li>
+              <li>Demonstrates practical automation with risk-aware workflow design.</li>
+              <li>Good fit for data, systems, and automation-oriented reviewers.</li>
+            </ul>
+            <p class="project-stack">Python · Modeling · Backtesting · Monitoring</p>
+            <p class="project-links">
+              <a href="projects/project-template.html">[file] Case study</a>
+            </p>
+          </article>
+
+          <article class="project-card" data-views="overview automation data">
+            <p class="project-type">[game] FULL-STACK / REAL-TIME SYSTEMS</p>
+            <h3>Territory Conquest Game</h3>
+            <p>
+              A real-time multiplayer territory strategy game with procedural map
+              generation, AI opponents, and server-authoritative game state handling.
+            </p>
+            <ul>
+              <li>Shows architecture, rendering, multiplayer synchronization, and game logic.</li>
+              <li>Includes turn timing, lobby management, bots, and tactical combat rules.</li>
+            </ul>
+            <p class="project-stack">Node.js · Socket.io · HTML5 Canvas</p>
+            <p class="project-links">
+              <a href="https://github.com/maxhemmerich/Dominion" target="_blank" rel="noopener noreferrer">[dir] Source</a>
+              <a href="projects/project-template.html">[file] Case study</a>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel-section" id="contact" aria-labelledby="contact-title">
+        <div class="section-heading-row">
+          <h2 id="contact-title">Contact</h2>
+          <p class="section-note">[X] Reach out for recruiter review, interview requests, or portfolio walkthroughs.</p>
+        </div>
+
+        <div class="contact-actions">
+          <a class="ui-button ui-button-primary" href="mailto:max.hemmerich@outlook.com">Email</a>
+          <a class="ui-button" href="https://www.linkedin.com/in/max-hemmerich" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const buttons = Array.from(document.querySelectorAll('.view-button'));
+      const title = document.getElementById('hero-title');
+      const summary = document.getElementById('hero-summary');
+      const status = document.getElementById('view-status');
+      const skillsGrid = document.getElementById('skills-grid');
+      const experienceList = document.getElementById('experience-list');
+      const projectGrid = document.getElementById('project-grid');
+
+      const viewConfig = {
+        overview: {
+          title: 'Research Operations & Data Analyst',
+          summary: 'Research operations professional with experience improving data quality, reporting, workflow coordination, and stakeholder communication across healthcare and research settings.',
+          status: 'Showing the Overview profile. Content has been reprioritized.',
+          skills: [
+            'Clinical & research coordination',
+            'Data cleaning & reporting',
+            'Excel, SQL, Python, R',
+            'Workflow documentation',
+            'Stakeholder communication',
+            'Process improvement',
+            'Dashboard thinking',
+            'Automation-minded operations'
+          ],
+          experience: `
+            <article class="experience-card">
+              <h3>CAMH</h3>
+              <p class="experience-subtitle">Healthcare / research environment · Toronto</p>
+              <ul>
+                <li>Supported operational and analytical work requiring accuracy, documentation discipline, and coordination.</li>
+                <li>Improved clarity of information flow, reporting, and repeatable processes across teams.</li>
+              </ul>
+            </article>
+            <article class="experience-card">
+              <h3>Research & data-focused work</h3>
+              <p class="experience-subtitle">Cross-functional analytics, operations, and support</p>
+              <ul>
+                <li>Worked across structured data, workflow tracking, and practical problem solving.</li>
+                <li>Balanced detail orientation with speed, readability, and business usefulness.</li>
+              </ul>
+            </article>
+          `,
+          projectOrder: ['Distill', 'Sports Betting Dashboard', 'Polymarket Trading System', 'Territory Conquest Game']
+        },
+        clinical: {
+          title: 'Clinical Research & Operations Candidate',
+          summary: 'Candidate with healthcare-adjacent operations experience, documentation discipline, and strong interest in clinical research support, coordination, and structured information review.',
+          status: 'Showing the Clinical Research profile. Content has been reprioritized.',
+          skills: [
+            'Clinical research support',
+            'Documentation accuracy',
+            'Participant-facing professionalism',
+            'Protocol-minded work',
+            'Data review',
+            'Stakeholder communication',
+            'Operations coordination',
+            'Structured information handling'
+          ],
+          experience: `
+            <article class="experience-card">
+              <h3>CAMH</h3>
+              <p class="experience-subtitle">Clinical / healthcare environment</p>
+              <ul>
+                <li>Worked in a setting where accuracy, professionalism, and consistent documentation mattered.</li>
+                <li>Supported work aligned with coordination, information handling, and operational reliability.</li>
+              </ul>
+            </article>
+            <article class="experience-card">
+              <h3>Research-oriented work style</h3>
+              <p class="experience-subtitle">Detail-oriented, process-aware, analytical</p>
+              <ul>
+                <li>Strong fit for environments requiring careful review, follow-through, and organized communication.</li>
+              </ul>
+            </article>
+          `,
+          projectOrder: ['Distill', 'Sports Betting Dashboard', 'Polymarket Trading System', 'Territory Conquest Game']
+        },
+        data: {
+          title: 'Data & Analytics Candidate',
+          summary: 'Analytically oriented candidate with experience in reporting, data handling, dashboard thinking, and converting raw information into usable decisions and summaries.',
+          status: 'Showing the Data & Analytics profile. Content has been reprioritized.',
+          skills: [
+            'Excel, SQL, Python, R',
+            'Data cleaning',
+            'Reporting',
+            'Dashboard thinking',
+            'Analytical prioritization',
+            'Pattern review',
+            'Decision support',
+            'Readable output design'
+          ],
+          experience: `
+            <article class="experience-card">
+              <h3>Analytics & reporting work</h3>
+              <p class="experience-subtitle">Data review, structured output, practical analysis</p>
+              <ul>
+                <li>Worked on information organization, reporting clarity, and turning messy inputs into usable outputs.</li>
+                <li>Focused on readability, prioritization, and practical usefulness for stakeholders.</li>
+              </ul>
+            </article>
+            <article class="experience-card">
+              <h3>Cross-functional problem solving</h3>
+              <p class="experience-subtitle">Operations + analysis</p>
+              <ul>
+                <li>Bridged process work and analytical thinking rather than treating them as separate lanes.</li>
+              </ul>
+            </article>
+          `,
+          projectOrder: ['Sports Betting Dashboard', 'Polymarket Trading System', 'Distill', 'Territory Conquest Game']
+        },
+        operations: {
+          title: 'Research Operations Professional',
+          summary: 'Operations-focused candidate with strengths in documentation, coordination, process consistency, and keeping information workflows clear, trackable, and useful.',
+          status: 'Showing the Research Operations profile. Content has been reprioritized.',
+          skills: [
+            'Workflow coordination',
+            'Documentation discipline',
+            'Cross-team communication',
+            'Process improvement',
+            'Information flow',
+            'Task tracking',
+            'Reporting support',
+            'Operational reliability'
+          ],
+          experience: `
+            <article class="experience-card">
+              <h3>CAMH</h3>
+              <p class="experience-subtitle">Operations in a healthcare / research-adjacent setting</p>
+              <ul>
+                <li>Supported structured work requiring consistency, communication, and organized follow-through.</li>
+                <li>Contributed to clearer reporting and repeatable operational processes.</li>
+              </ul>
+            </article>
+            <article class="experience-card">
+              <h3>Operations & workflow improvement</h3>
+              <p class="experience-subtitle">Documentation, clarity, repeatability</p>
+              <ul>
+                <li>Strong fit for roles focused on workflow support, coordination, and process reliability.</li>
+              </ul>
+            </article>
+          `,
+          projectOrder: ['Distill', 'Polymarket Trading System', 'Sports Betting Dashboard', 'Territory Conquest Game']
+        },
+        automation: {
+          title: 'Automation & Systems Builder',
+          summary: 'Technically curious builder with experience across workflow automation, modeling pipelines, real-time systems, and applied tooling for better decision support.',
+          status: 'Showing the Automation & Systems profile. Content has been reprioritized.',
+          skills: [
+            'Automation thinking',
+            'Python workflows',
+            'System design',
+            'Model pipelines',
+            'Backtesting',
+            'Real-time architecture',
+            'Technical experimentation',
+            'Tool-building'
+          ],
+          experience: `
+            <article class="experience-card">
+              <h3>Technical builds</h3>
+              <p class="experience-subtitle">Automation, systems, modeling, and experimentation</p>
+              <ul>
+                <li>Built tools and experiments spanning analytical workflows, monitoring, and system logic.</li>
+                <li>Comfortable moving between structured analysis and implementation details.</li>
+              </ul>
+            </article>
+            <article class="experience-card">
+              <h3>Applied problem solving</h3>
+              <p class="experience-subtitle">Useful systems over theory-heavy abstraction</p>
+              <ul>
+                <li>Focused on creating practical outputs, not just prototypes or conceptual writeups.</li>
+              </ul>
+            </article>
+          `,
+          projectOrder: ['Territory Conquest Game', 'Polymarket Trading System', 'Sports Betting Dashboard', 'Distill']
+        }
+      };
+
+      function updateProjects(order) {
+        if (!projectGrid) return;
+        const cards = Array.from(projectGrid.querySelectorAll('.project-card'));
+        cards.sort((a, b) => {
+          const aTitle = a.querySelector('h3')?.textContent?.trim() || '';
+          const bTitle = b.querySelector('h3')?.textContent?.trim() || '';
+          return order.indexOf(aTitle) - order.indexOf(bTitle);
+        });
+        cards.forEach(card => projectGrid.appendChild(card));
+      }
+
+      function setView(viewKey) {
+        const config = viewConfig[viewKey] || viewConfig.overview;
+
+        buttons.forEach(button => {
+          const active = button.dataset.view === viewKey;
+          button.classList.toggle('is-active', active);
+          button.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+
+        title.textContent = config.title;
+        summary.textContent = config.summary;
+        status.textContent = config.status;
+
+        skillsGrid.innerHTML = config.skills
+          .map(skill => `<div class="skill-chip">${skill}</div>`)
+          .join('');
+
+        experienceList.innerHTML = config.experience;
+        updateProjects(config.projectOrder);
+
+        const params = new URLSearchParams(window.location.search);
+        params.set('view', viewKey);
+        history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+      }
+
+      buttons.forEach(button => {
+        button.addEventListener('click', function () {
+          setView(this.dataset.view);
+        });
+      });
+
+      const params = new URLSearchParams(window.location.search);
+      const initialView = params.get('view') || 'overview';
+      setView(initialView);
+    })();
+  </script>
+</body>
+</html>
