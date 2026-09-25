@@ -1,298 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Max Hemmerich | Resume</title>
-  <meta
-    name="description"
-    content="Resume and selected projects for Max Hemmerich, a research operations professional working across clinical research, data quality, reporting, and workflow automation."
-  />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Max Hemmerich | Resume Desktop</title>
+  <meta name="description" content="Retro Windows 95 / Y2K themed developer-style resume and portfolio for Max Hemmerich with recruiter-specific resume views.">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<body class="desktop-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <div class="desktop-shell">
-    <aside class="desktop-icons" aria-label="Desktop shortcuts">
-      <a class="desktop-shortcut" href="#top">
-        <span class="desktop-shortcut__icon" aria-hidden="true">ME</span>
-        <span class="desktop-shortcut__label">Profile</span>
-      </a>
-      <a class="desktop-shortcut" href="#experience">
-        <span class="desktop-shortcut__icon" aria-hidden="true">CV</span>
-        <span class="desktop-shortcut__label">Experience</span>
-      </a>
-      <a class="desktop-shortcut" href="#projects">
-        <span class="desktop-shortcut__icon" aria-hidden="true">DIR</span>
-        <span class="desktop-shortcut__label">Projects</span>
-      </a>
-      <a class="desktop-shortcut" href="#education">
-        <span class="desktop-shortcut__icon" aria-hidden="true">EDU</span>
-        <span class="desktop-shortcut__label">Education</span>
-      </a>
-    </aside>
+  <header class="taskbar" role="banner">
+    <div class="taskbar-left">
+      <div class="start-button" aria-hidden="true">[Start]</div>
+      <div class="taskbar-title">MAX_OS :: Resume Desktop</div>
+    </div>
+    <div class="taskbar-right">
+      <span>Toronto, ON</span>
+      <span aria-hidden="true">|</span>
+      <span id="clock-label">Recruiter Mode Ready</span>
+    </div>
+  </header>
 
-    <main class="main-window" id="main">
-      <header class="window-titlebar" id="top">
-        <div class="window-title">MAX_HEMMERICH_RESUME.EXE</div>
-        <div class="window-controls" aria-hidden="true">
-          <span>_</span>
-          <span>[+]</span>
-          <span>[X]</span>
+  <main id="main-content" class="desktop-shell">
+    <section class="desktop-icons" aria-label="Desktop shortcuts">
+      <a class="desktop-icon" href="#main-window">
+        <span class="desktop-icon-glyph" aria-hidden="true">[ME]</span>
+        <span class="desktop-icon-label">About.txt</span>
+      </a>
+
+      <a class="desktop-icon" href="#projects-panel">
+        <span class="desktop-icon-glyph" aria-hidden="true">[DIR]</span>
+        <span class="desktop-icon-label">Projects/</span>
+      </a>
+
+      <a class="desktop-icon" href="#contact-panel">
+        <span class="desktop-icon-glyph" aria-hidden="true">[@]</span>
+        <span class="desktop-icon-label">Contact.exe</span>
+      </a>
+
+      <a class="desktop-icon" href="projects/project-template.html">
+        <span class="desktop-icon-glyph" aria-hidden="true">[+] </span>
+        <span class="desktop-icon-label">Project Template</span>
+      </a>
+    </section>
+
+    <section id="main-window" class="window main-window" aria-labelledby="main-window-title">
+      <div class="title-bar">
+        <h1 id="main-window-title" class="title-bar-text">Resume.exe</h1>
+        <div class="title-bar-controls" aria-hidden="true">
+          <span class="control-button">[-]</span>
+          <span class="control-button">[+]</span>
+          <span class="control-button">[X]</span>
         </div>
-      </header>
+      </div>
 
-      <nav class="menu-bar" aria-label="Primary">
-        <a href="#summary">Summary</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <section class="hero-shell">
-        <article class="hero-panel">
-          <p class="hero-panel__path">C:\CANDIDATES\MAX_HEMMERICH&gt; OPEN</p>
-          <p class="hero-panel__eyebrow">MAX HEMMERICH</p>
-          <h1>Research Operations, Clinical Research, Data & Automation</h1>
-          <p>
-            Research operations professional with experience improving data quality, reporting, and workflow
-            efficiency in regulated health research. Background includes direct clinical research work,
-            study coordination, structured interviewing, longitudinal study support, dashboards, and practical
-            automation using tools like Power Automate, Excel, REDCap, Python-supported scripting, and HTML dashboards.
+      <div class="window-body">
+        <section class="hero-panel">
+          <p class="ascii-line" aria-hidden="true">==============================================</p>
+          <p class="eyebrow">[user profile loaded]</p>
+          <h2 class="hero-name">Max Hemmerich</h2>
+          <p class="hero-role" id="hero-role">Research Operations Professional</p>
+          <p class="hero-summary" id="hero-summary">
+            Research operations professional with experience improving data quality, reporting, and workflow efficiency in regulated health research.
           </p>
 
-          <div class="hero-actions">
-            <button class="action-button action-button--primary" type="button" onclick="window.print()">Print / Save PDF</button>
-            <a class="action-button" href="#projects">Open Projects</a>
+          <ul class="bio-meta" role="list">
+            <li><strong>Location:</strong> Toronto, ON</li>
+            <li><strong>Email:</strong> <a href="mailto:max.hemmerich@outlook.com">max.hemmerich@outlook.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+17786695500">778-669-5500</a></li>
+            <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/max-hemmerich" target="_blank" rel="noopener noreferrer">linkedin.com/in/max-hemmerich</a></li>
+            <li><strong>Open to:</strong> Toronto, ON and Ottawa</li>
+            <li><strong>Languages:</strong> English, Functional French</li>
+          </ul>
+        </section>
+
+        <section class="window-panel" aria-labelledby="mode-title">
+          <div class="panel-header">
+            <h2 id="mode-title">Recruiter View Selector</h2>
+            <p class="panel-note">Choose the version most relevant to the person reviewing your resume.</p>
           </div>
-        </article>
 
-        <aside class="sidebar-stack" id="contact">
-          <section class="sidebar-card">
-            <span class="sidebar-card__label">Location</span>
-            <p>Toronto, ON · Open to Ottawa</p>
-          </section>
-
-          <section class="sidebar-card">
-            <span class="sidebar-card__label">Email</span>
-            <p><a href="mailto:max.hemmerich@outlook.com">max.hemmerich@outlook.com</a></p>
-          </section>
-
-          <section class="sidebar-card">
-            <span class="sidebar-card__label">Phone</span>
-            <p><a href="tel:+17786695500">778-669-5500</a></p>
-          </section>
-
-          <section class="sidebar-card">
-            <span class="sidebar-card__label">LinkedIn</span>
-            <p>
-              <a href="https://linkedin.com/in/max-hemmerich" target="_blank" rel="noopener noreferrer">
-                linkedin.com/in/max-hemmerich
-              </a>
-            </p>
-          </section>
-
-          <section class="sidebar-card">
-            <span class="sidebar-card__label">Languages</span>
-            <p>English · Functional French</p>
-          </section>
-        </aside>
-      </section>
-
-      <section class="window-panel" id="summary">
-        <div class="window-panel__title">Summary</div>
-        <div class="window-panel__body">
-          <p>
-            I work across clinical research support, research operations, data quality, reporting, and workflow improvement.
-            My experience combines hands-on study coordination, regulated documentation, participant-facing clinical work,
-            and practical technical systems that reduce manual work and improve consistency across teams.
-          </p>
-        </div>
-      </section>
-
-      <section class="content-grid" id="skills">
-        <section class="window-panel">
-          <div class="window-panel__title">Core Skills</div>
-          <div class="window-panel__body">
-            <ul class="skills-list">
-              <li>Power Automate workflow automation</li>
-              <li>Research data quality and reporting with REDCap and Excel</li>
-              <li>Advanced Excel, including LET, XLOOKUP, and FILTER</li>
-              <li>Python scripting and data-validation automation</li>
-              <li>Dashboard development using HTML/CSS and Power BI projects</li>
-              <li>Recruitment and cohort funnel reporting</li>
-              <li>SPSS statistical analysis</li>
-              <li>SharePoint, Microsoft 365, Teams, and Outlook</li>
-            </ul>
+          <div class="mode-tabs" role="tablist" aria-label="Resume version selector">
+            <button class="mode-tab is-active" id="tab-overview" role="tab" aria-selected="true" aria-controls="panel-overview" data-view="overview">Overview</button>
+            <button class="mode-tab" id="tab-clinical" role="tab" aria-selected="false" aria-controls="panel-clinical" data-view="clinical">Clinical Research</button>
+            <button class="mode-tab" id="tab-data" role="tab" aria-selected="false" aria-controls="panel-data" data-view="data">Data &amp; Analytics</button>
+            <button class="mode-tab" id="tab-operations" role="tab" aria-selected="false" aria-controls="panel-operations" data-view="operations">Research Operations</button>
+            <button class="mode-tab" id="tab-automation" role="tab" aria-selected="false" aria-controls="panel-automation" data-view="automation">Automation &amp; Systems</button>
           </div>
         </section>
 
-        <section class="window-panel">
-          <div class="window-panel__title">Clinical Experience Areas</div>
-          <div class="window-panel__body">
-            <ul class="skills-list">
-              <li>Structured psychiatric interviews including KSADS and SCID</li>
-              <li>MRI and EEG coordination</li>
-              <li>Biosample collection, including blood, saliva, and urine</li>
-              <li>Retinal imaging</li>
-              <li>Regulated documentation and ethics support</li>
-              <li>Cross-functional coordination with clinical, technical, and research teams</li>
-            </ul>
+        <section class="window-panel resume-view" id="resume-panel" aria-live="polite">
+          <div class="resume-toolbar">
+            <div>
+              <p class="mini-label">[active profile]</p>
+              <h2 id="view-title">Overview</h2>
+            </div>
+            <div class="toolbar-actions">
+              <a id="share-link" class="toolbar-link" href="?view=overview">Share This View</a>
+              <button type="button" class="toolbar-link toolbar-button" onclick="window.print()">Print This Version</button>
+            </div>
           </div>
-        </section>
-      </section>
 
-      <section class="window-panel" id="experience">
-        <div class="window-panel__title">Experience</div>
-        <div class="window-panel__body timeline">
-          <article class="timeline-item">
-            <div class="timeline-item__meta">
-              <p class="timeline-item__date">Aug 2024 – Present</p>
-              <p class="timeline-item__tag">Toronto, ON</p>
-            </div>
-            <div class="timeline-item__content">
-              <h3>Research Analyst / Study Lead · Centre for Addiction and Mental Health (CAMH)</h3>
-              <ul class="experience-list">
-                <li>Built a Power Automate flow that scans a shared calendar and surfaces research visits with no staff assigned across roughly 3,000 to 4,000 annual visit records.</li>
-                <li>Automated EEG lab scheduling with a recurring Power Automate flow, replacing manual weekly availability-block creation for 4 technicians.</li>
-                <li>Built and independently shipped a multi-tab HTML recruitment dashboard for the VIBE study, enabling self-serve monitoring for leadership.</li>
-                <li>Maintain data quality across 3 concurrent study arms using REDCap and Excel in a regulated research environment.</li>
-                <li>Built Python- and Power Automate-supported data-ingestion and validation workflows for longitudinal tracking datasets, reducing manual entry.</li>
-                <li>Conduct structured diagnostic interviews using KSADS and SCID and contribute to consensus diagnoses with psychiatry teams.</li>
-                <li>Lead MRI and cognitive assessment visits, including MRI scheduling, participant screening, and workflow support.</li>
-                <li>Study lead for VIBE, coordinating across clinical, technical, and ethics stakeholders with responsibility for recruitment targets and regulatory reporting.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-item__meta">
-              <p class="timeline-item__date">Sep 2023 – Aug 2024</p>
-              <p class="timeline-item__tag">Toronto, ON</p>
-            </div>
-            <div class="timeline-item__content">
-              <h3>Research Assistant · Centre for Addiction and Mental Health (CAMH)</h3>
-              <ul class="experience-list">
-                <li>Facilitated MRI and cognitive visits and supported adherence to clinical protocols and participant comfort during procedures.</li>
-                <li>Conducted biosample collection and processed clinical data for psychiatric research studies.</li>
-                <li>Built Python and Power Automate workflows to support scheduling and operational processes across a longitudinal cohort.</li>
-                <li>Developed dashboards tracking recruitment, visit completion, and study milestones for team reporting.</li>
-                <li>Structured longitudinal study data and validation checks across concurrent cohort arms, supporting consistent metrics and audit-ready data practices.</li>
-                <li>Managed REDCap databases across concurrent studies, maintaining data quality and regulatory compliance under GCP standards.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-item__meta">
-              <p class="timeline-item__date">Oct 2022 – Sep 2023</p>
-              <p class="timeline-item__tag">Vancouver, BC</p>
-            </div>
-            <div class="timeline-item__content">
-              <h3>Clinical Research Coordinator · UBC Brain Lab</h3>
-              <ul class="experience-list">
-                <li>Coordinated CAPU RISE, a non-therapeutic clinical trial on cannabinoid effects on stress response, including participant scheduling, fMRI coordination, and biosample collection through study start-up.</li>
-                <li>Supported data integrity through reconciliation and adverse-event management.</li>
-                <li>Assisted with the design and submission of a Health Canada clinical trial application, coordinating across regulatory, clinical, and institutional stakeholders.</li>
-                <li>Supervised research assistants, ran weekly team meetings, delegated tasks, and managed study finances.</li>
-                <li>Led study start-up activities including Research Ethics Board documentation and site-readiness work while maintaining compliance with Health Canada and UBC REB requirements.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-item__meta">
-              <p class="timeline-item__date">May 2022 – Oct 2022</p>
-              <p class="timeline-item__tag">Vancouver, BC</p>
-            </div>
-            <div class="timeline-item__content">
-              <h3>Research Assistant · University of British Columbia, Brain Lab</h3>
-              <ul class="experience-list">
-                <li>Contributed to protocol design, document preparation, and pilot testing for a neuroimaging clinical-trial launch.</li>
-                <li>Contributed to CAPU RISE study design, regulatory applications, and ethics submissions.</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="window-panel" id="projects">
-        <div class="window-panel__title">Selected Projects</div>
-        <div class="window-panel__body">
-          <div class="projects-grid">
-            <a class="project-card" href="projects/project-template.html">
-              <h3>TAY Coverage Gap Flow</h3>
-              <p>Power Automate flow that scans a shared Outlook calendar and surfaces visits with no staff assigned.</p>
-            </a>
-
-            <a class="project-card" href="projects/project-template.html">
-              <h3>EEG Scheduling Flow</h3>
-              <p>Power Automate flow automating weekly availability-block creation for 4 EEG technicians.</p>
-            </a>
-
-            <a class="project-card" href="projects/project-template.html">
-              <h3>VIBE Dashboard</h3>
-              <p>HTML/CSS recruitment-metrics dashboard for study leadership, enabling self-serve monitoring.</p>
-            </a>
-
-            <a class="project-card" href="projects/project-template.html">
-              <h3>Retinal OCT Export Privacy-Review Utility</h3>
-              <p>Utility to identify and remove specified patient-identifying fields from retinal OCT exports before research use.</p>
-            </a>
+          <div id="resume-proof" class="callout-box">
+            <p><strong>Current emphasis:</strong> Broad research operations profile balancing clinical research, analytics, and workflow improvement.</p>
           </div>
-        </div>
-      </section>
 
-      <section class="content-grid" id="education">
-        <section class="window-panel">
-          <div class="window-panel__title">Education</div>
-          <div class="window-panel__body">
-            <div class="education-item">
-              <h3>University of British Columbia</h3>
-              <p>BSc, Behavioural Neuroscience</p>
-              <p>Distinction · GPA 3.9 / 87 · Dean’s Honour List</p>
-              <p>May 2019 – Aug 2023 · Vancouver, BC</p>
-            </div>
+          <div class="content-grid">
+            <section class="content-card" aria-labelledby="skills-heading">
+              <h3 id="skills-heading">Core Technical Skills</h3>
+              <ul id="skills-list" class="bullet-list">
+                <li>Research data quality and reporting with REDCap and Excel</li>
+                <li>Power Automate workflow automation</li>
+                <li>Advanced Excel: LET, XLOOKUP, FILTER</li>
+                <li>Python scripting and data-validation automation</li>
+                <li>Dashboard development with HTML/CSS and Power BI project work</li>
+                <li>Recruitment and cohort funnel reporting</li>
+                <li>SPSS statistical analysis</li>
+                <li>SharePoint, Microsoft 365, Teams, and Outlook</li>
+              </ul>
+            </section>
 
-            <div class="education-item">
-              <h3>Simon Fraser University</h3>
-              <p>Studies in Economics</p>
-              <p>GPA 3.9 · Dean’s Honour List · Alumni Scholarship</p>
-              <p>Jan 2018 – Apr 2019 · Burnaby, BC</p>
-            </div>
+            <section class="content-card" aria-labelledby="highlights-heading">
+              <h3 id="highlights-heading">Selected Experience Highlights</h3>
+              <ul id="highlights-list" class="bullet-list"></ul>
+            </section>
+
+            <section class="content-card" aria-labelledby="credentials-heading">
+              <h3 id="credentials-heading">Education &amp; Credentials</h3>
+              <ul id="credentials-list" class="bullet-list"></ul>
+            </section>
+
+            <section id="contact-panel" class="content-card" aria-labelledby="contact-heading">
+              <h3 id="contact-heading">Contact &amp; Resume Use</h3>
+              <p id="contact-copy">
+                This version is suitable as a general recruiter-facing resume site. Use the selector above to tailor emphasis before sharing.
+              </p>
+              <div class="contact-actions">
+                <a class="retro-button" href="mailto:max.hemmerich@outlook.com">Email</a>
+                <a class="retro-button" href="https://linkedin.com/in/max-hemmerich" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a class="retro-button" href="resume.pdf" target="_blank" rel="noopener noreferrer">PDF Resume</a>
+              </div>
+            </section>
           </div>
         </section>
 
-        <section class="window-panel">
-          <div class="window-panel__title">Certifications</div>
-          <div class="window-panel__body">
-            <ul class="skills-list">
-              <li>PL-300 Microsoft Power BI Data Analyst (in progress)</li>
-              <li>CITI Program Clinical Research Coordinator</li>
-              <li>Health Canada Division 5 Drugs for Clinical Trials Involving Human Subjects</li>
-              <li>MRI Safety Level 1 Personnel</li>
-              <li>Transportation of Dangerous Goods (TDG)</li>
-              <li>Suicide Prevention Training</li>
-            </ul>
+        <section id="projects-panel" class="window-panel" aria-labelledby="projects-heading">
+          <div class="panel-header">
+            <h2 id="projects-heading">Project Directory</h2>
+            <p class="panel-note">Scannable portfolio shortcuts presented like an old file browser.</p>
           </div>
-        </section>
-      </section>
 
-      <footer class="status-bar">
-        <span>READY</span>
-        <span>MAX_HEMMERICH_RESUME</span>
-        <span>UPDATED 2026</span>
-      </footer>
-    </main>
-  </div>
+          <div id="projects-grid" class="projects-grid"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const resumeViews = {
+        overview: {
+          label: "Overview",
+          pageTitle: "Max Hemmerich | Resume Desktop",
+          heroRole: "Research Operations Professional",
+          heroSummary: "Research operations professional with experience improving data quality, reporting, and workflow efficiency in regulated health research.",
+          proof: "Broad research operations profile balancing clinical research, analytics, and workflow improvement.",
+          contactCopy: "This version is suitable as a general recruiter-facing resume site. Use the selector above to tailor emphasis before sharing.",
+          skills: [
+            "Research data quality and reporting with REDCap and Excel",
+            "Power Automate workflow automation",
+            "Advanced Excel: LET, XLOOKUP, FILTER",
+            "Python scripting and data-validation automation",
+            "Dashboard development with HTML/CSS and Power BI project work",
+            "Recruitment and cohort funnel reporting",
+            "SPSS statistical analysis",
+            "SharePoint, Microsoft 365, Teams, and Outlook"
+          ],
+          highlights: [
+            "Study lead for VIBE, coordinating across clinical, technical, and ethics stakeholders with responsibility for recruitment targets and regulatory reporting.",
+            "Maintain data quality across 3 concurrent study arms using REDCap and Excel in a regulated research environment.",
+            "Built Python- and Power Automate-supported validation workflows for longitudinal tracking datasets with roughly 3,000–4,000 annual event records.",
+            "Conduct structured diagnostic interviews using KSADS and SCID and contribute to consensus diagnoses with psychiatry teams.",
+            "Built a self-serve HTML recruitment dashboard for study leadership and defined recruitment and retention KPIs.",
+            "Conducted statistical analysis for clinical research manuscripts, including multinomial logistic regression in SPSS."
+          ],
+          credentials: [
+            "BSc, Behavioural Neuroscience, University of British Columbia — Distinction, GPA 3.9",
+            "Studies in Economics, Simon Fraser University — GPA 3.9, Dean’s Honour List",
+            "CITI Program Clinical Research Coordinator",
+            "Health Canada Division 5 Drugs for Clinical Trials Involving Human Subjects",
+            "MRI Safety Level 1 Personnel",
+            "Transportation of Dangerous Goods (TDG)",
+            "PL-300 Microsoft Power BI Data Analyst — in progress"
+          ],
+          projects: [
+            {
+              name: "VIBE Dashboard",
+              meta: "[dir] analytics / leadership reporting",
+              desc: "HTML/CSS recruitment-metrics dashboard enabling self-serve study monitoring.",
+              href: "projects/project-template.html?project=vibe-dashboard"
+            },
+            {
+              name: "TAY Coverage Gap Flow",
+              meta: "[exe] automation / outlook calendar",
+              desc: "Power Automate flow surfacing research visits with no staff assigned.",
+              href: "projects/project-template.html?project=coverage-gap-flow"
+            },
+            {
+              name: "EEG Scheduling Flow",
+              meta: "[exe] operations automation",
+              desc: "Recurring workflow replacing manual weekly availability-block creation for EEG technicians.",
+              href: "projects/project-template.html?project=eeg-scheduling-flow"
+            },
+            {
+              name: "Retinal OCT Privacy Utility",
+              meta: "[sys] health data / de-identification",
+              desc: "Utility for removing patient-identifying fields from retinal exports before research use.",
+              href: "projects/project-template.html?project=retinal-oct-privacy"
+            }
+          ]
+        },
+
+        clinical: {
+          label: "Clinical Research",
+          pageTitle: "Max Hemmerich | Clinical Research Resume",
+          heroRole: "Clinical Research Analyst",
+          heroSummary: "Research analyst with about 4 years of direct clinical research experience in youth psychiatric populations, including structured diagnostic interviewing, biosample collection, neuroimaging coordination, data management, and regulatory support.",
+          proof: "Emphasizes direct patient-facing and protocol-driven clinical research experience across CAMH and UBC.",
+          contactCopy: "Use this version for clinical research, coordinator, psychiatric research, and hospital-based study roles.",
+          skills: [
+            "Structured psychiatric interviews: KSADS, SCID, consensus diagnoses",
+            "MRI and EEG coordination",
+            "Biosample collection: blood, saliva, urine",
+            "Retinal imaging",
+            "Clinical protocol adherence and participant-facing study visits",
+            "REDCap data management in regulated research",
+            "Regulatory support under GCP and Health Canada requirements",
+            "SPSS statistical analysis for psychiatric research"
+          ],
+          highlights: [
+            "Conduct structured diagnostic interviews and contribute to consensus diagnoses with psychiatry teams.",
+            "Lead MRI and cognitive assessment visits, including participant screening, scheduling, and workflow coordination.",
+            "Collect biosamples and perform retinal imaging to support biomarker research in youth mental health.",
+            "Support EEG data acquisition and collaborate with technical teams to ensure data quality.",
+            "Managed REDCap databases across concurrent studies while maintaining compliance in regulated clinical research settings.",
+            "Assisted with clinical-trial application and ethics documentation at UBC Brain Lab and supported study start-up activities."
+          ],
+          credentials: [
+            "BSc, Behavioural Neuroscience, University of British Columbia",
+            "CITI Program Clinical Research Coordinator",
+            "Health Canada Division 5 Drugs for Clinical Trials Involving Human Subjects",
+            "MRI Safety Level 1 Personnel",
+            "Transportation of Dangerous Goods (TDG)",
+            "Suicide Prevention Training",
+            "Conference presentations including AACAP, CAMH World Bipolar Day Symposium, and U of T Psychiatry Research Day"
+          ],
+          projects: [
+            {
+              name: "Clinical Study Portfolio Template",
+              meta: "[dir] protocol / visits / compliance",
+              desc: "Template page for individual case studies involving recruitment, visits, and regulatory execution.",
+              href: "projects/project-template.html?project=clinical-study-template"
+            },
+            {
+              name: "Retinal OCT Privacy Utility",
+              meta: "[sys] privacy / research data",
+              desc: "Health-data handling utility reducing manual de-identification steps before analysis.",
+              href: "projects/project-template.html?project=retinal-oct-privacy"
+            },
+            {
+              name: "VIBE Study Dashboard",
+              meta: "[dir] recruitment / retention",
+              desc: "Dashboard supporting leadership oversight for youth mental-health research operations.",
+              href: "projects/project-template.html?project=vibe-dashboard"
+            },
+            {
+              name: "Protocol Operations Folder",
+              meta: "[dir] SOP / documentation",
+              desc: "Sample structure for showing protocol execution, scheduling, and audit-ready documentation.",
+              href: "projects/project-template.html?project=protocol-operations"
+            }
+          ]
+        },
+
+        data: {
+          label: "Data & Analytics",
+          pageTitle: "Max Hemmerich | Data & Analytics Resume",
+          heroRole: "Research Data & Operations Analyst",
+          heroSummary: "Research and operations analyst with about 3 years of experience building operational reporting, data-validation workflows, and self-serve dashboards in regulated health research.",
+          proof: "Emphasizes reporting, validation, KPI definition, self-serve analytics, and quantitative workflow improvement.",
+          contactCopy: "Use this version for analyst, BI, reporting, operations analytics, and data-quality roles.",
+          skills: [
+            "Research data quality and reporting with REDCap and Excel",
+            "Advanced Excel: LET, XLOOKUP, FILTER",
+            "Python scripting and data-validation automation",
+            "Dashboard development with HTML/CSS and Power BI project experience",
+            "Recruitment funnel, milestone, and retention reporting",
+            "SPSS statistical analysis",
+            "SQL and PostgreSQL, project-based querying and modeling",
+            "Operational KPI definition and stakeholder reporting"
+          ],
+          highlights: [
+            "Built Python- and Power Automate-supported data-ingestion and validation workflows for longitudinal tracking datasets with 3,000–4,000 annual event records.",
+            "Defined operational KPIs and built a self-serve recruitment funnel dashboard for monitoring conversion, velocity, and retention metrics.",
+            "Maintained structured longitudinal study data and validation checks across concurrent cohort arms.",
+            "Developed dashboards tracking recruitment, visit completion, and study milestones for team reporting.",
+            "Conducted statistical analyses in SPSS supporting clinical manuscript preparation and outcomes reporting.",
+            "Verified MRI and scan invoices against completed, cancelled, and no-show records to support billing accuracy."
+          ],
+          credentials: [
+            "BSc, Behavioural Neuroscience, University of British Columbia — strong quantitative academic record",
+            "PL-300 Microsoft Power BI Data Analyst — in progress",
+            "Advanced Excel with formula-driven reporting workflows",
+            "SPSS statistical analysis experience",
+            "PostgreSQL + Power BI portfolio practice project",
+            "Experience translating recruitment and retention operations into measurable KPIs"
+          ],
+          projects: [
+            {
+              name: "VIBE Dashboard",
+              meta: "[dir] KPI / self-serve reporting",
+              desc: "Recruitment funnel and leadership dashboard for conversion, velocity, and retention monitoring.",
+              href: "projects/project-template.html?project=vibe-dashboard"
+            },
+            {
+              name: "PostgreSQL + Power BI Portfolio Project",
+              meta: "[dir] BI / warehousing concepts",
+              desc: "Portfolio project moving relational data into a dashboard workflow.",
+              href: "projects/project-template.html?project=postgresql-powerbi"
+            },
+            {
+              name: "BeatTheClose",
+              meta: "[exe] python / expected value",
+              desc: "Sports analytics screener using Python for Kelly sizing and closing-line-value tracking.",
+              href: "projects/project-template.html?project=beattheclose"
+            },
+            {
+              name: "Coverage Gap Flow",
+              meta: "[sys] operations reporting",
+              desc: "Calendar scanning automation surfacing unassigned research visits.",
+              href: "projects/project-template.html?project=coverage-gap-flow"
+            }
+          ]
+        },
+
+        operations: {
+          label: "Research Operations",
+          pageTitle: "Max Hemmerich | Research Operations Resume",
+          heroRole: "Research Operations Analyst",
+          heroSummary: "Research operations professional with about 4 years of experience coordinating clinical studies, maintaining project documentation, tracking milestones, and working across clinical, technical, ethics, and leadership teams.",
+          proof: "Emphasizes cross-functional coordination, scheduling, documentation, execution reliability, and audit-ready study operations.",
+          contactCopy: "Use this version for research operations, project coordination, program support, and study administration roles.",
+          skills: [
+            "Cross-functional study coordination",
+            "Recruitment and cohort operations",
+            "REDCap and Excel data quality workflows",
+            "Stakeholder reporting and milestone tracking",
+            "Power Automate and process improvement",
+            "Documentation, SOP, and regulatory support",
+            "Calendar, scheduling, and visit logistics",
+            "Microsoft 365, SharePoint, Teams, and Outlook"
+          ],
+          highlights: [
+            "Study lead for VIBE, coordinating clinical, technical, and ethics stakeholders with responsibility for recruitment targets and regulatory reporting.",
+            "Built and shipped tools that improved scheduling, coverage detection, and staff workflow reliability.",
+            "Managed recruitment, screening, scheduling, and capacity planning across longitudinal and clinical research settings.",
+            "Coordinated World Bipolar Day 2026 deliverables including Zoom SOP, program booklet, archive hosting, and cross-department communication.",
+            "Led study start-up activities including REB documentation and site-readiness work.",
+            "Supervised research assistants, ran weekly meetings, delegated tasks, and managed study finances in prior clinical research roles."
+          ],
+          credentials: [
+            "BSc, Behavioural Neuroscience, University of British Columbia",
+            "CITI Program Clinical Research Coordinator",
+            "Health Canada Division 5 training",
+            "Demonstrated leadership across CAMH and UBC research teams",
+            "Open to in-person, hybrid operational roles in Toronto or Ottawa",
+            "Experience with regulated documentation and audit-ready practices"
+          ],
+          projects: [
+            {
+              name: "Coverage Gap Flow",
+              meta: "[exe] staffing / scheduling",
+              desc: "Flow that scans a shared calendar and flags visits without assigned staff.",
+              href: "projects/project-template.html?project=coverage-gap-flow"
+            },
+            {
+              name: "EEG Scheduling Flow",
+              meta: "[exe] recurring ops workflow",
+              desc: "Automated availability-block creation for a technician team.",
+              href: "projects/project-template.html?project=eeg-scheduling-flow"
+            },
+            {
+              name: "Protocol Operations Folder",
+              meta: "[dir] documentation / compliance",
+              desc: "Example project page structure for SOPs, milestones, and operational status tracking.",
+              href: "projects/project-template.html?project=protocol-operations"
+            },
+            {
+              name: "VIBE Dashboard",
+              meta: "[dir] oversight / leadership",
+              desc: "Self-serve dashboard supporting study leadership and operational review.",
+              href: "projects/project-template.html?project=vibe-dashboard"
+            }
+          ]
+        },
+
+        automation: {
+          label: "Automation & Systems",
+          pageTitle: "Max Hemmerich | Automation & Systems Resume",
+          heroRole: "Workflow Automation & Systems Analyst",
+          heroSummary: "Research and operations analyst with about 3 years of experience improving reporting, data quality, and workflow efficiency in regulated health research. Builds practical automation and self-serve reporting tools using Power Automate, Excel, Python-supported scripting, and HTML dashboards.",
+          proof: "Emphasizes workflow automation, low-code systems thinking, scripting, and practical tooling in real research environments.",
+          contactCopy: "Use this version for workflow automation, systems support, application support, and technical operations roles.",
+          skills: [
+            "Power Automate workflow automation",
+            "Python scripting and validation tooling",
+            "Advanced Excel automation logic",
+            "HTML/CSS dashboard development",
+            "SharePoint, Microsoft 365, Teams, and Outlook integrations",
+            "Google Apps Script automation",
+            "Local LLM experimentation with Ollama and Modelfiles",
+            "Privacy-aware health data processing utilities"
+          ],
+          highlights: [
+            "Built a Power Automate flow to scan a shared calendar and surface research visits with no staff assigned.",
+            "Automated EEG lab scheduling with a recurring Power Automate flow replacing manual weekly block creation.",
+            "Built Python- and Power Automate-supported ingestion and validation workflows for large longitudinal tracking datasets.",
+            "Built and independently shipped a multi-tab HTML recruitment dashboard for leadership use.",
+            "Built a utility to identify and remove specified patient-identifying fields from retinal OCT exports before research use.",
+            "Configured local LLM workflows using Ollama and custom Modelfiles with hands-on prompt and model review experience."
+          ],
+          credentials: [
+            "Applied automation experience in real hospital and research operations",
+            "Power Automate production workflows",
+            "Python for validation and data-handling support",
+            "Google Apps Script project work",
+            "Dashboard development with HTML/CSS",
+            "Health-data privacy and de-identification experience"
+          ],
+          projects: [
+            {
+              name: "Coverage Gap Flow",
+              meta: "[exe] power automate / outlook",
+              desc: "Automation that identifies unassigned visits from a shared calendar.",
+              href: "projects/project-template.html?project=coverage-gap-flow"
+            },
+            {
+              name: "EEG Scheduling Flow",
+              meta: "[exe] recurring workflow",
+              desc: "Low-maintenance scheduling automation for technician availability blocks.",
+              href: "projects/project-template.html?project=eeg-scheduling-flow"
+            },
+            {
+              name: "Retinal OCT Privacy Utility",
+              meta: "[sys] privacy / de-identification",
+              desc: "Utility for removing identifying fields before downstream research use.",
+              href: "projects/project-template.html?project=retinal-oct-privacy"
+            },
+            {
+              name: "Chalk",
+              meta: "[exe] apps script / twilio",
+              desc: "SMS habit tracker built with Google Apps Script and a Sheets backend.",
+              href: "projects/project-template.html?project=chalk"
+            }
+          ]
+        }
+      };
+
+      const credentialFallback = [
+        "BSc, Behavioural Neuroscience, University of British Columbia",
+        "Research experience across CAMH and UBC",
+        "Clinical research + operations + analytics experience"
+      ];
+
+      const el = {
+        heroRole: document.getElementById("hero-role"),
+        heroSummary: document.getElementById("hero-summary"),
+        viewTitle: document.getElementById("view-title"),
+        proof: document.getElementById("resume-proof"),
+        skills: document.getElementById("skills-list"),
+        highlights: document.getElementById("highlights-list"),
+        credentials: document.getElementById("credentials-list"),
+        contactCopy: document.getElementById("contact-copy"),
+        shareLink: document.getElementById("share-link"),
+        projectsGrid: document.getElementById("projects-grid"),
+        tabs: Array.from(document.querySelectorAll(".mode-tab"))
+      };
+
+      function buildList(items) {
+        return items.map(item => "<li>" + item + "</li>").join("");
+      }
+
+      function buildProjects(projects) {
+        return projects.map(project => {
+          return `
+            <article class="project-tile">
+              <div class="project-meta">${project.meta}</div>
+              <h3>${project.name}</h3>
+              <p>${project.desc}</p>
+              <a class="retro-button" href="${project.href}">Open Folder</a>
+            </article>
+          `;
+        }).join("");
+      }
+
+      function applyView(viewName) {
+        const view = resumeViews[viewName] || resumeViews.overview;
+
+        document.title = view.pageTitle;
+        el.heroRole.textContent = view.heroRole;
+        el.heroSummary.textContent = view.heroSummary;
+        el.viewTitle.textContent = view.label;
+        el.proof.innerHTML = "<p><strong>Current emphasis:</strong> " + view.proof + "</p>";
+        el.skills.innerHTML = buildList(view.skills || []);
+        el.highlights.innerHTML = buildList(view.highlights || []);
+        el.credentials.innerHTML = buildList(view.credentials || credentialFallback);
+        el.contactCopy.textContent = view.contactCopy;
+        el.projectsGrid.innerHTML = buildProjects(view.projects || []);
+        el.shareLink.href = "?view=" + encodeURIComponent(viewName);
+
+        el.tabs.forEach(tab => {
+          const active = tab.dataset.view === viewName;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", active ? "true" : "false");
+          tab.setAttribute("tabindex", active ? "0" : "-1");
+        });
+
+        const url = new URL(window.location.href);
+        url.searchParams.set("view", viewName);
+        window.history.replaceState({}, "", url.toString());
+      }
+
+      function setupTabs() {
+        el.tabs.forEach(tab => {
+          tab.addEventListener("click", function () {
+            applyView(tab.dataset.view);
+          });
+
+          tab.addEventListener("keydown", function (event) {
+            const index = el.tabs.indexOf(tab);
+            let nextIndex = null;
+
+            if (event.key === "ArrowRight") nextIndex = (index + 1) % el.tabs.length;
+            if (event.key === "ArrowLeft") nextIndex = (index - 1 + el.tabs.length) % el.tabs.length;
+            if (event.key === "Home") nextIndex = 0;
+            if (event.key === "End") nextIndex = el.tabs.length - 1;
+
+            if (nextIndex !== null) {
+              event.preventDefault();
+              el.tabs[nextIndex].focus();
+              applyView(el.tabs[nextIndex].dataset.view);
+            }
+          });
+        });
+      }
+
+      const initialView = new URLSearchParams(window.location.search).get("view") || "overview";
+      setupTabs();
+      applyView(initialView);
+    })();
+  </script>
 </body>
 </html>
