@@ -22,7 +22,6 @@
   --border-light: #ffffff;
 
   --button-blue: #1111a8;
-  --button-blue-dark: #090978;
 
   --shadow-window: 10px 10px 0 rgba(0, 0, 0, 0.18);
   --content-width: 1120px;
@@ -202,7 +201,6 @@ select {
   color: #333333;
 }
 
-.panel-strip,
 .hero-shell,
 .content-grid,
 .window-panel,
@@ -210,65 +208,9 @@ select {
   margin: 0.75rem;
 }
 
-.role-switcher {
-  border: 2px solid var(--border-mid);
-  background: var(--panel-soft);
-  padding: 1rem;
-  box-shadow:
-    inset 1px 1px 0 var(--border-light),
-    inset -1px -1px 0 #b0aaa0;
-}
-
-.role-switcher__header h2 {
-  margin: 0;
-  font-family: var(--font-ui);
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  line-height: 1.15;
-  color: #111111;
-}
-
-.role-switcher__header p {
-  margin: 0.6rem 0 0;
-  max-width: 70ch;
-  font-size: 1rem;
-  color: var(--text-body);
-}
-
-.role-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-.role-button {
-  min-height: 48px;
-  padding: 0.85rem 1.05rem;
-  border: 2px solid var(--border-dark);
-  background: #efefef;
-  color: #111111;
-  font-family: var(--font-ui);
-  font-size: 0.92rem;
-  line-height: 1.2;
-  box-shadow:
-    inset 1px 1px 0 var(--border-light),
-    inset -1px -1px 0 var(--border-mid);
-  cursor: pointer;
-}
-
-.role-button:hover,
-.role-button:focus-visible {
-  background: #f8f8f8;
-}
-
-.role-button.is-active {
-  background: var(--button-blue);
-  color: #ffffff;
-}
-
 .hero-shell {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(260px, 0.95fr);
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 0.95fr);
   gap: 0.9rem;
 }
 
@@ -298,8 +240,8 @@ select {
 .hero-panel h1 {
   margin: 0.6rem 0 1rem;
   font-family: var(--font-ui);
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  line-height: 1.02;
+  font-size: clamp(2.1rem, 4.8vw, 3.7rem);
+  line-height: 1.04;
   letter-spacing: -0.02em;
   color: #ffffff;
 }
@@ -416,12 +358,14 @@ select {
   color: var(--text-body);
 }
 
-.skills-list {
+.skills-list,
+.experience-list {
   margin: 0;
   padding-left: 1.2rem;
 }
 
-.skills-list li + li {
+.skills-list li + li,
+.experience-list li + li {
   margin-top: 0.45rem;
 }
 
@@ -458,16 +402,24 @@ select {
   margin-top: 0.35rem !important;
 }
 
-.timeline-item__content h3 {
+.timeline-item__content h3,
+.education-item h3 {
   margin: 0 0 0.5rem;
   font-family: var(--font-ui);
-  font-size: 1.1rem;
-  line-height: 1.25;
+  font-size: 1.08rem;
+  line-height: 1.3;
   color: #111111;
 }
 
-.timeline-item__content p {
+.timeline-item__content p,
+.education-item p {
   margin: 0;
+}
+
+.education-item + .education-item {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #c8c2b8;
 }
 
 .projects-grid {
@@ -494,18 +446,6 @@ select {
   background: #f7f4ed;
 }
 
-.project-card--static {
-  text-decoration: none;
-}
-
-.project-card__kicker {
-  display: inline-block;
-  margin-bottom: 0.7rem;
-  font-family: var(--font-ui);
-  font-size: 0.82rem;
-  color: var(--text-muted);
-}
-
 .project-card h3 {
   margin: 0 0 0.5rem;
   font-family: var(--font-ui);
@@ -519,23 +459,6 @@ select {
   font-size: 0.98rem;
   line-height: 1.65;
   color: var(--text-body);
-}
-
-.status-bar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.55rem 0.85rem;
-  border: 2px solid var(--border-mid);
-  background: #d8d8d8;
-  font-family: var(--font-ui);
-  font-size: 0.8rem;
-  color: #222222;
-}
-
-.project-window .window-panel--hero .window-panel__body {
-  background: var(--panel-soft);
 }
 
 .project-folder-line {
@@ -560,11 +483,17 @@ select {
   line-height: 1.75;
 }
 
-.project-meta-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.9rem;
-  margin-top: 1.2rem;
+.status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  border: 2px solid var(--border-mid);
+  background: #d8d8d8;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: #222222;
 }
 
 @media (max-width: 980px) {
@@ -579,7 +508,6 @@ select {
   .hero-shell,
   .content-grid,
   .content-grid--stacked,
-  .project-meta-grid,
   .projects-grid {
     grid-template-columns: 1fr;
   }
@@ -608,7 +536,6 @@ select {
     min-height: 48px;
   }
 
-  .panel-strip,
   .hero-shell,
   .content-grid,
   .window-panel,
@@ -624,11 +551,10 @@ select {
     gap: 0.7rem;
   }
 
-  .role-buttons {
-    gap: 0.5rem;
+  .hero-actions {
+    flex-direction: column;
   }
 
-  .role-button,
   .action-button {
     width: 100%;
   }
@@ -643,7 +569,6 @@ select {
   .desktop-icons,
   .window-controls,
   .menu-bar,
-  .role-switcher,
   .hero-actions,
   .status-bar {
     display: none !important;
