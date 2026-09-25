@@ -4,27 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Project Folder | Max Hemmerich</title>
-  <meta name="description" content="Retro Windows 95 / Y2K style project page for Max Hemmerich's portfolio.">
+  <meta name="description" content="Project page template for Max Hemmerich's portfolio.">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <a class="skip-link" href="#project-content">Skip to content</a>
+  <a class="skip-link" href="#project-content">Skip to main content</a>
 
   <header class="taskbar" role="banner">
     <div class="taskbar-left">
       <a class="start-button" href="../index.html">[Back]</a>
-      <div class="taskbar-title">PROJECT_FOLDER :: Open Directory</div>
+      <div class="taskbar-title">PROJECT_FOLDER.exe</div>
     </div>
     <div class="taskbar-right">
       <span>[dir]</span>
-      <span>Static GitHub Pages Ready</span>
+      <span>Portfolio Project</span>
     </div>
   </header>
 
   <main id="project-content" class="folder-shell">
-    <section class="window" aria-labelledby="folder-title">
+    <section class="window main-window" aria-labelledby="project-window-title">
       <div class="title-bar">
-        <h1 id="folder-title" class="title-bar-text">Project-Folder.exe</h1>
+        <h1 id="project-window-title" class="title-bar-text">Project Folder</h1>
         <div class="title-bar-controls" aria-hidden="true">
           <span class="control-button">[-]</span>
           <span class="control-button">[+]</span>
@@ -32,53 +32,54 @@
         </div>
       </div>
 
-      <div class="window-body folder-window">
+      <div class="window-body">
         <div class="directory-bar">
-          <p class="directory-path">C:\PORTFOLIO\PROJECTS\<span id="project-path-label">PROJECT</span></p>
+          <p class="directory-path">C:\PORTFOLIO\PROJECTS\<span id="project-path">PROJECT</span></p>
         </div>
 
-        <section class="folder-lead" aria-labelledby="project-name">
-          <p class="eyebrow">[open system window]</p>
+        <section class="content-panel">
+          <p class="eyebrow">[open folder]</p>
           <h2 id="project-name">Project Name</h2>
-          <p id="project-summary"></p>
+          <p id="project-summary" class="lead">Project summary.</p>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h3>Role</h3>
+              <p id="project-role"></p>
+            </div>
+            <div class="info-card">
+              <h3>Type</h3>
+              <p id="project-type"></p>
+            </div>
+            <div class="info-card">
+              <h3>Stack</h3>
+              <p id="project-stack"></p>
+            </div>
+          </div>
         </section>
 
-        <div class="folder-grid">
-          <section class="folder-section" aria-labelledby="overview-heading">
-            <h3 id="overview-heading">Overview.txt</h3>
-            <p id="overview-text"></p>
+        <section class="content-panel">
+          <h2>Overview</h2>
+          <p id="project-overview"></p>
+        </section>
 
-            <div class="note-box">
-              <p><strong>Why it matters:</strong> <span id="impact-text"></span></p>
-            </div>
-          </section>
+        <section class="content-panel">
+          <h2>What I Built</h2>
+          <ul id="project-built" class="retro-list"></ul>
+        </section>
 
-          <aside class="file-block" aria-labelledby="meta-heading">
-            <h3 id="meta-heading">Meta.ini</h3>
-            <ul id="meta-list" class="meta-list"></ul>
-          </aside>
-        </div>
+        <section class="content-panel">
+          <h2>Why It Mattered</h2>
+          <ul id="project-impact" class="retro-list"></ul>
+        </section>
 
-        <div class="folder-grid">
-          <section class="folder-section" aria-labelledby="work-heading">
-            <h2 id="work-heading">What I Built</h2>
-            <ul id="work-list" class="file-list"></ul>
-          </section>
-
-          <section class="folder-section" aria-labelledby="results-heading">
-            <h2 id="results-heading">Results.log</h2>
-            <ul id="results-list" class="file-list"></ul>
-          </section>
-        </div>
-
-        <section class="folder-section" aria-labelledby="skills-heading">
-          <h2 id="skills-heading">Relevant Skills.sys</h2>
-          <ul id="skills-list" class="file-list"></ul>
+        <section class="content-panel">
+          <h2>Relevant Skills</h2>
+          <div id="project-skills" class="skills-grid"></div>
         </section>
 
         <footer class="footer-bar">
           <a class="retro-button" href="../index.html">Return to Desktop</a>
-          <a id="live-link" class="retro-button" href="#" target="_blank" rel="noopener noreferrer">Live Link</a>
         </footer>
       </div>
     </section>
@@ -86,270 +87,241 @@
 
   <script>
     (function () {
-      const projects = {
+      const data = {
         "vibe-dashboard": {
-          title: "VIBE Dashboard",
-          path: "VIBE-DASHBOARD",
-          summary: "HTML/CSS recruitment-metrics dashboard for the VIBE study, built to give leadership a self-serve way to monitor recruitment activity and study progress.",
-          overview: "This project turned study operations into a readable internal dashboard. It pulled together recruitment, conversion, velocity, and retention monitoring into one interface so leadership could review performance without waiting for manual updates.",
-          impact: "It made recruitment performance easier to inspect and reduced dependence on ad hoc reporting.",
-          meta: [
-            "<strong>Role:</strong> Built independently",
-            "<strong>Environment:</strong> CAMH / VIBE Study",
-            "<strong>Type:</strong> Internal recruitment and operations dashboard",
-            "<strong>Stack:</strong> HTML / CSS / dashboard design",
-            "<strong>Audience:</strong> Study leadership"
-          ],
-          work: [
+          path: "VIBE_DASHBOARD",
+          name: "VIBE Dashboard",
+          summary: "HTML/CSS recruitment-metrics dashboard for study leadership, enabling self-serve monitoring.",
+          role: "Built independently within CAMH research operations",
+          type: "Internal dashboard / operational reporting",
+          stack: "HTML, CSS, recruitment funnel design, KPI definition",
+          overview: "This dashboard consolidated recruitment and study-performance monitoring into a self-serve interface for leadership. It translated operational questions into visible metrics for conversion, velocity, retention, and recruitment bottlenecks.",
+          built: [
             "Built and independently shipped a multi-tab HTML dashboard using CAMH branding standards.",
-            "Defined operational KPIs for recruitment funnel monitoring, including conversion, velocity, and retention metrics.",
-            "Partnered with clinical and leadership stakeholders to identify bottlenecks in the participant lifecycle.",
-            "Structured the dashboard for self-serve use so non-technical stakeholders could monitor study performance directly."
+            "Defined operational KPIs for recruitment funnel monitoring.",
+            "Tracked conversion, velocity, retention, and participant drop-off patterns.",
+            "Structured the interface for non-technical leadership use."
           ],
-          results: [
-            "Enabled self-serve monitoring for leadership.",
-            "Improved visibility into recruitment funnel performance.",
-            "Reduced reliance on manual status summaries and one-off updates.",
-            "Made operational bottlenecks easier to identify and discuss."
+          impact: [
+            "Improved visibility into recruitment performance.",
+            "Reduced dependence on ad hoc reporting requests.",
+            "Made study bottlenecks easier to identify and discuss.",
+            "Supported leadership with self-serve monitoring instead of manual updates."
           ],
           skills: [
-            "Dashboard development (HTML/CSS)",
-            "Operational KPI definition",
+            "Dashboard development",
+            "HTML/CSS",
+            "Operational reporting",
             "Stakeholder reporting",
-            "Recruitment and cohort funnel reporting",
-            "Research operations"
-          ],
-          live: "#"
+            "Recruitment analytics"
+          ]
         },
-
         "coverage-gap-flow": {
-          title: "TAY Coverage Gap Flow",
-          path: "TAY-COVERAGE-GAP-FLOW",
-          summary: "Power Automate workflow that scans a shared Outlook calendar and surfaces research visits with no staff assigned.",
-          overview: "This automation addressed a real operational failure point in study scheduling: visits could exist on the calendar without a clear staffing assignment. The flow scans the shared calendar and flags coverage gaps so the team can intervene before a visit is missed.",
-          impact: "It reduced manual checking and made staffing gaps visible earlier.",
-          meta: [
-            "<strong>Role:</strong> Workflow builder",
-            "<strong>Environment:</strong> CAMH / TAY Cohort",
-            "<strong>Type:</strong> Operations automation",
-            "<strong>Stack:</strong> Power Automate / Outlook / Microsoft 365",
-            "<strong>Scale:</strong> Approximately 3,000–4,000 visits per year"
+          path: "TAY_COVERAGE_GAP_FLOW",
+          name: "TAY Coverage Gap Flow",
+          summary: "Power Automate flow that scans a shared Outlook calendar and surfaces research visits with no staff assigned.",
+          role: "Independent workflow automation build",
+          type: "Operations automation / scheduling support",
+          stack: "Power Automate, Outlook calendar logic, Microsoft 365",
+          overview: "This automation scanned a shared calendar and surfaced visits lacking assigned staff coverage. It focused on a high-volume scheduling problem in a live research environment with thousands of visit records annually.",
+          built: [
+            "Built a Power Automate flow to scan a shared calendar for unassigned visits.",
+            "Applied logic for identifying scheduling gaps across high-volume research operations.",
+            "Used Microsoft 365 ecosystem tools to support team workflow visibility.",
+            "Reduced the need for manual calendar review."
           ],
-          work: [
-            "Built a Power Automate flow that scans a shared Outlook calendar for research visits with no staff assigned.",
-            "Focused the workflow on exception detection rather than generic reminders.",
-            "Designed it to support a high-volume scheduling environment with thousands of annual events.",
-            "Used the flow to reduce repetitive manual review of calendar coverage."
-          ],
-          results: [
-            "Improved visibility into unstaffed visits.",
-            "Reduced manual calendar review workload.",
-            "Supported more reliable visit coverage.",
-            "Demonstrated practical workflow automation in a regulated research setting."
+          impact: [
+            "Helped staff catch unassigned visits earlier.",
+            "Reduced manual auditing work.",
+            "Improved coverage reliability for high-volume visit operations.",
+            "Made scheduling risks more visible."
           ],
           skills: [
-            "Power Automate workflow automation",
-            "Outlook / Microsoft 365 workflows",
+            "Power Automate",
+            "Scheduling automation",
+            "Microsoft 365",
             "Operations analysis",
-            "Process improvement",
-            "Research scheduling support"
-          ],
-          live: "#"
+            "Workflow design"
+          ]
         },
-
         "eeg-scheduling-flow": {
-          title: "EEG Scheduling Flow",
-          path: "EEG-SCHEDULING-FLOW",
-          summary: "Recurring Power Automate workflow that replaced manual weekly availability-block creation for 4 EEG technicians.",
-          overview: "This workflow automated a repetitive scheduling task that had previously been recreated manually every week. It standardized how technician availability blocks were generated and reduced routine administrative effort.",
-          impact: "It removed a recurring manual task and improved consistency in EEG scheduling setup.",
-          meta: [
-            "<strong>Role:</strong> Workflow builder",
-            "<strong>Environment:</strong> CAMH",
-            "<strong>Type:</strong> Scheduling automation",
-            "<strong>Stack:</strong> Power Automate / Outlook",
-            "<strong>Users affected:</strong> 4 EEG technicians"
+          path: "EEG_SCHEDULING_FLOW",
+          name: "EEG Scheduling Flow",
+          summary: "Power Automate workflow that replaced manual weekly availability-block creation for 4 EEG technicians.",
+          role: "Independent workflow automation build",
+          type: "Lab scheduling automation",
+          stack: "Power Automate, Outlook, recurring workflow logic",
+          overview: "This workflow automated a repetitive weekly scheduling task for EEG operations. It replaced manual block creation and standardized an otherwise fragile recurring process.",
+          built: [
+            "Automated weekly availability-block creation for EEG scheduling.",
+            "Replaced a manual process used across 4 technicians.",
+            "Set up recurring scheduling logic within Power Automate.",
+            "Reduced repetitive admin work in a clinical-research support setting."
           ],
-          work: [
-            "Automated recurring weekly availability-block creation for EEG lab scheduling.",
-            "Replaced a manual administrative process with a repeatable automated workflow.",
-            "Designed the process around stable recurring scheduling patterns rather than one-time exceptions.",
-            "Used the automation to support day-to-day technical study operations."
-          ],
-          results: [
-            "Reduced manual scheduling administration.",
-            "Improved consistency in weekly setup.",
-            "Saved recurring staff time.",
-            "Strengthened reliability in technician scheduling workflows."
+          impact: [
+            "Saved recurring manual effort.",
+            "Standardized technician scheduling setup.",
+            "Reduced the chance of missed or inconsistent availability blocks.",
+            "Improved repeatability in lab operations."
           ],
           skills: [
-            "Power Automate workflow automation",
-            "Scheduling process design",
-            "Operational workflow improvement",
-            "Microsoft 365 systems support",
-            "Research technical operations"
-          ],
-          live: "#"
+            "Power Automate",
+            "Scheduling systems",
+            "Process improvement",
+            "Operations support",
+            "Workflow standardization"
+          ]
         },
-
         "retinal-oct-privacy": {
-          title: "Retinal OCT Export Privacy-Review Utility",
-          path: "RETINAL-OCT-PRIVACY-UTILITY",
-          summary: "Utility built to identify and remove specified patient-identifying fields from retinal OCT exports before research use.",
-          overview: "This tool helped reduce manual de-identification work in a health-data context. Instead of relying on repeated manual review of export fields, the utility supported a more consistent and efficient pre-research privacy step.",
-          impact: "It reduced manual privacy-review effort and supported safer handling of research data exports.",
-          meta: [
-            "<strong>Role:</strong> Utility builder",
-            "<strong>Environment:</strong> CAMH / retinal imaging workflow",
-            "<strong>Type:</strong> Privacy-support utility",
-            "<strong>Stack:</strong> Data handling / automation logic",
-            "<strong>Focus:</strong> De-identification before research use"
+          path: "RETINAL_OCT_PRIVACY_UTILITY",
+          name: "Retinal OCT Export Privacy Utility",
+          summary: "Utility built to identify and remove patient-identifying fields from retinal OCT exports before research use.",
+          role: "Working implementation in research environment",
+          type: "Privacy / data handling utility",
+          stack: "Health-data workflow logic, export review, de-identification support",
+          overview: "This utility supported safer research use of retinal OCT exports by removing specified identifying fields before downstream handling. It reduced manual privacy-review steps in a regulated setting.",
+          built: [
+            "Built a utility to identify and remove patient-identifying fields from retinal OCT exports.",
+            "Focused on reducing manual de-identification effort before research use.",
+            "Aligned the workflow with practical privacy needs in a regulated environment.",
+            "Supported cleaner downstream handling of imaging data."
           ],
-          work: [
-            "Built a utility to identify and remove specified patient-identifying fields from OCT exports.",
-            "Targeted a repetitive privacy-review step in the research workflow.",
-            "Reduced dependence on fully manual de-identification handling.",
-            "Designed the tool around practical internal research-use constraints."
-          ],
-          results: [
-            "Reduced manual de-identification steps.",
+          impact: [
+            "Reduced manual privacy-review work.",
+            "Lowered the risk of avoidable identifying data passing downstream.",
             "Improved consistency in export handling.",
-            "Lowered the chance of missing specified identifying fields.",
-            "Made research preparation more efficient."
+            "Supported research workflow efficiency without bypassing privacy needs."
           ],
           skills: [
-            "Health-data handling",
             "Privacy-aware workflow design",
-            "Automation support",
-            "Research data preparation",
-            "Governance/compliance support"
-          ],
-          live: "#"
+            "Health data handling",
+            "Operations support",
+            "Compliance-minded process improvement",
+            "Clinical research systems"
+          ]
         },
-
         "chalk": {
-          title: "Chalk",
           path: "CHALK",
+          name: "Chalk",
           summary: "SMS habit tracker built with Google Apps Script, Twilio, and a Google Sheets backend.",
-          overview: "Chalk is a self-directed automation project designed to turn lightweight SMS interaction into a usable tracking system. It demonstrates practical low-code integration work across messaging, scripting, and spreadsheet-backed storage.",
-          impact: "It shows applied automation ability outside of formal workplace systems.",
-          meta: [
-            "<strong>Role:</strong> Solo builder",
-            "<strong>Type:</strong> Personal automation project",
-            "<strong>Stack:</strong> Google Apps Script / Twilio / Google Sheets",
-            "<strong>Category:</strong> Systems and workflow tooling",
-            "<strong>Level:</strong> Working"
+          role: "Self-directed project",
+          type: "Automation / lightweight product experiment",
+          stack: "Google Apps Script, Twilio, Google Sheets",
+          overview: "Chalk is a lightweight habit-tracking project built around SMS interaction. The goal was to create a low-friction system that works through simple text-based input instead of a heavy app interface.",
+          built: [
+            "Built an SMS-based habit tracker using Google Apps Script and Twilio.",
+            "Used Google Sheets as a lightweight backend for storing responses.",
+            "Designed around low-friction habit logging through text messages.",
+            "Explored automation patterns for simple personal-product workflows."
           ],
-          work: [
-            "Built an SMS-based habit tracker using Twilio for messaging and Google Apps Script for logic.",
-            "Used Google Sheets as a lightweight backend for storing and reviewing activity.",
-            "Connected user input, automation logic, and data persistence in one simple system.",
-            "Used the project to strengthen practical scripting and integration skills."
-          ],
-          results: [
-            "Produced a complete personal automation example.",
-            "Demonstrated Google Apps Script workflow capability.",
-            "Showed comfort with low-code systems integration.",
-            "Added a concrete project for automation-oriented job applications."
+          impact: [
+            "Demonstrated practical end-to-end automation thinking.",
+            "Showed lightweight product design without overengineering.",
+            "Used simple tools to create a usable interaction loop.",
+            "Translated a behavioral workflow into a working system."
           ],
           skills: [
-            "Google Apps Script automation",
-            "Workflow design",
-            "Third-party integration",
-            "Systems thinking",
-            "Lightweight backend design"
-          ],
-          live: "#"
+            "Google Apps Script",
+            "Twilio",
+            "Workflow automation",
+            "Lightweight product design",
+            "Systems thinking"
+          ]
         },
-
         "beattheclose": {
-          title: "BeatTheClose",
-          path: "BEAT-THE-CLOSE",
-          summary: "Personal NBA player-props analytics project using Python for Kelly sizing, expected-value calculations, and closing-line-value tracking.",
-          overview: "BeatTheClose is a self-directed quantitative project focused on decision support and tracking. It uses Python to calculate expected value, size decisions, and evaluate performance using closing-line-value logic.",
-          impact: "It demonstrates applied analytics thinking and comfort with quantitative scripting.",
-          meta: [
-            "<strong>Role:</strong> Solo builder",
-            "<strong>Type:</strong> Personal analytics project",
-            "<strong>Stack:</strong> Python",
-            "<strong>Category:</strong> Quantitative analysis",
-            "<strong>Level:</strong> Working"
+          path: "BEATTHECLOSE",
+          name: "BeatTheClose",
+          summary: "NBA player-props analytics tool using Python for Kelly sizing, expected-value calculations, and CLV tracking.",
+          role: "Self-directed analytics project",
+          type: "Quantitative analysis / decision support",
+          stack: "Python, EV calculation, Kelly sizing, CLV tracking",
+          overview: "BeatTheClose is a sports analytics project focused on quantifying betting edges and tracking whether decisions outperform the market close. It was built as a practical way to apply probabilistic thinking and structured decision rules.",
+          built: [
+            "Built a Python-based player-props analysis workflow.",
+            "Calculated expected value and Kelly sizing for candidate bets.",
+            "Tracked closing-line value as a feedback signal.",
+            "Structured the project around repeatable quantitative rules rather than intuition."
           ],
-          work: [
-            "Used Python to calculate expected value across candidate bets.",
-            "Implemented Kelly sizing logic to support decision sizing.",
-            "Tracked closing-line value to evaluate process quality.",
-            "Framed the project around repeatable quantitative workflows rather than one-off calculations."
-          ],
-          results: [
-            "Created a concrete analytics project for portfolio use.",
-            "Strengthened applied Python workflow skills.",
-            "Demonstrated comfort with probability and expected-value reasoning.",
-            "Added evidence for analyst-oriented roles."
+          impact: [
+            "Demonstrated applied probability and quantitative decision logic.",
+            "Showed comfort building repeatable analysis workflows in Python.",
+            "Created a framework for evaluating decisions against later market movement.",
+            "Turned a personal interest into a measurable analytics exercise."
           ],
           skills: [
             "Python",
             "Quantitative analysis",
-            "Expected-value modeling",
-            "Decision support logic",
-            "Self-directed analytics work"
-          ],
-          live: "#"
+            "Expected value modeling",
+            "Kelly sizing",
+            "Performance tracking"
+          ]
         },
-
-        "postgresql-powerbi": {
-          title: "PostgreSQL + Power BI Portfolio Project",
-          path: "POSTGRESQL-POWERBI",
-          summary: "Portfolio project moving relational data through PostgreSQL into a Power BI dashboard to practice BI and data-warehousing concepts.",
-          overview: "This project was built to strengthen business-intelligence fundamentals through hands-on work with relational data, query logic, and dashboard output. It serves as portfolio evidence for analytics and BI roles.",
-          impact: "It provides direct portfolio evidence for SQL and BI workflow development.",
-          meta: [
-            "<strong>Role:</strong> Solo builder",
-            "<strong>Type:</strong> BI portfolio project",
-            "<strong>Stack:</strong> PostgreSQL / Power BI",
-            "<strong>Category:</strong> Analytics / BI",
-            "<strong>Level:</strong> Foundational"
+        "postgres-powerbi": {
+          path: "POSTGRESQL_POWERBI_PROJECT",
+          name: "PostgreSQL + Power BI Portfolio Project",
+          summary: "Portfolio project moving relational data through PostgreSQL into a Power BI dashboard to practise BI and data-warehousing concepts.",
+          role: "Self-directed BI practice project",
+          type: "Business intelligence / portfolio build",
+          stack: "PostgreSQL, SQL, Power BI, relational modeling",
+          overview: "This project was built to strengthen business-intelligence fundamentals by moving relational data through PostgreSQL into a Power BI reporting layer. It focused on hands-on practice with querying, modeling, and dashboard output.",
+          built: [
+            "Built a project pipeline from PostgreSQL into Power BI.",
+            "Practised relational querying and basic data modeling concepts.",
+            "Used the project to build familiarity with BI reporting workflows.",
+            "Connected storage, transformation, and visualization in one portfolio piece."
           ],
-          work: [
-            "Moved relational data through a PostgreSQL-to-Power BI workflow.",
-            "Practiced querying and structuring data for dashboard consumption.",
-            "Built dashboard outputs to reinforce BI and data-warehousing concepts.",
-            "Used the project to support transition toward analytics and BI applications."
-          ],
-          results: [
-            "Created portfolio evidence for SQL and Power BI roles.",
-            "Improved familiarity with relational data workflows.",
-            "Strengthened BI-oriented reporting skills.",
-            "Added a cleaner technical project for recruiter review."
+          impact: [
+            "Strengthened practical BI foundations.",
+            "Created a visible portfolio piece for analytics-oriented roles.",
+            "Demonstrated initiative in building technical skills outside day-to-day work.",
+            "Connected SQL practice with dashboard output."
           ],
           skills: [
-            "SQL and PostgreSQL",
+            "SQL",
+            "PostgreSQL",
             "Power BI",
             "Data modeling",
-            "Dashboard development",
-            "Business intelligence foundations"
-          ],
-          live: "#"
+            "Business intelligence"
+          ]
         }
       };
 
       const params = new URLSearchParams(window.location.search);
       const key = params.get("project") || "vibe-dashboard";
-      const data = projects[key] || projects["vibe-dashboard"];
+      const project = data[key] || data["vibe-dashboard"];
 
-      document.title = data.title + " | Max Hemmerich";
-      document.getElementById("folder-title").textContent = data.title + ".exe";
-      document.getElementById("project-name").textContent = data.title;
-      document.getElementById("project-path-label").textContent = data.path;
-      document.getElementById("project-summary").textContent = data.summary;
-      document.getElementById("overview-text").textContent = data.overview;
-      document.getElementById("impact-text").textContent = data.impact;
-      document.getElementById("meta-list").innerHTML = data.meta.map(item => "<li>" + item + "</li>").join("");
-      document.getElementById("work-list").innerHTML = data.work.map(item => "<li>" + item + "</li>").join("");
-      document.getElementById("results-list").innerHTML = data.results.map(item => "<li>" + item + "</li>").join("");
-      document.getElementById("skills-list").innerHTML = data.skills.map(item => "<li>" + item + "</li>").join("");
-      document.getElementById("live-link").href = data.live || "#";
-    })();
+      document.title = project.name + " | Max Hemmerich";
+      document.getElementById("project-path").textContent = project.path;
+      document.getElementById("project-name").textContent = project.name;
+      document.getElementById("project-summary").textContent = project.summary;
+      document.getElementById("project-role").textContent = project.role;
+      document.getElementById("project-type").textContent = project.type;
+      document.getElementById("project-stack").textContent = project.stack;
+      document.getElementById("project-overview").textContent = project.overview;
+
+      const builtList = document.getElementById("project-built");
+      const impactList = document.getElementById("project-impact");
+      const skillsWrap = document.getElementById("project-skills");
+
+      project.built.forEach(function (item) {
+        const li = document.createElement("li");
+        li.textContent = item;
+        builtList.appendChild(li);
+      });
+
+      project.impact.forEach(function (item) {
+        const li = document.createElement("li");
+        li.textContent = item;
+        impactList.appendChild(li);
+      });
+
+      project.skills.forEach(function (item) {
+        const div = document.createElement("div");
+        div.className = "skill-box";
+        div.textContent = item;
+        skillsWrap.appendChild(div);
+      });
+    }());
   </script>
 </body>
 </html>
