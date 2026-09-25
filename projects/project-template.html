@@ -3,125 +3,160 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Case Study | Max Hemmerich</title>
+  <title>Project Template | Max Hemmerich</title>
+  <meta name="description" content="Project case study template for Max Hemmerich's portfolio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <main id="main-content" class="desktop-shell">
-    <section class="main-window" aria-label="Project window">
+  <div class="desktop-shell desktop-shell--project">
+    <main class="main-window project-window" id="main">
       <header class="window-titlebar">
-        <div class="window-title">PROJECT_DIRECTORY.EXE</div>
+        <div class="window-title">PROJECT_DIRECTORY\CASE_STUDY_01</div>
         <div class="window-controls" aria-hidden="true">
-          <span>[_]</span>
+          <span>_</span>
           <span>[+]</span>
           <span>[X]</span>
         </div>
       </header>
 
       <nav class="menu-bar" aria-label="Project navigation">
-        <a href="../index.html">Home</a>
-        <a href="../index.html#projects">Projects</a>
-        <a href="../index.html#contact">Contact</a>
+        <a href="../index.html">Back</a>
+        <a href="#overview">Overview</a>
+        <a href="#work">Work</a>
+        <a href="#results">Results</a>
+        <a href="#stack">Stack</a>
       </nav>
 
-      <section class="panel-section project-shell">
-        <div class="section-heading-row">
-          <h1>[dir] Project Case Study</h1>
-          <p class="section-note">[X] Duplicate this page and swap content per project.</p>
+      <section class="window-panel window-panel--hero" id="overview">
+        <div class="window-panel__title">[DIR] Project Overview</div>
+        <div class="window-panel__body">
+          <p class="project-folder-line">C:\PROJECTS\CASE_STUDY_01&gt; OPEN</p>
+          <h1 class="project-page-title">Project Title</h1>
+          <p class="project-lead">
+            Replace this with a concise summary of the project: what problem it addressed, what your role was,
+            and why it mattered.
+          </p>
+
+          <div class="project-meta-grid">
+            <section class="sidebar-card">
+              <span class="sidebar-card__label">Role</span>
+              <p>Example: Operations / Data / Automation</p>
+            </section>
+            <section class="sidebar-card">
+              <span class="sidebar-card__label">Context</span>
+              <p>Example: Internal tool, reporting workflow, research support system</p>
+            </section>
+            <section class="sidebar-card">
+              <span class="sidebar-card__label">Timeline</span>
+              <p>Example: 6 weeks</p>
+            </section>
+            <section class="sidebar-card">
+              <span class="sidebar-card__label">Links</span>
+              <p><a href="../index.html">Back to main resume</a></p>
+            </section>
+          </div>
         </div>
-
-        <article class="project-detail-card">
-          <p class="project-type">[app] AI / RESEARCH TOOLS</p>
-          <h2>Distill — AI-Powered Research Reader</h2>
-          <p>
-            Distill is a structured reading interface that transforms long-form web
-            content and pasted text into document-, section-, and paragraph-level
-            summaries while preserving source context.
-          </p>
-
-          <h3>What it does</h3>
-          <ul>
-            <li>Accepts a URL or raw text as input.</li>
-            <li>Groups content into logical sections.</li>
-            <li>Generates summaries at multiple levels of detail.</li>
-            <li>Keeps the reading experience organized and scannable.</li>
-          </ul>
-
-          <h3>Why it matters</h3>
-          <p>
-            The product is easy to explain to recruiters because it solves a clear
-            problem: making dense online reading more navigable without stripping out
-            context.
-          </p>
-
-          <h3>Stack</h3>
-          <p>Next.js 14 · TypeScript · OpenAI API · Custom interface design</p>
-
-          <p class="project-links">
-            <a href="https://distill.wiki" target="_blank" rel="noopener noreferrer">[open] Live site</a>
-            <a href="https://github.com/maxhemmerich/distill" target="_blank" rel="noopener noreferrer">[dir] Source</a>
-          </p>
-        </article>
-
-        <article class="project-detail-card">
-          <p class="project-type">[app] ANALYTICS / DECISION SUPPORT</p>
-          <h2>Sports Betting Dashboard</h2>
-          <p>
-            A dashboard focused on surfacing profitable bets, organizing signal review,
-            and tracking outcomes in a more disciplined decision workflow.
-          </p>
-
-          <h3>What it shows</h3>
-          <ul>
-            <li>Dashboard thinking and analytical prioritization.</li>
-            <li>Workflow design for tracking opportunities and results.</li>
-            <li>A practical example of turning raw inputs into action-oriented review.</li>
-          </ul>
-        </article>
-
-        <article class="project-detail-card">
-          <p class="project-type">[sys] MODELING / AUTOMATION</p>
-          <h2>Polymarket Trading System</h2>
-          <p>
-            An end-to-end workflow for discovering markets, collecting signals,
-            estimating edge, backtesting strategies, monitoring candidates, and
-            optionally executing trades.
-          </p>
-
-          <h3>Key workflow steps</h3>
-          <ul>
-            <li>Market discovery</li>
-            <li>Signal collection</li>
-            <li>Probability modeling</li>
-            <li>Backtesting</li>
-            <li>Monitoring and execution</li>
-          </ul>
-        </article>
-
-        <article class="project-detail-card">
-          <p class="project-type">[game] FULL-STACK / REAL-TIME SYSTEMS</p>
-          <h2>Territory Conquest Game</h2>
-          <p>
-            A real-time multiplayer territory conquest game built around procedural map
-            generation, AI opponents, turn logic, and synchronized game state.
-          </p>
-
-          <h3>Technical highlights</h3>
-          <ul>
-            <li>HTML5 Canvas rendering</li>
-            <li>Node.js backend with Socket.io</li>
-            <li>Server-authoritative game logic</li>
-            <li>Lobby system, bots, and real-time synchronization</li>
-          </ul>
-
-          <p class="project-links">
-            <a href="https://github.com/maxhemmerich/Dominion" target="_blank" rel="noopener noreferrer">[dir] Source</a>
-          </p>
-        </article>
       </section>
-    </section>
-  </main>
+
+      <section class="content-grid content-grid--stacked" id="work">
+        <section class="window-panel">
+          <div class="window-panel__title">[TXT] Situation</div>
+          <div class="window-panel__body">
+            <p>
+              Describe the starting problem. What was messy, slow, manual, error-prone, or unclear? What needed to improve?
+            </p>
+          </div>
+        </section>
+
+        <section class="window-panel">
+          <div class="window-panel__title">[SYS] What I Did</div>
+          <div class="window-panel__body">
+            <ul class="skills-list">
+              <li>Mapped the existing workflow and identified bottlenecks.</li>
+              <li>Defined a simpler process structure.</li>
+              <li>Built or documented a repeatable system.</li>
+              <li>Reduced ambiguity for future users or teammates.</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <section class="window-panel" id="results">
+        <div class="window-panel__title">[LOG] Results</div>
+        <div class="window-panel__body">
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-item__meta">
+                <p class="timeline-item__date">Outcome 01</p>
+                <p class="timeline-item__tag">Speed</p>
+              </div>
+              <div class="timeline-item__content">
+                <h3>Clearer workflow</h3>
+                <p>Explain what became easier, faster, or more reliable.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-item__meta">
+                <p class="timeline-item__date">Outcome 02</p>
+                <p class="timeline-item__tag">Quality</p>
+              </div>
+              <div class="timeline-item__content">
+                <h3>Better consistency</h3>
+                <p>Explain improvements in quality, handoffs, documentation, or data handling.</p>
+              </div>
+            </article>
+
+            <article class="timeline-item">
+              <div class="timeline-item__meta">
+                <p class="timeline-item__date">Outcome 03</p>
+                <p class="timeline-item__tag">Scale</p>
+              </div>
+              <div class="timeline-item__content">
+                <h3>Reusable system</h3>
+                <p>Explain how the work could be reused, extended, or maintained more easily.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="window-panel" id="stack">
+        <div class="window-panel__title">[CFG] Tools / Stack</div>
+        <div class="window-panel__body">
+          <div class="projects-grid">
+            <article class="project-card project-card--static">
+              <span class="project-card__kicker">[tool]</span>
+              <h3>Tooling</h3>
+              <p>List the tools used: Excel, SQL, Python, documentation systems, dashboards, automation platforms, etc.</p>
+            </article>
+
+            <article class="project-card project-card--static">
+              <span class="project-card__kicker">[note]</span>
+              <h3>Constraints</h3>
+              <p>Describe deadlines, data quality limits, process constraints, stakeholder requirements, or technical restrictions.</p>
+            </article>
+
+            <article class="project-card project-card--static">
+              <span class="project-card__kicker">[next]</span>
+              <h3>Next Step</h3>
+              <p>Explain what you would improve next or how the project could be extended further.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <footer class="status-bar">
+        <span>PROJECT FILE OPEN</span>
+        <span>CASE STUDY TEMPLATE</span>
+        <span><a href="../index.html">RETURN TO RESUME</a></span>
+      </footer>
+    </main>
+  </div>
 </body>
 </html>
