@@ -552,3 +552,28 @@ pre {
     scroll-behavior: auto;
   }
 }
+
+
+.window-panel[aria-labelledby="mode-title"] {
+  position: sticky;
+  top: 68px;
+  z-index: 15;
+  margin-bottom: var(--space-4);
+}
+
+.mode-tabs {
+  position: sticky;
+  top: 0;
+}
+
+@media (max-width: 960px) {
+  .window-panel[aria-labelledby="mode-title"] {
+    top: 84px;
+  }
+}
+
+@media print {
+  .window-panel[aria-labelledby="mode-title"] {
+    position: static;
+  }
+}
