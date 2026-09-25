@@ -34,7 +34,7 @@
       <section class="window" aria-labelledby="window-title">
         <div class="title-bar">
           <div class="title-left">
-            <span class="title-mark" aria-hidden="true">â–£</span>
+            <span class="title-mark" aria-hidden="true">▣</span>
             <h1 id="window-title">MAX_HEMMERICH_RESUME.EXE</h1>
           </div>
           <div class="window-controls" aria-label="Window controls">
@@ -93,7 +93,7 @@
               <dl>
                 <div>
                   <dt>Location</dt>
-                  <dd>Toronto, ON Â· Open to Ottawa</dd>
+                  <dd>Toronto, ON · Open to Ottawa</dd>
                 </div>
                 <div>
                   <dt>Email</dt>
@@ -105,7 +105,7 @@
                 </div>
                 <div>
                   <dt>Languages</dt>
-                  <dd>English Â· Functional French</dd>
+                  <dd>English · Functional French</dd>
                 </div>
               </dl>
             </aside>
@@ -136,7 +136,7 @@
             <div class="timeline">
               <article class="timeline-item">
                 <h3>CAMH</h3>
-                <p class="timeline-meta">Healthcare / research environment Â· Toronto</p>
+                <p class="timeline-meta">Healthcare / research environment · Toronto</p>
                 <ul>
                   <li>Supported operational and analytical work requiring accuracy, documentation discipline, and coordination.</li>
                   <li>Improved clarity of information flow, reporting, and repeatable processes across teams.</li>
@@ -156,28 +156,28 @@
           <section id="projects" class="panel" aria-labelledby="projects-title">
             <div class="section-heading">
               <h2 id="projects-title">Projects Directory</h2>
-              <p>[+] Open a folder to review impact, tools, and outcomes.</p>
+              <p>[+] Separate project pages. The main resume stays one page.</p>
             </div>
             <div class="project-grid">
               <a class="project-card" href="projects/project-template.html">
                 <span class="project-kicker">[dir]</span>
                 <h3>Operations Improvement Case Study</h3>
-                <p>Workflow cleanup, coordination, and measurable efficiency gains.</p>
+                <p>Open case study.</p>
               </a>
               <a class="project-card" href="projects/project-template.html">
                 <span class="project-kicker">[dir]</span>
                 <h3>Analytics Reporting Project</h3>
-                <p>Decision-ready reporting, cleaner data, and faster review cycles.</p>
+                <p>Open case study.</p>
               </a>
               <a class="project-card" href="projects/project-template.html">
                 <span class="project-kicker">[dir]</span>
                 <h3>Automation Workflow Build</h3>
-                <p>Reduced repetitive work by structuring manual tasks into reliable systems.</p>
+                <p>Open case study.</p>
               </a>
               <a class="project-card" href="projects/project-template.html">
                 <span class="project-kicker">[dir]</span>
                 <h3>Clinical / Research Support Example</h3>
-                <p>Documentation, coordination, and compliance-minded execution.</p>
+                <p>Open case study.</p>
               </a>
             </div>
           </section>
@@ -189,68 +189,4 @@
             </div>
             <div class="contact-row">
               <a class="button-95 button-primary" href="mailto:max.hemmerich@outlook.com">Email</a>
-              <a class="button-95" href="https://www.linkedin.com/in/max-hemmerich" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a class="button-95" href="resume.pdf">Resume PDF</a>
-            </div>
-          </section>
-        </div>
-      </section>
-    </main>
-
-    <footer class="taskbar" aria-label="Status bar">
-      <div class="taskbar-group">
-        <span class="task-button">â–¦ Choose View</span>
-        <span class="task-button">RESUME â€” OVERVIEW</span>
-      </div>
-      <div class="taskbar-status">â–  AVAILABLE</div>
-    </footer>
-  </div>
-
-  <script>
-    (function () {
-      const tabs = document.querySelectorAll('[data-view-target]');
-      const summaries = document.querySelectorAll('[data-view-content]');
-      const status = document.getElementById('view-status');
-      const taskLabel = document.querySelector('.taskbar-group .task-button:last-child');
-      const labels = {
-        overview: 'Overview',
-        clinical: 'Clinical Research',
-        data: 'Data & Analytics',
-        operations: 'Research Operations',
-        automation: 'Automation & Systems'
-      };
-
-      function setView(view) {
-        document.body.setAttribute('data-view', view);
-        tabs.forEach((tab) => {
-          const active = tab.getAttribute('data-view-target') === view;
-          tab.classList.toggle('is-active', active);
-          tab.setAttribute('aria-selected', active ? 'true' : 'false');
-        });
-        summaries.forEach((item) => {
-          item.classList.toggle('is-hidden', item.getAttribute('data-view-content') !== view);
-        });
-        if (status && labels[view]) {
-          status.textContent = 'Showing the ' + labels[view] + ' profile. Content has been reprioritized.';
-        }
-        if (taskLabel && labels[view]) {
-          taskLabel.textContent = 'RESUME â€” ' + labels[view].toUpperCase();
-        }
-        const url = new URL(window.location.href);
-        url.searchParams.set('view', view);
-        window.history.replaceState({}, '', url);
-      }
-
-      tabs.forEach((tab) => {
-        tab.addEventListener('click', () => setView(tab.getAttribute('data-view-target')));
-      });
-
-      const params = new URLSearchParams(window.location.search);
-      const initial = params.get('view');
-      if (initial && labels[initial]) {
-        setView(initial);
-      }
-    }());
-  </script>
-</body>
-</html>
+              <a cla
