@@ -567,7 +567,7 @@ pre {
 }
 
 @media (max-width: 960px) {
-  .window-panel[aria-labelledby="mode-title"] {
+  .sticky-mode-bar {
     top: 84px;
   }
 }
