@@ -1,0 +1,155 @@
+/* ============================================================================
+   maxhemmerich.com — css/rave.css
+   The rave core (plan §3): ONE band at the top of the index — the masthead —
+   plus the hover/focus accents that carry the register into the chrome.
+
+   Zone rule (plan §3): exactly one animated element on the whole site, and the
+   register is never applied to body copy — nothing in this file reaches a
+   resume section (W-28).
+
+   Every colour, face and motion value is a var(--token) declared in
+   css/tokens.css: there is no hex value and no raw rgb() in this file. The only
+   literals are the band's type sizes and pulse opacity, because plan §3 TOKENS
+   ships no rave size token and W-23 pins the computed result (>=40px at 1280,
+   >=28px at 390) rather than a token name.
+   ========================================================================== */
+
+/* ----------------------------------- 1. the band — W-22 · W-23 · W-24 */
+
+.masthead {
+  /* W-22: a gradient that stays inside the void/mid range, sat on an opaque
+     background-color, so the band computes a dark rave tone rather than the
+     shell's grey or a transparent hole onto the wallpaper. */
+  background-color: var(--rave-mid);
+  background-image: linear-gradient(
+    155deg,
+    var(--rave-void) 0%,
+    var(--rave-mid) 58%,
+    var(--rave-void) 100%
+  );
+
+  /* W-22: rave-violet enters the page as this band's own border colour, and as
+     nothing else anywhere — the band is the only carrier of the three rave
+     colours at rest. */
+  border-top: 4px solid var(--rave-violet);
+  border-bottom: 4px solid var(--rave-violet);
+
+  max-width: var(--max-width);
+  min-width: 0;
+  padding: clamp(18px, 2.6vw, 34px) clamp(16px, 2.4vw, 32px);
+  font-family: var(--rave-display);
+  /* The band's own ink: any text in it that does not set a colour of its own
+     inherits a high-contrast rave tone instead of the shell's black on a very
+     dark ground (W-57 measures the band element itself). */
+  color: var(--rave-cyan);
+  overflow-wrap: break-word;
+}
+
+/* W-23: the name at display size — 51.2px at 1280 wide, 28px at 390. */
+.masthead-name {
+  margin: 0;
+  font-family: var(--rave-display);
+  font-size: clamp(28px, 4vw, 56px);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--rave-magenta);
+  /* W-24: rave-glow-text, and no other element on the site carries it. */
+  text-shadow: var(--rave-glow-text);
+}
+
+/* W-23: the role line at display size — 46px at 1280 wide, 28px at 390, and
+   never under the 16px floor W-75 measures at phone width. */
+.masthead-role {
+  margin: clamp(10px, 1.4vw, 18px) 0 0;
+  font-family: var(--rave-display);
+  font-size: clamp(28px, 3.6vw, 46px);
+  line-height: 1.06;
+  letter-spacing: 0.005em;
+  color: var(--rave-cyan);
+}
+
+/* --------------------------- 2. the site's one animation — W-25 · W-26 · W-27 */
+
+@keyframes rave-glyph-pulse {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Exactly one element on the site loops: the first desktop icon's glyph. It is
+   the only text-free box above the resume whose rect clears every text node's
+   rect (W-26) — the icon's own grid gap is the clearance — and it animates
+   opacity alone, so no colour is ever computed on it mid-cycle (W-22). The
+   cycle is the token's own: 2.2s, inside the 2.5s ceiling. */
+.desktop-icons > .desktop-icon:first-of-type > *:first-child {
+  animation: rave-glyph-pulse var(--rave-motion);
+}
+
+/* W-27: under emulated reduced motion that element computes animation-name:
+   none, from the token that says so. */
+@media (prefers-reduced-motion: reduce) {
+  .desktop-icons > .desktop-icon:first-of-type > *:first-child {
+    animation-name: var(--rave-motion-reduced);
+  }
+}
+
+/* ----------------------------------------- 3. hover / focus accents (plan §3) */
+
+/* The rave register reaches interactive chrome only under hover/focus, so no
+   rave colour is computed at rest outside the band (W-22) and the readable path
+   carries no shadow at all (W-28). Transitions, not animations: the one looping
+   element stays the one above (W-25). */
+.section-nav a,
+.taskbar .taskbar-action,
+.start-button,
+.project-card,
+.skip-link {
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.section-nav a:hover,
+.section-nav a:focus-visible {
+  color: var(--rave-cyan);
+}
+
+.project-card:hover,
+.project-card:focus-visible {
+  border-color: var(--rave-magenta);
+}
+
+.taskbar .taskbar-action:hover,
+.taskbar .taskbar-action:focus-visible,
+.start-button:hover,
+.start-button:focus-visible {
+  color: var(--rave-lime);
+}
+
+.skip-link:hover,
+.skip-link:focus {
+  color: var(--rave-magenta);
+}
+
+/* --------------------------------------------------------------- 4. print */
+
+/* The band prints as ink on paper: its paint is neutralised here so no
+   rave-coloured element survives print emulation (W-76), whoever hides what. */
+@media print {
+  .masthead {
+    background-color: var(--shell-white);
+    background-image: none;
+    border-color: var(--shell-black);
+    color: var(--shell-black);
+  }
+
+  .masthead-name,
+  .masthead-role {
+    color: var(--shell-black);
+    text-shadow: none;
+  }
+}

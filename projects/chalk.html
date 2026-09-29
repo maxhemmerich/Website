@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Distill &mdash; Max Hemmerich</title>
-  <meta name="description" content="Distill &mdash; an AI reading interface that turns articles or pasted text into hierarchical, sectioned summaries.">
+  <title>Chalk &mdash; Max Hemmerich</title>
+  <meta name="description" content="Chalk &mdash; an SMS habit tracker: Node.js and Express handling Twilio SMS webhooks, a React and Vite dashboard reading Supabase.">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="canonical" href="https://maxhemmerich.com/projects/distill.html">
+  <link rel="canonical" href="https://maxhemmerich.com/projects/chalk.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Max Hemmerich">
-  <meta property="og:title" content="Distill &mdash; Max Hemmerich">
-  <meta property="og:description" content="Distill &mdash; an AI reading interface that turns articles or pasted text into hierarchical, sectioned summaries.">
-  <meta property="og:url" content="https://maxhemmerich.com/projects/distill.html">
+  <meta property="og:title" content="Chalk &mdash; Max Hemmerich">
+  <meta property="og:description" content="Chalk &mdash; an SMS habit tracker: Node.js and Express handling Twilio SMS webhooks, a React and Vite dashboard reading Supabase.">
+  <meta property="og:url" content="https://maxhemmerich.com/projects/chalk.html">
   <meta property="og:image" content="https://maxhemmerich.com/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -31,13 +31,13 @@
 
   <main id="main-content" class="folder-shell" tabindex="-1">
     <article class="paper manuscript">
-      <p class="ms-folio">Fig. 7 &middot; distill</p>
-      <h1>Distill</h1>
+      <p class="ms-folio">Fig. 5 &middot; chalk</p>
+      <h1>Chalk</h1>
 
-      <p>Distill is an AI reading interface. It takes an article or pasted text and turns it into hierarchical,
-        sectioned summaries, presented in a three-pane reading layout. The summaries are produced through the
-        OpenAI API, and the interface preserves the original's footnotes and references. It is built on the
-        Next.js App Router with TypeScript.</p>
+      <p>Chalk is an SMS habit tracker. You text a habit to it each day, and it tracks those habits on a live
+        dashboard. The backend is a Node.js and Express service that handles Twilio SMS webhooks and runs the
+        cron scheduling behind the daily prompt; the dashboard is a React and Vite app that reads Supabase
+        with realtime updates, and the database behind it is Supabase on Postgres.</p>
 
       <div class="info-grid">
         <div class="info-card">
@@ -46,32 +46,30 @@
         </div>
         <div class="info-card">
           <h3>Type</h3>
-          <p>AI reading interface</p>
+          <p>SMS habit tracker</p>
         </div>
         <div class="info-card">
           <h3>Stack</h3>
-          <p>Next.js App Router, TypeScript, OpenAI API</p>
+          <p>Node.js, Express, Twilio, React, Vite, Supabase</p>
         </div>
       </div>
 
       <h2>What was built</h2>
       <ul>
-        <li>A pipeline that turns an article or pasted text into hierarchical, sectioned summaries.</li>
-        <li>Summary generation through the OpenAI API.</li>
-        <li>A three-pane reading layout for the source text and its summary.</li>
-        <li>Footnotes and references preserved from the original text.</li>
-        <li>A Next.js App Router application written in TypeScript.</li>
+        <li>A Node.js and Express backend that receives habit messages through Twilio SMS webhooks.</li>
+        <li>Cron scheduling that drives the daily habit prompt.</li>
+        <li>A React dashboard, built with Vite.</li>
+        <li>Supabase on Postgres as the database behind the dashboard.</li>
+        <li>Realtime updates, so the dashboard follows the database as the habits arrive.</li>
       </ul>
 
       <figure class="ms-plate">
-        <figcaption class="ms-caption">Fig. 7. Distill's three-pane layout: the source text, the sectioned
-          summary produced from it, and the footnotes and references the reading view keeps in place.</figcaption>
+        <figcaption class="ms-caption">Fig. 5. Chalk's loop: a habit is sent as a text message, the Twilio
+          webhook hands it to the Express backend, and it lands on the React dashboard through Supabase.</figcaption>
       </figure>
 
-      <p class="ms-link-note">Live at <a href="https://distill-mu.vercel.app" target="_blank"
-        rel="noopener noreferrer">distill-mu.vercel.app</a>; the project's own domain,
-        <a href="https://distill.wiki" target="_blank" rel="noopener noreferrer">distill.wiki</a>, also
-        responds. Both checked 2026-09-28.</p>
+      <p class="ms-link-note">Live at <a href="https://chalk-seven.vercel.app" target="_blank"
+        rel="noopener noreferrer">chalk-seven.vercel.app</a> &mdash; checked 2026-09-28.</p>
 
       <footer class="ms-footer">
         <p><a class="back-link" href="../index.html#projects">Back to all projects</a></p>

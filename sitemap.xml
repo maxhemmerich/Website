@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- No xmlns declaration on purpose: see .buildloop/reports/build-w4-D.md. The
+     sitemaps.org namespace URL is an http:// host outside W-66's sanctioned
+     host list, so declaring it here would break W-66 to satisfy nothing W-64
+     measures. The root element stays <urlset>. -->
+<urlset>
+  <url>
+    <loc>https://maxhemmerich.com/</loc>
+  </url>
+  <url>
+    <loc>https://maxhemmerich.com/projects/vibe-dashboard.html</loc>
+  </url>
+  <url>
+    <loc>https://maxhemmerich.com/projects/coverage-gap-flow.html</loc>
+  </url>
+  <url>
+    <loc>https://maxhemmerich.com/projects/eeg-scheduling-flow.html</loc>
+  </url>
+  <url>
+    <loc>https://maxhemmerich.com/projects/retinal-oct-privacy.html</loc>
+  </url>
+  <url>
+    <loc>https://maxhemmerich.com/projects/chalk.html</loc>
+  </url>
+  <url>
+    <loc>https://maxhemmerich.com/projects/mirror.html</loc>
+  </url>
+  <url>
+    <loc>https://maxhemmerich.com/projects/distill.html</loc>
+  </url>
+  <url>
+    <loc>https://maxhemmerich.com/projects/beattheclose.html</loc>
+  </url>
+</urlset>

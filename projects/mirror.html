@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Distill &mdash; Max Hemmerich</title>
-  <meta name="description" content="Distill &mdash; an AI reading interface that turns articles or pasted text into hierarchical, sectioned summaries.">
+  <title>Mirror &mdash; Max Hemmerich</title>
+  <meta name="description" content="Mirror &mdash; an unlaunched interactive prototype, built from an approved product specification and verified by an automated harness.">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="canonical" href="https://maxhemmerich.com/projects/distill.html">
+  <link rel="canonical" href="https://maxhemmerich.com/projects/mirror.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Max Hemmerich">
-  <meta property="og:title" content="Distill &mdash; Max Hemmerich">
-  <meta property="og:description" content="Distill &mdash; an AI reading interface that turns articles or pasted text into hierarchical, sectioned summaries.">
-  <meta property="og:url" content="https://maxhemmerich.com/projects/distill.html">
+  <meta property="og:title" content="Mirror &mdash; Max Hemmerich">
+  <meta property="og:description" content="Mirror &mdash; an unlaunched interactive prototype, built from an approved product specification and verified by an automated harness.">
+  <meta property="og:url" content="https://maxhemmerich.com/projects/mirror.html">
   <meta property="og:image" content="https://maxhemmerich.com/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -31,47 +31,56 @@
 
   <main id="main-content" class="folder-shell" tabindex="-1">
     <article class="paper manuscript">
-      <p class="ms-folio">Fig. 7 &middot; distill</p>
-      <h1>Distill</h1>
+      <p class="ms-folio">Fig. 6 &middot; mirror</p>
+      <h1>Mirror</h1>
 
-      <p>Distill is an AI reading interface. It takes an article or pasted text and turns it into hierarchical,
-        sectioned summaries, presented in a three-pane reading layout. The summaries are produced through the
-        OpenAI API, and the interface preserves the original's footnotes and references. It is built on the
-        Next.js App Router with TypeScript.</p>
+      <p class="ms-disclosure">Interactive prototype. Sample data throughout; not a launched product.</p>
+
+      <p>Mirror is an interactive prototype. It was built from an approved product specification to a working
+        interactive prototype: a short assessment, a card that resolves out of the reader's own answers, and a
+        share view that carries the card to one other person. Everything runs on sample data. The build was
+        verified by an automated harness rather than by testers, and the specification's copy rules were checked
+        against the strings the interface renders.</p>
 
       <div class="info-grid">
         <div class="info-card">
           <h3>Role</h3>
-          <p>Self-directed project</p>
+          <p>Solo build from an approved product specification</p>
         </div>
         <div class="info-card">
           <h3>Type</h3>
-          <p>AI reading interface</p>
+          <p>Interactive prototype, unlaunched</p>
         </div>
         <div class="info-card">
           <h3>Stack</h3>
-          <p>Next.js App Router, TypeScript, OpenAI API</p>
+          <p>Next.js App Router, TypeScript, Tailwind; deploy target Vercel</p>
         </div>
       </div>
 
       <h2>What was built</h2>
       <ul>
-        <li>A pipeline that turns an article or pasted text into hierarchical, sectioned summaries.</li>
-        <li>Summary generation through the OpenAI API.</li>
-        <li>A three-pane reading layout for the source text and its summary.</li>
-        <li>Footnotes and references preserved from the original text.</li>
-        <li>A Next.js App Router application written in TypeScript.</li>
+        <li>A working interactive prototype built from an approved product specification.</li>
+        <li>A short assessment that resolves into a card, on sample data.</li>
+        <li>A share view that presents the card to the person it was sent to.</li>
+        <li>Next.js App Router and TypeScript throughout, with the interface layer in Tailwind.</li>
+        <li>A deploy target on Vercel for an unlaunched prototype.</li>
       </ul>
 
+      <h2>How it was verified</h2>
+      <p>The build was verified by an automated harness rather than by testers: the harness drove the
+        prototype's screens and checked the strings the interface renders against the copy rules in the
+        specification. No claim about the basis or the accuracy of the model the prototype draws on is made
+        here, and none is made on the prototype itself.</p>
+
       <figure class="ms-plate">
-        <figcaption class="ms-caption">Fig. 7. Distill's three-pane layout: the source text, the sectioned
-          summary produced from it, and the footnotes and references the reading view keeps in place.</figcaption>
+        <img class="ms-capture" src="../assets/mirror/opening-screen-390.png"
+          alt="Capture of the prototype's opening screen: the Mirror wordmark, the line One card, nineteen decisions, a name for a pattern, a Take the assessment button, and the prototype's sample-data disclosure.">
+        <figcaption class="ms-caption">Fig. 6. Capture of the built prototype's opening screen, taken from the
+          app during the build. Sample data throughout; not a launched product.</figcaption>
       </figure>
 
-      <p class="ms-link-note">Live at <a href="https://distill-mu.vercel.app" target="_blank"
-        rel="noopener noreferrer">distill-mu.vercel.app</a>; the project's own domain,
-        <a href="https://distill.wiki" target="_blank" rel="noopener noreferrer">distill.wiki</a>, also
-        responds. Both checked 2026-09-28.</p>
+      <p class="ms-link-note"><span class="status-chip">No public link</span> &mdash; Mirror is unlaunched, so
+        there is no public URL for it.</p>
 
       <footer class="ms-footer">
         <p><a class="back-link" href="../index.html#projects">Back to all projects</a></p>

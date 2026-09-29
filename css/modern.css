@@ -1,0 +1,275 @@
+/* ============================================================================
+   maxhemmerich.com — css/modern.css
+   Zone 2 of 4: MODERN — the resume itself. About, Experience, Skills, Education,
+   Credentials, Contact, and the resume's own sidebar navigation.
+
+   Zone rule (plan §3): flat, calm, no bevel, no neon, no serif.
+   This is the part that must print.
+
+   Every colour, radius, shadow, font and type size resolves from a var(--token)
+   declared in css/tokens.css — there is no hex value and no raw rgb() in this
+   file. Sizes that have no token are relative (rem), never new px values.
+
+   Why the id selectors: `#projects` also carries class="content-panel", and it
+   belongs to the manuscript zone (ms-paper, serif). Scoping every rule to the
+   six modern ids keeps the two zones from painting over each other, and keeps
+   `#projects`'s nearest painted ancestor free for the manuscript panel (W-40).
+   ========================================================================== */
+
+/* --------------------------------------------------------- 1. the six panels */
+
+/* W-29: a flat surface, modern ink, one hairline, exactly the modern-radius and
+   exactly the modern-shadow token — two layers, never `inset` (W-30). The
+   universal font-family rule below keeps a shell face out of the whole subtree. */
+#about,
+#experience,
+#skills,
+#education,
+#credentials,
+#contact {
+  background-color: var(--modern-surface-2);
+  color: var(--modern-ink);
+  border: 1px solid var(--modern-border);
+  border-radius: var(--modern-radius);
+  box-shadow: var(--modern-shadow);
+  font-family: var(--modern-font);
+  font-size: var(--modern-body-size);
+  line-height: var(--modern-body-line);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.25rem;
+}
+
+/* The zone's own face owns every descendant: nothing set higher up the tree
+   (the shell's Tahoma) or by another zone's later rule can leak in (W-29). */
+#about *,
+#experience *,
+#skills *,
+#education *,
+#credentials *,
+#contact * {
+  font-family: var(--modern-font);
+}
+
+/* ------------------------------------------------------- 2. body copy (W-31) */
+
+/* 17px/1.6 at >=1024px and 16px/1.55 below, straight off the split tokens: the
+   --modern-body shorthand cannot drive font-size on its own, so size and
+   line-height are consumed separately. --modern-measure caps the line box, so
+   the measured measure stays under 78ch at 1280 and at 390. */
+#about p, #experience p, #skills p, #education p, #credentials p, #contact p,
+#about li, #experience li, #skills li, #education li, #credentials li, #contact li {
+  max-width: var(--modern-measure);
+  font-size: var(--modern-body-size);
+  line-height: var(--modern-body-line);
+}
+
+/* Inline links stay in the zone's ink: no neon, no default blue. */
+#about a, #experience a, #skills a, #education a, #credentials a, #contact a {
+  color: var(--modern-ink);
+}
+
+/* --------------------------------------------------------- 3. calm structure */
+
+/* Headings. Nothing here is body copy, so a size ladder is safe; every step
+   stays at or above 1rem so no resume text drops under 16px at 390px (W-75). */
+#about h2, #experience h2, #skills h2, #education h2, #credentials h2, #contact h2 {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+
+#about h3, #experience h3, #skills h3, #education h3, #credentials h3, #contact h3 {
+  font-size: 1.15rem;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
+}
+
+/* The one muted element in the zone: a label, not copy. Every section keeps ink
+   body text, which is what W-29 measures. */
+:is(#about, #experience, #skills, #education, #credentials, #contact) .eyebrow {
+  color: var(--modern-muted);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* The About lead sits a step above body copy. */
+#about .lead {
+  font-size: 1.15rem;
+}
+
+/* Grids are container-safe at 390px: minmax(min(100%, …)) never overflows. */
+.info-grid,
+.skills-grid,
+.two-column-list,
+.contact-grid {
+  display: grid;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.info-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); }
+.skills-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); }
+.two-column-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+.contact-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+
+/* Inner cards: surface + hairline + radius, and deliberately no shadow — the
+   panel above them carries the zone's only elevation. */
+.info-card,
+.skill-box {
+  background-color: var(--modern-surface);
+  border: 1px solid var(--modern-border);
+  border-radius: var(--modern-radius);
+  padding: 0.85rem 1rem;
+}
+
+/* Entries read as a calm list separated by hairlines, not by boxes. */
+.resume-entry {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--modern-border);
+}
+
+.resume-entry:first-of-type {
+  margin-top: 0.75rem;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.entry-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.entry-header > * {
+  min-width: 0;
+}
+
+.entry-tag {
+  padding: 0.15rem 0.6rem;
+  background-color: var(--modern-surface);
+  border: 1px solid var(--modern-border);
+  border-radius: var(--modern-radius);
+  color: var(--modern-muted);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* The portrait lives in this zone, so it carries the zone's radius. */
+#about img {
+  border-radius: var(--modern-radius);
+}
+
+/* ------------------------------------------ 4. the resume's sidebar (W-36) */
+
+.resume-layout {
+  display: grid;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+@media (min-width: 1024px) {
+  .resume-layout {
+    grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  }
+}
+
+.resume-sidebar {
+  min-width: 0;
+}
+
+/* Static below 1024px, sticky at and above it. The nav is the sticky element
+   and its aside stretches to the grid row, which is what gives it travel. */
+.section-nav {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.85rem;
+  background-color: var(--modern-surface);
+  border: 1px solid var(--modern-border);
+  border-radius: var(--modern-radius);
+  color: var(--modern-ink);
+  font-family: var(--modern-font);
+  font-size: var(--modern-body-size);
+  line-height: var(--modern-body-line);
+}
+
+@media (min-width: 1024px) {
+  .section-nav {
+    position: sticky;
+    top: 0;
+  }
+}
+
+.section-nav-label {
+  color: var(--modern-muted);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.section-nav a {
+  display: block;
+  padding: 0.3rem 0.5rem;
+  border-radius: var(--modern-radius);
+  color: var(--modern-ink);
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.section-nav a:hover,
+.section-nav a:focus-visible {
+  text-decoration: underline;
+}
+
+/* ----------------------------------------------------------------- 5. print */
+
+/* This zone is the part that prints: it goes to paper flat, full width, with no
+   panel chrome and no entry split across a page break. Type sizes are left to
+   css/print.css (wave 5) — nothing here sets a font-size. */
+@media print {
+  .resume-layout {
+    display: block;
+  }
+
+  .resume-sidebar {
+    display: none;
+  }
+
+  #about,
+  #experience,
+  #skills,
+  #education,
+  #credentials,
+  #contact {
+    /* the surface stays (so the resume prints readable black-on-white even
+       before css/print.css lands), but the zone's chrome goes */
+    background-color: var(--modern-surface-2);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  .info-grid,
+  .skills-grid,
+  .two-column-list,
+  .contact-grid {
+    display: block;
+  }
+
+  .resume-entry,
+  .info-card,
+  .skill-box {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

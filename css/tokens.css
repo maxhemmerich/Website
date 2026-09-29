@@ -1,0 +1,107 @@
+/* ==========================================================================
+   tokens.css — the single source of every colour, size, bevel and font face.
+   Source of record: plan §3 TOKENS (D:/Mirror/plans/maxhemmerich-com-v1.md),
+   mirrored verbatim in .buildloop/LEDGER.json -> "tokens".
+   Zone stylesheets MUST consume these via var(--token); never hard-code a hex.
+   ========================================================================== */
+
+:root {
+  /* provenance — the ledger's own comment line for the token map */
+  --_comment: plan §3 TOKENS, flattened name -> value;
+
+  /* shell — Windows 95 */
+  --shell-panel: #c0c0c0;
+  --shell-panel-light: #dfdfdf;
+  --shell-white: #ffffff;
+  --shell-shadow: #808080;
+  --shell-black: #000000;
+  --shell-title-a: #000080;
+  --shell-title-b: #1084d0;
+  --shell-title-text: #ffffff;
+  --shell-font: Tahoma, "MS Sans Serif", Verdana, "Segoe UI", sans-serif;
+  --shell-size: 13px;
+  --shell-radius: 0;
+  --shell-border: 2px solid #000000;
+  --bevel-raised: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff, inset -2px -2px 0 #808080, inset 2px 2px 0 #dfdfdf;
+  --bevel-pressed: inset 1px 1px 0 #000000, inset -1px -1px 0 #ffffff, inset 2px 2px 0 #808080, inset -2px -2px 0 #dfdfdf;
+  /* plan §3 verbatim: "48px desktop / 44px at <=768px". A custom property accepts any token
+     sequence, but `height: var(--taskbar-height)` is invalid at computed-value time unless the value
+     IS a length — which is why the shell silently rendered 24px. The consumable length lives here and
+     the breakpoint lives in the @media block at the foot of this file. Numbers unchanged.
+     Orchestrator translation, recorded in the build receipt. */
+  --taskbar-height: 48px;
+  --titlebar-height: 24px;
+
+  /* modern — the resume body */
+  --modern-surface: #fafafa;
+  --modern-surface-2: #ffffff;
+  --modern-ink: #0b0b0f;
+  --modern-muted: #5b616e;
+  --modern-border: #e5e7eb;
+  --modern-radius: 12px;
+  --modern-shadow: 0 1px 2px rgba(11,11,15,.06), 0 8px 24px rgba(11,11,15,.07);
+  --modern-font: -apple-system, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* plan §3 verbatim: "17px/1.6 at >=1024px · 16px/1.55 below". Below the 1024px breakpoint this is
+     the value; at >=1024px the @media block at the foot of the file overrides it. Usable as the
+     size/line-height part of a `font:` shorthand, and split so it can also drive font-size alone. */
+  --modern-body: 16px/1.55;
+  --modern-body-size: 16px;
+  --modern-body-line: 1.55;
+  --modern-measure: 74ch;
+
+  /* rave core — one band */
+  --rave-void: #07060f;
+  --rave-mid: #120a2b;
+  --rave-magenta: #ff2ea6;
+  --rave-cyan: #22e3ff;
+  --rave-violet: #8a5cff;
+  --rave-lime: #b6ff3c;
+  --rave-glow-text: 0 0 12px rgba(255,46,166,.55), 0 0 32px rgba(34,227,255,.35);
+  --rave-display: Impact, "Haettenschweiler", "Arial Black", sans-serif;
+  --rave-motion: 2.2s ease-in-out infinite alternate;
+  --rave-motion-reduced: none;
+
+  /* manuscript — projects */
+  --ms-paper: #fbf7ee;
+  --ms-ink: #1a1815;
+  --ms-ink-soft: #57503f;
+  --ms-rule: #d8cfbf;
+  --ms-accent: #7a2f5e;
+  --ms-font: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --ms-body: 17px/1.65;
+  --ms-measure: 68ch;
+  --ms-caption: italic 0.9rem;
+  /* plan §3 verbatim: "0.75rem uppercase, letter-spacing .08em". `uppercase` is a property, not a
+     token value, so the manuscript stylesheet applies it; the two numbers stay here. W-40 asserts the
+     figure prefix computes 12px / uppercase / letter-spacing 0.96px. */
+  --ms-folio: 0.75rem;
+  --ms-folio-tracking: .08em;
+
+  /* shared */
+  /* plan §3 verbatim: "3px solid #ffeb3b (offset 2px)" — the parenthetical is the offset PROPERTY,
+     so it is split out rather than left inside a value nothing can consume. */
+  --focus-ring: 3px solid #ffeb3b;
+  --focus-ring-offset: 2px;
+  /* plan §3 verbatim: "390 phone · 768 tablet · 1024 desktop · 1280 wide" — documentation only, no
+     probe consumes it, and it is deliberately NOT a length. */
+  --breakpoints: 390 phone · 768 tablet · 1024 desktop · 1280 wide;
+  --max-width: 1280px;
+  --external-requests: 0;
+}
+
+/* Breakpoint overrides for the two tokens whose plan value carries its breakpoint in prose. The
+   numbers are the plan's own: W-07 asserts the taskbar is 44px at 390/768 and 48px at 1280; W-31
+   measures 16px/1.55 below 1024 and 17px/1.6 at and above it. */
+@media (max-width: 768px) {
+  :root {
+    --taskbar-height: 44px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --modern-body: 17px/1.6;
+    --modern-body-size: 17px;
+    --modern-body-line: 1.6;
+  }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Error &mdash; page not found | Max Hemmerich</title>
+  <meta name="description" content="Page not found on Max Hemmerich&rsquo;s desktop.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://maxhemmerich.com/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/rave.css">
+  <link rel="stylesheet" href="/css/modern.css">
+  <link rel="stylesheet" href="/css/manuscript.css">
+  <link rel="stylesheet" href="/css/print.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- One Win95 message box, centred in flow on the desktop surface. The shell
+       chrome below the wrapper is the shared shell block, copied byte-identically
+       out of index.html so this page is not a tenth drifting variant. -->
+  <div class="dialog-shell desktop-shell" id="desktop">
+    <main id="main-content" tabindex="-1">
+      <section class="window error-dialog" role="alertdialog" aria-labelledby="dialog-title" aria-describedby="dialog-message">
+        <div class="title-bar">
+          <h1 class="title-bar-text" id="dialog-title">Error</h1>
+          <div class="title-bar-controls" aria-hidden="true">
+            <span class="control-button" data-control="minimize">_</span>
+            <span class="control-button" data-control="maximize">&#9633;</span>
+            <span class="control-button" data-control="close">&times;</span>
+          </div>
+        </div>
+
+        <div class="window-body">
+          <div class="dialog-body">
+            <svg class="pixel-icon dialog-icon" viewBox="0 0 16 16" width="32" height="32" fill="currentColor" aria-hidden="true" focusable="false"><rect x="1" y="1" width="14" height="1"/><rect x="1" y="14" width="14" height="1"/><rect x="1" y="1" width="1" height="14"/><rect x="14" y="1" width="1" height="14"/><rect x="7" y="4" width="2" height="6"/><rect x="7" y="11" width="2" height="2"/></svg>
+            <p id="dialog-message">This program has performed an illegal operation and will be shut down.</p>
+          </div>
+
+          <div class="dialog-actions">
+            <a class="back-link" href="/">Back to desktop</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+<footer class="taskbar" role="contentinfo" aria-label="Taskbar">
+    <div class="taskbar-left">
+      <button id="start-button" class="start-button" type="button" aria-label="Start" aria-haspopup="true" aria-expanded="false" aria-controls="start-menu"><img class="pixel-icon" src="/assets/icons/start.svg" width="16" height="16" alt="">Start</button>
+
+      <div id="start-menu" class="start-menu" role="menu" aria-labelledby="start-button" hidden style="display:none">
+        <a class="start-menu-item" role="menuitem" href="#about" aria-label="About"><img class="pixel-icon" src="/assets/icons/about.svg" width="16" height="16" alt=""><span class="start-menu-label">About</span></a>
+        <a class="start-menu-item" role="menuitem" href="#experience" aria-label="Experience"><img class="pixel-icon" src="/assets/icons/experience.svg" width="16" height="16" alt=""><span class="start-menu-label">Experience</span></a>
+        <a class="start-menu-item" role="menuitem" href="#projects" aria-label="Projects"><img class="pixel-icon" src="/assets/icons/projects.svg" width="16" height="16" alt=""><span class="start-menu-label">Projects</span></a>
+        <a class="start-menu-item" role="menuitem" href="#skills" aria-label="Skills"><img class="pixel-icon" src="/assets/icons/skills.svg" width="16" height="16" alt=""><span class="start-menu-label">Skills</span></a>
+        <a class="start-menu-item" role="menuitem" href="#education" aria-label="Education"><img class="pixel-icon" src="/assets/icons/education.svg" width="16" height="16" alt=""><span class="start-menu-label">Education</span></a>
+        <a class="start-menu-item" role="menuitem" href="#credentials" aria-label="Credentials"><img class="pixel-icon" src="/assets/icons/credentials.svg" width="16" height="16" alt=""><span class="start-menu-label">Credentials</span></a>
+        <a class="start-menu-item" role="menuitem" href="#contact" aria-label="Contact"><img class="pixel-icon" src="/assets/icons/contact.svg" width="16" height="16" alt=""><span class="start-menu-label">Contact</span></a>
+      </div>
+    </div>
+
+    <div class="taskbar-right">
+      <a class="taskbar-action resume-action" href="/resume.pdf" aria-label="Resume"><img class="pixel-icon" src="/assets/icons/about.svg" width="16" height="16" alt="">Resume</a>
+      <span class="status-chip" id="status-chip">Online</span>
+      <time class="taskbar-clock" id="taskbar-clock">—</time>
+    </div>
+  </footer>
+
+  <script data-goatcounter="https://maxhemmerich.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+  <script>
+    (function () {
+      var startButton = document.getElementById('start-button');
+      var menu = document.getElementById('start-menu');
+      if (!startButton || !menu) return;
+
+      function isOpen() { return startButton.getAttribute('aria-expanded') === 'true'; }
+
+      function openMenu() {
+        startButton.setAttribute('aria-expanded', 'true');
+        startButton.classList.add('is-open');
+        menu.hidden = false;
+        menu.style.display = '';
+        menu.classList.add('is-open');
+        menu.removeAttribute('aria-hidden');
+      }
+
+      function closeMenu() {
+        startButton.setAttribute('aria-expanded', 'false');
+        startButton.classList.remove('is-open');
+        menu.hidden = true;
+        menu.style.display = 'none';
+        menu.classList.remove('is-open');
+        menu.setAttribute('aria-hidden', 'true');
+      }
+
+      document.addEventListener('click', function (event) {
+        var target = event.target;
+        if (menu.contains(target)) { closeMenu(); return; }
+        if (startButton.contains(target) || target === startButton) {
+          if (isOpen()) { closeMenu(); } else { openMenu(); }
+          return;
+        }
+        if (isOpen()) { closeMenu(); event.preventDefault(); event.stopPropagation(); }
+      }, true);
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' || event.key === 'Esc') {
+          if (isOpen()) { closeMenu(); startButton.focus(); event.preventDefault(); }
+        }
+      });
+    }());
+  </script>
+</body>
+</html>

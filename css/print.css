@@ -1,0 +1,359 @@
+/* ============================================================================
+   maxhemmerich.com — css/print.css
+   Print / PDF rules — plan §4.H, ledger item W-76 (wave 5, owner C).
+
+   Print is PAPER. The desktop is a screen surface, so the shell layer, the icon
+   rail, the resume's sidebar nav, the scrim and the rave band leave the print
+   BOX TREE (not merely lose their paint); what is left is the resume — black
+   ink on white paper, 12pt body copy, inside two pages.
+
+   Criterion map (W-76's four checks, and where each one is served below):
+     1  taskbar / desktop icons / sidebar / wallpaper / neon not rendered
+                                                                  -> §2 · §3 · §4
+     2  print body is black on white                              -> §1
+     3  print body copy computes to 11-12pt (12pt = 16px)         -> §5
+     4  the printed document's page count is 1 or 2               -> §6 · §7
+
+   PALETTE — the one deliberate literal in the zone stylesheets. Plan §4.H
+   mandates black-on-white *for print*, and no token in css/tokens.css carries
+   that pairing as print's own (the shell tokens are the screen's grey/navy, the
+   modern/manuscript tokens are their screen surfaces). So this file writes
+   #000 and #fff literally, inside @media print only, and invents no other
+   literal: geometry and every other size still consumes var(--token) from
+   css/tokens.css. Recorded in .buildloop/reports/build-w5-C.md.
+
+   SCOPE — every rule sits inside @media print, so the screen is untouched:
+   W-07 (fixed taskbar, 48px/44px), W-20…W-23 (window chrome, the band) and
+   W-57/W-58 (the veil and the icon set) are the same pixels before and after
+   this file. Nothing here is a screen rule and nothing here re-styles a screen
+   surface.
+
+   Linked last in index.html, so these rules arrive after every zone's own
+   print block (css/style.css §9, css/rave.css §4, css/modern.css §5) and are
+   written to out-rank the screen zones' id-depth selectors where they must.
+
+   MEASUREMENT NOTE — the page count is not decided at the 1280px screen width.
+   Playwright's pdf() lays the document out at the PAPER width: Letter (612pt)
+   less the @page margin below, i.e. ~740 CSS px. At 1280 the same copy is
+   1,607px tall and fits two sheets; at 740 it is 2,144px. Every size below is
+   chosen against the 740px column, and §6 is what brings 2,144px back inside
+   two 980px sheets.
+   ========================================================================== */
+
+@media print {
+  /* ------------------------------------------------------------- 0. page box
+     Playwright's page.pdf() prints the default Letter format, so the @page
+     margin — not the format — decides how much copy fits a sheet. 10mm keeps a
+     real paper margin and still buys ~980px of column per page at 12pt. */
+  @page {
+    margin: 10mm;
+  }
+
+  /* ------------------------------------------------------- 1. black on white
+     Criterion 2, and the wallpaper half of criterion 1. The desktop wallpaper
+     is body's own background-image on screen (css/style.css), so it is removed
+     rather than dimmed: body computes rgb(0,0,0) on rgb(255,255,255) and no
+     background-image survives on html or body. */
+  html,
+  body {
+    background-color: #fff !important;
+    background-image: none !important;
+    color: #000 !important;
+  }
+
+  body {
+    /* the fixed taskbar's bottom reserve is a screen concern (W-07) */
+    padding-bottom: 0 !important;
+    font-size: 12pt;
+  }
+
+  /* ------------------------------------------- 2. shell chrome leaves the page
+     Criterion 1, first half. These elements are found structurally under screen
+     media and read back under print emulation, so recolouring them is not
+     enough: display:none takes each one out of the print box tree. */
+  .skip-link,
+  .taskbar,
+  .shell-taskbar,
+  #taskbar,
+  .start-menu,
+  .startmenu,
+  #start-menu,
+  .desktop-icons,
+  .icon-grid,
+  .resume-sidebar,
+  .section-nav,
+  .title-bar,
+  .titlebar,
+  .window-titlebar,
+  [data-titlebar],
+  .control-button,
+  .window-control {
+    display: none !important;
+  }
+
+  /* The scrim/veil and the shell panes paint nothing: the paper is the page
+     background, not a grey panel on a navy backdrop. (W-57's veil is what makes
+     text sit on a measured surface on SCREEN.) */
+  .desktop-shell,
+  .dialog-shell,
+  .folder-shell,
+  .desktop,
+  .desktop-body,
+  .window,
+  .win-window,
+  .window-body {
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  /* ------------------------------------------------------- 3. no neon on paper
+     Criterion 1, second half. The rave band is the site's only neon at rest and
+     the only element family a print run can find rave-coloured under screen
+     media: the band, the name, the role line. Paper has no glow, so the band is
+     not printed at all — its words are still on the page in the About panel, so
+     the printed resume and the PDF text layer both keep the name.
+     display:none is load-bearing here: it is the only thing that makes the
+     stashed elements not-rendered, and it is what removes the glow. */
+  #masthead,
+  .masthead,
+  .masthead-name,
+  .masthead-role {
+    display: none !important;
+  }
+
+  /* Belt and braces: if a later wave paints any other element with a rave token,
+     print neutralises the glow too (the box-tree half is the rule above). */
+  .desktop *,
+  #main-content * {
+    text-shadow: none !important;
+  }
+
+  /* W-85 (plan §4.J): the portrait is never on paper — a photo on a forwarded
+     resume invites exactly the bias the document exists to avoid. */
+  #about img[src*="portrait" i],
+  .portrait,
+  .resume-portrait {
+    display: none !important;
+  }
+
+  /* ------------------------------------------- 4. flatten the shell for paper
+     On screen the desktop is a 96px icon rail plus a stacked right column
+     inside a 1280px shell. On paper there is one column, no rail, no max-width
+     and no gutters, so the copy is not squeezed into a 35px column of
+     6,000px-tall text (which is what the print box tree did before this file). */
+  .desktop,
+  .desktop-shell {
+    display: block !important;
+    max-width: none !important;
+    width: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .desktop-body,
+  .desktop-main,
+  .resume-layout,
+  .resume-main,
+  #main-content {
+    display: block !important;
+    position: static !important;
+    max-width: none !important;
+    width: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .window,
+  .win-window,
+  .window-body {
+    padding: 0 !important;
+  }
+
+  /* --------------------------------------------------------- 5. print type
+     Criterion 3. Body copy is 12pt = 16px exactly (the probe reads the
+     paragraph's computed px and multiplies by 0.75), and the measure is
+     released so a line uses the whole page — fuller lines are what keep the
+     document inside two sheets. */
+  #main-content p,
+  #main-content li,
+  #main-content .lead,
+  #main-content .entry-meta,
+  #main-content .eyebrow {
+    font-size: 12pt !important;
+    line-height: 1.15 !important;
+    max-width: none !important;
+    margin: 0 0 1.5pt !important;
+  }
+
+  #main-content h1,
+  #main-content h2 {
+    font-size: 13pt !important;
+    line-height: 1.2 !important;
+    margin: 0 0 2pt !important;
+  }
+
+  #main-content h3,
+  #main-content h4 {
+    font-size: 12pt !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+  }
+
+  /* The manuscript zone's serif ladder and folio marks, at paper sizes. */
+  #projects,
+  #projects * {
+    font-size: 12pt;
+    line-height: 1.15;
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+
+  #projects h2 {
+    font-size: 13pt !important;
+  }
+
+  #projects h3,
+  #projects h4 {
+    font-size: 12pt !important;
+  }
+
+  .content-panel,
+  .resume-entry,
+  .info-card,
+  .skill-box,
+  #projects :is(article, li, .project-entry, .project-item, .project-card, .entry) {
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .content-panel {
+    margin: 0 0 3pt !important;
+  }
+
+  #main-content ul,
+  #main-content ol {
+    padding-left: 12pt !important;
+    margin: 0 0 3pt !important;
+  }
+
+  /* ------------------------------------------------------- 6. compact layout
+     Criterion 4. Every block that costs one row per item on screen costs one
+     row per set on paper. */
+  .info-grid,
+  .skills-grid,
+  .two-column-list,
+  .contact-grid {
+    display: grid !important;
+    gap: 0 12pt !important;
+    margin: 0 !important;
+  }
+
+  .info-grid,
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* The three About facts print as one row of label-plus-value, not as three
+     stacked cards: the label and its value belong on one line on paper. */
+  .info-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .info-card h3,
+  .info-card p {
+    display: inline !important;
+    font-size: 12pt !important;
+    line-height: 1.15 !important;
+    margin: 0 !important;
+  }
+
+  .two-column-list,
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Projects print as a rule-per-project list, title and description on one
+     run of text — the same order and the same words as the screen cards, at a
+     quarter of the height. 2,144px of copy does not fit two sheets otherwise. */
+  .project-grid,
+  .manuscript-projects {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #projects .project-card {
+    display: block !important;
+    margin: 0 0 2pt !important;
+    padding: 0 !important;
+  }
+
+  #projects .project-card h3,
+  #projects .project-card p {
+    display: inline !important;
+    font-size: 12pt !important;
+    line-height: 1.15 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    color: #000 !important;
+  }
+
+  /* The screen cards' trailing marks: "Open folder" is an interface verb with
+     nothing to act on once the sheet is paper, so it is dropped; the note and
+     the live URL are facts and stay, inline and small. */
+  #projects :is(.project-figure, .ms-folio, .project-note, .project-live,
+      .project-meta, .entry-tag) {
+    display: inline !important;
+    font-size: 8pt !important;
+    letter-spacing: 0 !important;
+    margin: 0 !important;
+    color: #000 !important;
+  }
+
+  #projects .project-link {
+    display: none !important;
+  }
+
+  .entry-header {
+    display: block !important;
+  }
+
+  /* -------------------------------------------------------- 7. page breaking
+     Criterion 4 again: no bullet splits, no heading is orphaned at the foot of
+     a page. A resume entry MAY split (it is ~360px tall at paper width; holding
+     it whole is what wastes a third of a sheet), but each bullet inside it may
+     not. */
+  #main-content li,
+  .info-card,
+  .skill-box,
+  #projects .project-card,
+  #main-content h2,
+  #main-content h3 {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  #main-content h2,
+  #main-content h3,
+  .project-card h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .content-panel,
+  .resume-entry,
+  .project-grid {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+}
