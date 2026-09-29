@@ -401,8 +401,10 @@ main:not(.desktop-main) * {
   text-decoration-color: var(--ms-rule);
 }
 
-/* The back action (W-46) reads as a manuscript mark, not as a shell button:
-   no bevel, no grey. */
+/* The back action INSIDE main (the footer mark, W-46) reads as a manuscript mark,
+   not as a shell button: no bevel, no grey. The nav copy of the same action that
+   sits ABOVE the paper is a button the plan names by hand, so it keeps
+   `bevel-raised` -- see the `.project-back a` rule below. */
 :is(#project-content, .folder-shell, .project-page, .project-shell,
     .manuscript-page, main.manuscript, main:not(.desktop-main)) :is(
     .back-link, .back-button, .project-back, .retro-button, .shell-button) {
@@ -443,7 +445,17 @@ main:not(.desktop-main) * {
   display: inline-block;
   background: transparent;
   background-image: none;
-  box-shadow: none;
+  /* W-18 names this control by hand: "the probe reads computed box-shadow on the
+     Start button, each menu item, the Resume action and EACH PROJECT-PAGE BACK
+     BUTTON". The polish pass read W-52 -- "No project page carries the shell's
+     grey-and-navy chrome AS ITS OWN SURFACE -- the manuscript page sits inside
+     the same taskbar shell but its CONTENT AREA is ms-paper" -- as an exemption
+     for this element and set `box-shadow: none`. W-52 constrains the page's
+     SURFACE, not a button on it, so the two obligations do not conflict and the
+     bevel belongs here. Reverting this declaration is a W-18 regression, not a
+     W-52 fix; the manuscript ink, border and typography below stay as the
+     polish left them. */
+  box-shadow: var(--bevel-raised);
   border: 1px solid var(--ms-rule);
   border-radius: 0;
   color: var(--ms-ink);
