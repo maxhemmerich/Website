@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Share-card build source · maxhemmerich.com</title>
+  <!-- Build source for assets/og.png (1200x630 share card).
+       Render with: node tools/make-og.js  (Playwright Chromium, headless).
+       Colours/fonts come from css/tokens.css — no value is hard-coded here.
+       The role line is plan §8 N-2, approved by Max 2026-09-28 — verbatim.
+       NOTE: no text-transform is used anywhere: the card must render the name and
+       role exactly as authored. -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { background: var(--rave-void); }
+    body { font-family: var(--shell-font); }
+
+    /* the 1200x630 stage — the exact card canvas */
+    .card {
+      position: relative;
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background-color: var(--rave-void);
+      background-image: url("assets/og-base.jpg");
+      background-size: 1200px 630px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* liquid-neon base is bright on the right: hold the left two-thirds dark so the
+       display type never fights the ribbons. Token-only stops. */
+    .scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        var(--rave-void) 0%,
+        var(--rave-void) 40%,
+        var(--rave-void) 58%,
+        transparent 92%
+      );
+    }
+
+    .copy {
+      position: relative;
+      height: 630px;
+      padding: 0 88px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 26px;
+    }
+
+    .card-name {
+      font-family: var(--rave-display);
+      font-size: 112px;
+      line-height: 0.94;
+      letter-spacing: -0.005em;
+      color: var(--shell-white);
+      text-shadow: var(--rave-glow-text);
+    }
+
+    /* the rave rule under the name */
+    .card-rule {
+      width: 220px;
+      height: 6px;
+      background: linear-gradient(90deg, var(--rave-magenta), var(--rave-cyan));
+    }
+
+    .card-role {
+      font-family: var(--rave-display);
+      font-size: 30px;
+      line-height: 1.16;
+      letter-spacing: 0.01em;
+      max-width: 760px;
+      color: var(--rave-cyan);
+      text-shadow: 0 0 18px rgba(34, 227, 255, 0.45);
+    }
+
+    .card-url {
+      font-family: var(--shell-font);
+      font-size: 20px;
+      letter-spacing: 0.14em;
+      color: var(--rave-lime);
+      text-shadow: 0 0 10px rgba(182, 255, 60, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="scrim"></div>
+    <div class="copy">
+      <p class="card-name">Max Hemmerich</p>
+      <div class="card-rule"></div>
+      <p class="card-role">Research operations professional improving data quality, reporting, and workflow efficiency in regulated health research.</p>
+      <p class="card-url">maxhemmerich.com</p>
+    </div>
+  </div>
+</body>
+</html>
