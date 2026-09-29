@@ -9,10 +9,11 @@
    Print is PAPER, and paper has one ink. So:
 
      1. the omission layer leaves the print box tree. Plan §10.3 publishes the
-        convention: `[data-print="omit"]` sits on .glow, .chips, a.cta, .stats,
+        convention: `[data-print="omit"]` sits on .glow, .chips, a.cta,
         every .tile, .footer-nav and img.portrait. The rule below is the single
         carrier — display:none takes each one out of the box tree, not merely
-        out of the paint.
+        out of the paint. (`.stats` was on this list until v0.4; the row is cut,
+        so there is no stat block left to omit.)
      2. body is black on white. This pairing is the one literal the design
         sanctions for print: no token in css/tokens.css carries ink-on-paper,
         so #000 and #fff are written here and no other colour literal is.
@@ -27,6 +28,9 @@
         are tight: one column, no card padding, no section rhythm borrowed
         from the screen, list runs in columns where they are short, and no
         break inside a row or a card.
+     6. the folds open. On screen every section is a <details class="fold"> and
+        four of the seven start closed; paper has no folds, so each section
+        prints its whole self and only the chevron goes.
 
    Every rule is inside @media print, so the screen is byte-for-byte the
    pixels css/site.css paints: nothing here restyles a screen surface.
@@ -65,6 +69,42 @@
      portrait are not in the printed document. */
   [data-print="omit"] {
     display: none !important;
+  }
+
+  /* ---------------------------------------------- 2b. the folds open (rule 6)
+     A <details> is a screen affordance. The printed document is the resume, so
+     every fold is forced open — here where the engine honours
+     `::details-content`, and in tools/make-pdf.mjs, which sets `open` on every
+     <details> before page.pdf() and is the generator of record. The summary
+     keeps its words; only the chevron goes. */
+  details {
+    display: block !important;
+    margin: 0 0 3pt !important;
+  }
+
+  details > summary {
+    display: block !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    cursor: auto !important;
+  }
+
+  details > summary::after {
+    content: none !important;
+  }
+
+  details::details-content {
+    content-visibility: visible !important;
+    block-size: auto !important;
+  }
+
+  details > *:not(summary) {
+    display: block !important;
+  }
+
+  .fold-body {
+    padding-top: 0 !important;
   }
 
   /* ------------------------------------------------- 3. one column of text
@@ -116,7 +156,6 @@
   .proj,
   .project-card,
   .skill-box,
-  .stat,
   .contact {
     background-color: transparent !important;
     background-image: none !important;
@@ -320,8 +359,7 @@
   .proj,
   .project-card,
   .row2,
-  .skill-box,
-  .stat {
+  .skill-box {
     break-inside: avoid;
     page-break-inside: avoid;
   }

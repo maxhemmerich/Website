@@ -49,12 +49,16 @@
   --text-3: #6E6E6E;
 
   /* §11.2.1 — ONE accent. --accent is the only saturated hue on the site
-     (links, rules, the active chip); --accent-2 is the same blue where an icon
-     or a secondary tint needs it; --accent-soft is the blue alpha subtint
-     (.tile fill). */
+     (links, rules, the filled CTA, the live chip); --accent-2 is the same blue
+     where an icon or a secondary tint needs it; --accent-soft is the blue alpha
+     subtint (.tile fill). --accent-strong is the same hue one step down and is
+     used by exactly one thing: the filled CTA's hover state. White on --accent
+     measures 4.53:1 and on --accent-strong 6.53:1, so the hover state is
+     strictly darker ink on the same paper. */
   --accent: #1B6FF5;
   --accent-2: #1B6FF5;
   --accent-soft: rgba(27,111,245,.10);
+  --accent-strong: #0B55CC;
 
   /* geometry — .card is --radius-card (D-03: >=8 of them), .tile and
      img.portrait are --radius-tile, .chip and a.cta are --radius-pill. */

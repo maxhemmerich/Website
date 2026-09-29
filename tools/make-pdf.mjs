@@ -128,6 +128,15 @@ async function main() {
     );
     await page.waitForLoadState('networkidle').catch(() => {});
 
+    // v0.4 — the seven sections fold behind <details class="fold"> and four ship
+    // closed. Paper has no folds: open every one before the PDF is written, so the
+    // printed resume carries every word it carried before the fold existed. css/print.css
+    // says the same thing where the engine honours ::details-content; this is the
+    // generator of record and does not depend on that.
+    await page.evaluate(() => {
+      document.querySelectorAll('details:not([open])').forEach((d) => { d.open = true; });
+    });
+
     await page.pdf({ path: OUT, ...PAGE_OPTS });
   } finally {
     await browser.close();

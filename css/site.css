@@ -4,13 +4,17 @@
    Implements plan §11.2 item 1 with RESUME §5 — the LIGHT language
    ("cluster C: clean white + one saturated accent"), which supersedes the
    dark one-theme contract:
-     1. one white surface system — page, cards and chips are all white; the
-        chrome INVERTS, so the primary CTA is a dark pill on a light page;
+     1. one white surface system — page, cards and chips are all white; and
+        exactly one filled control, the primary CTA, which carries the accent;
      2. elevation is a soft ambient shadow (--shadow-card), not a hairline;
-     3. one accent (blue) as text, hairline, tint and the selected chip fill;
+     3. one accent (blue) as text, hairline, tint, the selected chip fill and
+        the filled CTA;
      4. sans only, self-hosted, every text element including controls;
      5. bounded decoration — one radial hero glow, clipped to the column;
-     6. mobile-first: the 390px column IS the design, wider only adds width.
+     6. mobile-first: the 390px column IS the design, wider only adds width;
+     7. the seven sections fold behind <details class="fold">: the page reads as
+        a site you browse, not a document you scroll. All seven are toggles;
+        About, Projects and Contact are open on load.
 
    Every colour, radius, size and family below comes from var(--token) in
    css/tokens.css. A literal value in this file is a failing check.
@@ -194,10 +198,10 @@ header .chip {
   min-height: var(--tap-min);
   margin: 4px 8px 4px 0;
   padding: 6px 24px;
-  background-color: var(--surface-3);     /* dark chrome: the page is white */
+  background-color: var(--accent);        /* the one accent: the only filled control */
   border: var(--hairline) solid transparent;
   border-radius: var(--radius-pill);
-  color: var(--bg);                        /* white text on the dark pill */
+  color: var(--bg);                        /* white text on the blue pill (4.53:1) */
   font-family: var(--font-sans);
   font-size: var(--step-h3);
   font-weight: var(--font-weight-strong);
@@ -206,7 +210,7 @@ header .chip {
   text-transform: none;
   letter-spacing: 0;
 }
-.cta:hover { background-color: var(--text-2); text-decoration: none; }
+.cta:hover { background-color: var(--accent-strong); text-decoration: none; }
 
 .cta.ghost {
   background-color: var(--bg);             /* white pill, outlined */
@@ -220,35 +224,51 @@ header .chip {
 }
 
 /* --------------------------------------------------------------------------
-   Stat row — three blocks: micro-label, figure, range line
+   The fold — every section is a <details>, and the summary IS the section head.
+   The page reads as a site you browse, not a resume you scroll: About, Projects
+   and Contact are open on load, the four resume-shaped sections are closed.
    -------------------------------------------------------------------------- */
 
-.stats {
-  display: grid;
-  grid-template-columns: 1fr;             /* one column at 390 (D-08/D-13) */
+.fold { margin: 0; }
+
+.fold > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
-  margin: 0 0 40px;
+  min-height: var(--tap-min);              /* the toggle is a tap target at 390 */
+  padding: 6px 0;
+  cursor: pointer;
+  list-style: none;
 }
 
-.stat { padding: 20px; }
+/* The UA triangle is replaced by the chevron below; both engines are told. */
+.fold > summary::-webkit-details-marker { display: none; }
+.fold > summary::marker { content: ""; }
 
-.stat .label { margin-bottom: 8px; }
+/* H2 is the label. It is the only heading the section gets — never a
+   heading plus a repeated label. */
+.fold > summary h2 { margin: 0; }
 
-.stat .figure {
-  display: block;
-  font-size: var(--step-figure);
-  font-weight: var(--font-weight-strong);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--text-1);
+/* The chevron: two accent borders, rotated. No motion ships (--motion: none),
+   so the open state is a static rotation, not a transition. */
+.fold > summary::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  margin-right: 5px;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(45deg);
 }
 
-.stat .range {
-  margin-top: 4px;
-  font-size: var(--step-meta);
-  line-height: 1.4;
-  color: var(--text-3);
-}
+.fold[open] > summary::after { transform: rotate(-135deg); }
+
+.fold-body { padding-top: 12px; }
+
+/* The fold owns its bottom edge, not the last card inside it. */
+.fold-body > :last-child { margin-bottom: 0; }
 
 /* --------------------------------------------------------------------------
    Cards — one white surface, NO border, one radius. Elevation is the shadow.
@@ -257,7 +277,6 @@ header .chip {
 .card,
 .proj,
 .project-card,
-.stat,
 .skill-box,
 .contact {
   background-color: var(--surface-1);      /* white, like the page */
@@ -507,8 +526,6 @@ footer {
 
 @media (min-width: 640px) {
   body { padding: 0 var(--gutter) 96px; }
-
-  .stats { grid-template-columns: repeat(3, 1fr); }
 
   .card,
   .proj,
