@@ -1,107 +1,137 @@
 /* ==========================================================================
-   tokens.css — the single source of every colour, size, bevel and font face.
-   Source of record: plan §3 TOKENS (D:/Mirror/plans/maxhemmerich-com-v1.md),
-   mirrored verbatim in .buildloop/LEDGER.json -> "tokens".
-   Zone stylesheets MUST consume these via var(--token); never hard-code a hex.
+   tokens.css — the ONE source of every colour, size, radius and font face on
+   this site. Nothing else lives here: no reset, no layout, no component.
+
+   Source of record: plan §10.2 TOKENS
+   (D:/Mirror/plans/maxhemmerich-com-v1.md), the dark one-theme contract that
+   supersedes §3. Every consumer (css/site.css, css/print.css) reads these by
+   var(--token); a literal hex outside this file is a failing check.
+   Breakpoints the plan states beside a value live in the consumer, not here:
+   site.css applies --step-body at >=1024px and --step-body-compact at <=640px.
    ========================================================================== */
 
 :root {
-  /* provenance — the ledger's own comment line for the token map */
-  --_comment: plan §3 TOKENS, flattened name -> value;
+  /* §10.1 rule 1 — one surface system. Page is --bg; a card is one step up
+     (--surface-1); raised chrome (icon tile, pill chrome) two steps up.
+     No light surface anywhere. */
+  --bg: #0a0a0a;
+  --surface-1: #1b1b1f;
+  --surface-2: #242428;
+  --surface-3: #2f2f2f;
 
-  /* shell — Windows 95 */
-  --shell-panel: #c0c0c0;
-  --shell-panel-light: #dfdfdf;
-  --shell-white: #ffffff;
-  --shell-shadow: #808080;
-  --shell-black: #000000;
-  --shell-title-a: #000080;
-  --shell-title-b: #1084d0;
-  --shell-title-text: #ffffff;
-  --shell-font: Tahoma, "MS Sans Serif", Verdana, "Segoe UI", sans-serif;
-  --shell-size: 13px;
-  --shell-radius: 0;
-  --shell-border: 2px solid #000000;
-  --bevel-raised: inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff, inset -2px -2px 0 #808080, inset 2px 2px 0 #dfdfdf;
-  --bevel-pressed: inset 1px 1px 0 #000000, inset -1px -1px 0 #ffffff, inset 2px 2px 0 #808080, inset -2px -2px 0 #dfdfdf;
-  /* plan §3 verbatim: "48px desktop / 44px at <=768px". A custom property accepts any token
-     sequence, but `height: var(--taskbar-height)` is invalid at computed-value time unless the value
-     IS a length — which is why the shell silently rendered 24px. The consumable length lives here and
-     the breakpoint lives in the @media block at the foot of this file. Numbers unchanged.
-     Orchestrator translation, recorded in the build receipt. */
-  --taskbar-height: 48px;
-  --titlebar-height: 24px;
+  /* §10.1 rule 2 — elevation is a fill step plus a 1px hairline, never a
+     shadow. --border is the hairline colour on every .card. */
+  --border: rgba(255,255,255,.08);
+  --hairline: 1px;
 
-  /* modern — the resume body */
-  --modern-surface: #fafafa;
-  --modern-surface-2: #ffffff;
-  --modern-ink: #0b0b0f;
-  --modern-muted: #5b616e;
-  --modern-border: #e5e7eb;
-  --modern-radius: 12px;
-  --modern-shadow: 0 1px 2px rgba(11,11,15,.06), 0 8px 24px rgba(11,11,15,.07);
-  --modern-font: -apple-system, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
-  /* plan §3 verbatim: "17px/1.6 at >=1024px · 16px/1.55 below". Below the 1024px breakpoint this is
-     the value; at >=1024px the @media block at the foot of the file overrides it. Usable as the
-     size/line-height part of a `font:` shorthand, and split so it can also drive font-size alone. */
-  --modern-body: 16px/1.55;
-  --modern-body-size: 16px;
-  --modern-body-line: 1.55;
-  --modern-measure: 74ch;
+  /* text ladder — --text-1 for h1.name / headings / .v, --text-2 for body
+     copy (p.role, card paragraphs), --text-3 for micro-labels (.label, .k,
+     .folio, .range). text-3 is #8f8f8f, not the brief's #606060: §10.2. */
+  --text-1: #ffffff;
+  --text-2: #a3a3a3;
+  --text-3: #8f8f8f;
 
-  /* rave core — one band */
-  --rave-void: #07060f;
-  --rave-mid: #120a2b;
-  --rave-magenta: #ff2ea6;
-  --rave-cyan: #22e3ff;
-  --rave-violet: #8a5cff;
-  --rave-lime: #b6ff3c;
-  --rave-glow-text: 0 0 12px rgba(255,46,166,.55), 0 0 32px rgba(34,227,255,.35);
-  --rave-display: Impact, "Haettenschweiler", "Arial Black", sans-serif;
-  --rave-motion: 2.2s ease-in-out infinite alternate;
-  --rave-motion-reduced: none;
+  /* §10.1 rule 3 — ONE accent. --accent is the only saturated hue on the
+     site (links, rules, .glow core); --accent-2 tints icons and the glow;
+     --accent-soft is the mint alpha subtint. The CTA is white, not mint. */
+  --accent: #56bfa2;
+  --accent-2: #b3ddbf;
+  --accent-soft: rgba(86,191,162,.12);
 
-  /* manuscript — projects */
-  --ms-paper: #fbf7ee;
-  --ms-ink: #1a1815;
-  --ms-ink-soft: #57503f;
-  --ms-rule: #d8cfbf;
-  --ms-accent: #7a2f5e;
-  --ms-font: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  --ms-body: 17px/1.65;
-  --ms-measure: 68ch;
-  --ms-caption: italic 0.9rem;
-  /* plan §3 verbatim: "0.75rem uppercase, letter-spacing .08em". `uppercase` is a property, not a
-     token value, so the manuscript stylesheet applies it; the two numbers stay here. W-40 asserts the
-     figure prefix computes 12px / uppercase / letter-spacing 0.96px. */
-  --ms-folio: 0.75rem;
-  --ms-folio-tracking: .08em;
+  /* geometry — .card is --radius-card (D-03: >=8 of them), .tile and
+     img.portrait are --radius-tile, .chip and a.cta are --radius-pill. */
+  --radius-card: 20px;
+  --radius-tile: 12px;
+  --radius-pill: 999px;
 
-  /* shared */
-  /* plan §3 verbatim: "3px solid #ffeb3b (offset 2px)" — the parenthetical is the offset PROPERTY,
-     so it is split out rather than left inside a value nothing can consume. */
-  --focus-ring: 3px solid #ffeb3b;
-  --focus-ring-offset: 2px;
-  /* plan §3 verbatim: "390 phone · 768 tablet · 1024 desktop · 1280 wide" — documentation only, no
-     probe consumes it, and it is deliberately NOT a length. */
-  --breakpoints: 390 phone · 768 tablet · 1024 desktop · 1280 wide;
-  --max-width: 1280px;
+  /* §10.3 .wrap — the one column: max-width, centred, page gutter.
+     --gutter-phone is the 390px gutter; 720px keeps prose at ~70ch (W-31). */
+  --wrap-max: 720px;
+  --gutter: 22px;
+  --gutter-phone: 18px;
+
+  /* §10.1 rule 4 — sans only, self-hosted. Consumed as font-family by
+     body and by every element; the @font-face blocks below are the source. */
+  --font-sans: "Urbanist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-weight-body: 400;
+  --font-weight-strong: 600;
+
+  /* type scale — --step-label: h2 section headings, .stat .label, .k,
+     .folio, .chip. --step-meta: .range and secondary meta. --step-h3: card
+     titles. --step-h2: larger sub-heads. --step-figure: .stat .figure.
+     --step-hero: h1.name (clamp). */
+  --step-label: 12px;
+  --step-meta: 14px;
+  --step-h3: 17px;
+  --step-h2: 19px;
+  --step-figure: 34px;
+  --step-hero: clamp(34px, 7vw, 62px);
+  --step-body: 17px;              /* site.css applies at >=1024px */
+  --step-body-compact: 16px;      /* site.css applies at <=640px; W-75 needs >=16px in the masthead at 390 */
+
+  /* rhythm — --leading-body: body copy. --track-label: uppercase
+     micro-labels. --measure: prose line cap (W-31, 78ch). */
+  --leading-body: 1.6;
+  --track-label: 0.08em;
+  --measure: 78ch;
+
+  /* §10.1 rule 6 — mobile-first. --tap-min: every interactive control at
+     390. --motion: no animation ships. --external-requests: 0 is the
+     allowlist budget W-05 enforces. */
+  --tap-min: 44px;
+  --motion: none;
   --external-requests: 0;
+
+  /* §10.3 — the print omission convention: a selector, applied by
+     css/print.css to .glow, .chips, a.cta, .stats, .tile, .footer-nav,
+     img.portrait. */
+  --print-omit: [data-print="omit"];
 }
 
-/* Breakpoint overrides for the two tokens whose plan value carries its breakpoint in prose. The
-   numbers are the plan's own: W-07 asserts the taskbar is 44px at 390/768 and 48px at 1280; W-31
-   measures 16px/1.55 below 1024 and 17px/1.6 at and above it. */
-@media (max-width: 768px) {
-  :root {
-    --taskbar-height: 44px;
-  }
+/* ==========================================================================
+   Urbanist — self-hosted, same-origin, RELATIVE urls under assets/fonts/.
+   §10.1 rule 4: no serif, no monospace, no font from any other host.
+   One variable font per subset: the Google Fonts v18 CSS declares weight 400
+   and 600 against the same two files, so four blocks point at two files.
+   Weights are the plain numbers — never a `400 600` range.
+   ========================================================================== */
+
+/* Urbanist 400 — latin */
+@font-face {
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/urbanist-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-@media (min-width: 1024px) {
-  :root {
-    --modern-body: 17px/1.6;
-    --modern-body-size: 17px;
-    --modern-body-line: 1.6;
-  }
+/* Urbanist 400 — latin-ext */
+@font-face {
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/urbanist-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Urbanist 600 — latin */
+@font-face {
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/urbanist-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Urbanist 600 — latin-ext */
+@font-face {
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/urbanist-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }

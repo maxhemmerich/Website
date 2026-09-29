@@ -3,103 +3,95 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BeatTheClose &mdash; Max Hemmerich</title>
-  <meta name="description" content="BeatTheClose &mdash; an NBA player-props analytics workflow in Python: expected value, Kelly sizing and closing-line value tracking.">
-  <link rel="icon" href="../favicon.ico" sizes="any">
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <title>BeatTheClose — Max Hemmerich</title>
+  <meta name="description" content="BeatTheClose — an NBA player-props analytics workflow in Python: expected value, Kelly sizing and closing-line value tracking.">
   <link rel="canonical" href="https://maxhemmerich.com/projects/beattheclose.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Max Hemmerich">
-  <meta property="og:title" content="BeatTheClose &mdash; Max Hemmerich">
-  <meta property="og:description" content="BeatTheClose &mdash; an NBA player-props analytics workflow in Python: expected value, Kelly sizing and closing-line value tracking.">
+  <meta property="og:title" content="BeatTheClose — Max Hemmerich">
+  <meta property="og:description" content="BeatTheClose — an NBA player-props analytics workflow in Python: expected value, Kelly sizing and closing-line value tracking.">
   <meta property="og:url" content="https://maxhemmerich.com/projects/beattheclose.html">
   <meta property="og:image" content="https://maxhemmerich.com/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="../css/tokens.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/rave.css">
-  <link rel="stylesheet" href="../css/modern.css">
-  <link rel="stylesheet" href="../css/manuscript.css">
-  <link rel="stylesheet" href="../css/print.css">
+<link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/print.css">
+  <script data-goatcounter="https://maxhemmerich.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <nav class="project-back" aria-label="Project navigation"><a class="start-button" href="../index.html#projects">Back to projects</a></nav>
+  <div class="wrap">
 
-  <main id="main-content" class="folder-shell" tabindex="-1">
-    <article class="paper manuscript">
-      <p class="ms-folio">Fig. 8 &middot; beattheclose</p>
-      <h1>BeatTheClose</h1>
+    <header class="masthead">
+      <span class="glow" aria-hidden="true" data-print="omit"></span>
+      <h1 class="name">BeatTheClose</h1>
+      <p class="role">Quantitative analysis / decision support</p>
+    </header>
 
-      <p>BeatTheClose is a sports analytics project focused on quantifying betting edges and tracking whether
-        decisions outperform the market close. It was built as a practical way to apply probabilistic thinking
-        and structured decision rules. The work is a Python player-props analysis workflow, and it tracks
-        closing-line value as the feedback signal for each decision.</p>
+    <main id="main-content" tabindex="-1">
 
-      <div class="info-grid">
-        <div class="info-card">
-          <h3>Role</h3>
-          <p>Self-directed analytics project</p>
-        </div>
-        <div class="info-card">
-          <h3>Type</h3>
-          <p>Quantitative analysis / decision support</p>
-        </div>
-        <div class="info-card">
-          <h3>Stack</h3>
-          <p>Python, EV calculation, Kelly sizing, CLV tracking</p>
+      <p class="folio">Project 08</p>
+
+      <div class="card">
+        <p>BeatTheClose is a sports analytics project focused on quantifying betting edges and tracking
+          whether decisions outperform the market close. It was built as a practical way to apply
+          probabilistic thinking and structured decision rules. The work is a Python player-props analysis
+          workflow, and it tracks closing-line value as the feedback signal for each decision.</p>
+      </div>
+
+      <div class="card">
+        <p><strong>Role:</strong> Self-directed analytics project</p>
+        <p><strong>Type:</strong> Quantitative analysis / decision support</p>
+        <p><strong>Stack:</strong> Python, EV calculation, Kelly sizing, CLV tracking</p>
+      </div>
+
+      <div class="card">
+        <h3>What was built</h3>
+        <ul>
+          <li>A Python player-props analysis workflow.</li>
+          <li>Expected value and Kelly sizing calculated for each candidate bet.</li>
+          <li>Closing-line value tracked as a feedback signal.</li>
+          <li>Repeatable quantitative rules, rather than a decision made on intuition.</li>
+          <li>A record for evaluating each decision against the later market movement.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p>The loop BeatTheClose measures: a player prop priced, a decision taken on expected value and
+          Kelly sizing, and the closing line that later shows how the decision met the market.</p>
+      </div>
+
+      <div class="card">
+        <p>BeatTheClose runs locally, so there is no public URL for it.</p>
+        <div class="row">
+          <span class="chip">No public link</span>
         </div>
       </div>
 
-      <h2>What was built</h2>
-      <ul>
-        <li>A Python player-props analysis workflow.</li>
-        <li>Expected value and Kelly sizing calculated for each candidate bet.</li>
-        <li>Closing-line value tracked as a feedback signal.</li>
-        <li>Repeatable quantitative rules, rather than a decision made on intuition.</li>
-        <li>A record for evaluating each decision against the later market movement.</li>
-      </ul>
-
-      <figure class="ms-plate">
-        <figcaption class="ms-caption">Fig. 8. The loop BeatTheClose measures: a player prop priced, a decision
-          taken on expected value and Kelly sizing, and the closing line that later shows how the decision met
-          the market.</figcaption>
-      </figure>
-
-      <p class="ms-link-note"><span class="status-chip">No public link</span> &mdash; BeatTheClose runs locally,
-        so there is no public URL for it.</p>
-
-      <footer class="ms-footer">
-        <p><a class="back-link" href="../index.html#projects">Back to all projects</a></p>
-      </footer>
-    </article>
-  </main>
-
-  <footer class="taskbar" role="contentinfo" aria-label="Taskbar">
-    <div class="taskbar-left">
-      <button id="start-button" class="start-button" type="button" aria-label="Start" aria-haspopup="true" aria-expanded="false" aria-controls="start-menu"><img class="pixel-icon" src="/assets/icons/start.svg" width="16" height="16" alt="">Start</button>
-
-      <div id="start-menu" class="start-menu" role="menu" aria-labelledby="start-button" hidden style="display:none">
-        <a class="start-menu-item" role="menuitem" href="#about" aria-label="About"><img class="pixel-icon" src="/assets/icons/about.svg" width="16" height="16" alt=""><span class="start-menu-label">About</span></a>
-        <a class="start-menu-item" role="menuitem" href="#experience" aria-label="Experience"><img class="pixel-icon" src="/assets/icons/experience.svg" width="16" height="16" alt=""><span class="start-menu-label">Experience</span></a>
-        <a class="start-menu-item" role="menuitem" href="#projects" aria-label="Projects"><img class="pixel-icon" src="/assets/icons/projects.svg" width="16" height="16" alt=""><span class="start-menu-label">Projects</span></a>
-        <a class="start-menu-item" role="menuitem" href="#skills" aria-label="Skills"><img class="pixel-icon" src="/assets/icons/skills.svg" width="16" height="16" alt=""><span class="start-menu-label">Skills</span></a>
-        <a class="start-menu-item" role="menuitem" href="#education" aria-label="Education"><img class="pixel-icon" src="/assets/icons/education.svg" width="16" height="16" alt=""><span class="start-menu-label">Education</span></a>
-        <a class="start-menu-item" role="menuitem" href="#credentials" aria-label="Credentials"><img class="pixel-icon" src="/assets/icons/credentials.svg" width="16" height="16" alt=""><span class="start-menu-label">Credentials</span></a>
-        <a class="start-menu-item" role="menuitem" href="#contact" aria-label="Contact"><img class="pixel-icon" src="/assets/icons/contact.svg" width="16" height="16" alt=""><span class="start-menu-label">Contact</span></a>
+      <div class="card">
+        <p><a href="../index.html#projects">Back to all projects</a></p>
       </div>
-    </div>
 
-    <div class="taskbar-right">
-      <a class="taskbar-action resume-action" href="/resume.pdf" aria-label="Resume"><img class="pixel-icon" src="/assets/icons/about.svg" width="16" height="16" alt="">Resume</a>
-      <span class="status-chip" id="status-chip">Online</span>
-      <time class="taskbar-clock" id="taskbar-clock">—</time>
-    </div>
-  </footer>
+    </main>
 
-  <script data-goatcounter="https://maxhemmerich.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    <footer>
+      <nav class="footer-nav" aria-label="Sections" data-print="omit">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Core Skills</a>
+        <a href="#education">Education</a>
+        <a href="#credentials">Credentials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="colophon">Max Hemmerich · Toronto, ON · max.hemmerich@outlook.com</p>
+    </footer>
+
+  </div>
 </body>
 </html>

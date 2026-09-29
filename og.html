@@ -3,94 +3,100 @@
 <head>
   <meta charset="utf-8">
   <title>Share-card build source · maxhemmerich.com</title>
-  <!-- Build source for assets/og.png (1200x630 share card).
-       Render with: node tools/make-og.js  (Playwright Chromium, headless).
-       Colours/fonts come from css/tokens.css — no value is hard-coded here.
-       The role line is plan §8 N-2, approved by Max 2026-09-28 — verbatim.
-       NOTE: no text-transform is used anywhere: the card must render the name and
-       role exactly as authored. -->
+  <!-- Build source for the 1200x630 share card. One source, two derived artifacts,
+       both rebuilt by one committed command:
+           node tools/make-og.js          (Playwright Chromium, headless)
+           node tools/make-og.js --dry    (renders to a temp dir, leaves assets/ alone)
+       make-og.js renders THIS page twice: once with .copy hidden, which exports the
+       card's ground layer as assets/og-base.jpg, and once whole, which writes the
+       finished card as assets/og.png.
+       Every colour, size and face below is read from css/tokens.css through var(),
+       so the card cannot drift away from the site theme. The motif is CSS only:
+       one bounded radial mint glow and 1px hairlines. No shadow, no illustration,
+       no drawn element. Urbanist is self-hosted under assets/fonts/ and wired by
+       tokens.css, so the card asks no other host for anything.
+       The role line is the approved line, verbatim. The name and the role render
+       exactly as authored: no text-transform is applied to either. -->
   <link rel="stylesheet" href="css/tokens.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { background: var(--rave-void); }
-    body { font-family: var(--shell-font); }
+    html, body { background-color: var(--bg); font-family: var(--font-sans); }
 
-    /* the 1200x630 stage — the exact card canvas */
+    /* the 1200x630 stage — the exact card canvas, one dark surface */
     .card {
       position: relative;
       width: 1200px;
       height: 630px;
       overflow: hidden;
-      background-color: var(--rave-void);
-      background-image: url("assets/og-base.jpg");
-      background-size: 1200px 630px;
-      background-repeat: no-repeat;
-      background-position: center;
+      background-color: var(--bg);
     }
 
-    /* liquid-neon base is bright on the right: hold the left two-thirds dark so the
-       display type never fights the ribbons. Token-only stops. */
-    .scrim {
+    /* bounded decoration: a mint glow behind the copy column. Its box is inside the
+       canvas and .card clips it, so it never becomes a wash across the card. */
+    .glow {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        var(--rave-void) 0%,
-        var(--rave-void) 40%,
-        var(--rave-void) 58%,
-        transparent 92%
-      );
+      left: 0;
+      top: 0;
+      width: 900px;
+      height: 630px;
+      background-image:
+        radial-gradient(closest-side at 30% 46%, var(--accent-soft), transparent),
+        radial-gradient(closest-side at 30% 46%, var(--accent-soft), transparent);
+      pointer-events: none;
     }
 
     .copy {
       position: relative;
       height: 630px;
-      padding: 0 88px;
+      padding: 0 96px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      gap: 26px;
+      gap: 30px;
     }
 
     .card-name {
-      font-family: var(--rave-display);
-      font-size: 112px;
-      line-height: 0.94;
-      letter-spacing: -0.005em;
-      color: var(--shell-white);
-      text-shadow: var(--rave-glow-text);
+      font-family: var(--font-sans);
+      font-weight: var(--font-weight-strong);
+      font-size: 108px;
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      color: var(--text-1);
     }
 
-    /* the rave rule under the name */
+    /* the one accent mark on the card */
     .card-rule {
-      width: 220px;
-      height: 6px;
-      background: linear-gradient(90deg, var(--rave-magenta), var(--rave-cyan));
+      width: 132px;
+      height: 2px;
+      background-color: var(--accent);
     }
 
     .card-role {
-      font-family: var(--rave-display);
+      font-family: var(--font-sans);
+      font-weight: var(--font-weight-body);
       font-size: 30px;
-      line-height: 1.16;
-      letter-spacing: 0.01em;
-      max-width: 760px;
-      color: var(--rave-cyan);
-      text-shadow: 0 0 18px rgba(34, 227, 255, 0.45);
+      line-height: 1.42;
+      max-width: 780px;
+      color: var(--text-2);
     }
 
+    /* micro-label rhythm, opened by a hairline */
     .card-url {
-      font-family: var(--shell-font);
-      font-size: 20px;
-      letter-spacing: 0.14em;
-      color: var(--rave-lime);
-      text-shadow: 0 0 10px rgba(182, 255, 60, 0.4);
+      width: 100%;
+      padding-top: 22px;
+      border-top: var(--hairline) solid var(--border);
+      font-family: var(--font-sans);
+      font-size: var(--step-meta);
+      letter-spacing: var(--track-label);
+      text-transform: uppercase;
+      color: var(--text-3);
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <div class="scrim"></div>
+    <span class="glow" aria-hidden="true"></span>
     <div class="copy">
       <p class="card-name">Max Hemmerich</p>
       <div class="card-rule"></div>

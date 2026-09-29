@@ -3,104 +3,99 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Distill &mdash; Max Hemmerich</title>
-  <meta name="description" content="Distill &mdash; an AI reading interface that turns articles or pasted text into hierarchical, sectioned summaries.">
-  <link rel="icon" href="../favicon.ico" sizes="any">
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <title>Distill — Max Hemmerich</title>
+  <meta name="description" content="Distill — an AI reading interface that turns articles or pasted text into hierarchical, sectioned summaries.">
   <link rel="canonical" href="https://maxhemmerich.com/projects/distill.html">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Max Hemmerich">
-  <meta property="og:title" content="Distill &mdash; Max Hemmerich">
-  <meta property="og:description" content="Distill &mdash; an AI reading interface that turns articles or pasted text into hierarchical, sectioned summaries.">
+  <meta property="og:title" content="Distill — Max Hemmerich">
+  <meta property="og:description" content="Distill — an AI reading interface that turns articles or pasted text into hierarchical, sectioned summaries.">
   <meta property="og:url" content="https://maxhemmerich.com/projects/distill.html">
   <meta property="og:image" content="https://maxhemmerich.com/assets/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="../css/tokens.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/rave.css">
-  <link rel="stylesheet" href="../css/modern.css">
-  <link rel="stylesheet" href="../css/manuscript.css">
-  <link rel="stylesheet" href="../css/print.css">
+<link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/css/print.css">
+  <script data-goatcounter="https://maxhemmerich.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <nav class="project-back" aria-label="Project navigation"><a class="start-button" href="../index.html#projects">Back to projects</a></nav>
+  <div class="wrap">
 
-  <main id="main-content" class="folder-shell" tabindex="-1">
-    <article class="paper manuscript">
-      <p class="ms-folio">Fig. 7 &middot; distill</p>
-      <h1>Distill</h1>
+    <header class="masthead">
+      <span class="glow" aria-hidden="true" data-print="omit"></span>
+      <h1 class="name">Distill</h1>
+      <p class="role">AI reading interface</p>
+    </header>
 
-      <p>Distill is an AI reading interface. It takes an article or pasted text and turns it into hierarchical,
-        sectioned summaries, presented in a three-pane reading layout. The summaries are produced through the
-        OpenAI API, and the interface preserves the original's footnotes and references. It is built on the
-        Next.js App Router with TypeScript.</p>
+    <main id="main-content" tabindex="-1">
 
-      <div class="info-grid">
-        <div class="info-card">
-          <h3>Role</h3>
-          <p>Self-directed project</p>
-        </div>
-        <div class="info-card">
-          <h3>Type</h3>
-          <p>AI reading interface</p>
-        </div>
-        <div class="info-card">
-          <h3>Stack</h3>
-          <p>Next.js App Router, TypeScript, OpenAI API</p>
+      <p class="folio">Project 07</p>
+
+      <div class="card">
+        <p>Distill is an AI reading interface. It takes an article or pasted text and turns it into
+          hierarchical, sectioned summaries, presented in a three-pane reading layout. The summaries are
+          produced through the OpenAI API, and the interface preserves the original's footnotes and
+          references. It is built on the Next.js App Router with TypeScript.</p>
+      </div>
+
+      <div class="card">
+        <p><strong>Role:</strong> Self-directed project</p>
+        <p><strong>Type:</strong> AI reading interface</p>
+        <p><strong>Stack:</strong> Next.js App Router, TypeScript, OpenAI API</p>
+      </div>
+
+      <div class="card">
+        <h3>What was built</h3>
+        <ul>
+          <li>A pipeline that turns an article or pasted text into hierarchical, sectioned summaries.</li>
+          <li>Summary generation through the OpenAI API.</li>
+          <li>A three-pane reading layout for the source text and its summary.</li>
+          <li>Footnotes and references preserved from the original text.</li>
+          <li>A Next.js App Router application written in TypeScript.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p>Distill's three-pane layout: the source text, the sectioned summary produced from it, and the
+          footnotes and references the reading view keeps in place.</p>
+      </div>
+
+      <div class="card">
+        <p>Live at <a href="https://distill-mu.vercel.app" target="_blank"
+          rel="noopener noreferrer">distill-mu.vercel.app</a>; the project's own domain,
+          <a href="https://distill.wiki" target="_blank" rel="noopener noreferrer">distill.wiki</a>, also
+          responds. Both checked 2026-09-28.</p>
+        <div class="row">
+          <a class="chip live" href="https://distill-mu.vercel.app" target="_blank"
+            rel="noopener noreferrer">distill-mu.vercel.app</a>
         </div>
       </div>
 
-      <h2>What was built</h2>
-      <ul>
-        <li>A pipeline that turns an article or pasted text into hierarchical, sectioned summaries.</li>
-        <li>Summary generation through the OpenAI API.</li>
-        <li>A three-pane reading layout for the source text and its summary.</li>
-        <li>Footnotes and references preserved from the original text.</li>
-        <li>A Next.js App Router application written in TypeScript.</li>
-      </ul>
-
-      <figure class="ms-plate">
-        <figcaption class="ms-caption">Fig. 7. Distill's three-pane layout: the source text, the sectioned
-          summary produced from it, and the footnotes and references the reading view keeps in place.</figcaption>
-      </figure>
-
-      <p class="ms-link-note">Live at <a href="https://distill-mu.vercel.app" target="_blank"
-        rel="noopener noreferrer">distill-mu.vercel.app</a>; the project's own domain,
-        <a href="https://distill.wiki" target="_blank" rel="noopener noreferrer">distill.wiki</a>, also
-        responds. Both checked 2026-09-28.</p>
-
-      <footer class="ms-footer">
-        <p><a class="back-link" href="../index.html#projects">Back to all projects</a></p>
-      </footer>
-    </article>
-  </main>
-
-  <footer class="taskbar" role="contentinfo" aria-label="Taskbar">
-    <div class="taskbar-left">
-      <button id="start-button" class="start-button" type="button" aria-label="Start" aria-haspopup="true" aria-expanded="false" aria-controls="start-menu"><img class="pixel-icon" src="/assets/icons/start.svg" width="16" height="16" alt="">Start</button>
-
-      <div id="start-menu" class="start-menu" role="menu" aria-labelledby="start-button" hidden style="display:none">
-        <a class="start-menu-item" role="menuitem" href="#about" aria-label="About"><img class="pixel-icon" src="/assets/icons/about.svg" width="16" height="16" alt=""><span class="start-menu-label">About</span></a>
-        <a class="start-menu-item" role="menuitem" href="#experience" aria-label="Experience"><img class="pixel-icon" src="/assets/icons/experience.svg" width="16" height="16" alt=""><span class="start-menu-label">Experience</span></a>
-        <a class="start-menu-item" role="menuitem" href="#projects" aria-label="Projects"><img class="pixel-icon" src="/assets/icons/projects.svg" width="16" height="16" alt=""><span class="start-menu-label">Projects</span></a>
-        <a class="start-menu-item" role="menuitem" href="#skills" aria-label="Skills"><img class="pixel-icon" src="/assets/icons/skills.svg" width="16" height="16" alt=""><span class="start-menu-label">Skills</span></a>
-        <a class="start-menu-item" role="menuitem" href="#education" aria-label="Education"><img class="pixel-icon" src="/assets/icons/education.svg" width="16" height="16" alt=""><span class="start-menu-label">Education</span></a>
-        <a class="start-menu-item" role="menuitem" href="#credentials" aria-label="Credentials"><img class="pixel-icon" src="/assets/icons/credentials.svg" width="16" height="16" alt=""><span class="start-menu-label">Credentials</span></a>
-        <a class="start-menu-item" role="menuitem" href="#contact" aria-label="Contact"><img class="pixel-icon" src="/assets/icons/contact.svg" width="16" height="16" alt=""><span class="start-menu-label">Contact</span></a>
+      <div class="card">
+        <p><a href="../index.html#projects">Back to all projects</a></p>
       </div>
-    </div>
 
-    <div class="taskbar-right">
-      <a class="taskbar-action resume-action" href="/resume.pdf" aria-label="Resume"><img class="pixel-icon" src="/assets/icons/about.svg" width="16" height="16" alt="">Resume</a>
-      <span class="status-chip" id="status-chip">Online</span>
-      <time class="taskbar-clock" id="taskbar-clock">—</time>
-    </div>
-  </footer>
+    </main>
 
-  <script data-goatcounter="https://maxhemmerich.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    <footer>
+      <nav class="footer-nav" aria-label="Sections" data-print="omit">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Core Skills</a>
+        <a href="#education">Education</a>
+        <a href="#credentials">Credentials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="colophon">Max Hemmerich · Toronto, ON · max.hemmerich@outlook.com</p>
+    </footer>
+
+  </div>
 </body>
 </html>

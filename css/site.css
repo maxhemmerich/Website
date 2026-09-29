@@ -1,0 +1,541 @@
+/* ==========================================================================
+   site.css — THE theme, in one file: reset, layout, every component.
+
+   Implements plan §10.1 (D:/Mirror/plans/maxhemmerich-com-v1.md), the dark
+   one-theme contract that supersedes §3:
+     1. one surface system — page, a card one step up, raised chrome two up;
+        no light surface anywhere except the primary CTA's white pill;
+     2. elevation is a fill step plus a 1px hairline, never a shadow;
+     3. one accent (mint) as text and hairline only, never as a fill;
+     4. sans only, self-hosted, every text element including controls;
+     5. bounded decoration — one radial hero glow, clipped to the column;
+     6. mobile-first: the 390px column IS the design, wider only adds width.
+
+   Every colour, radius, size and family below comes from var(--token) in
+   css/tokens.css. A literal value in this file is a failing check.
+
+   Class contract: plan §10.3 (.wrap, header.masthead, .glow, h1.name,
+   p.role, .chips > .chip, a.cta / a.cta.ghost, main#main-content,
+   .stats > .stat (.label/.figure/.range), the seven section ids, h2, .card,
+   .folio, .row2 (.tile/.k/.v), footer .footer-nav, img.portrait).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Reset
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body,
+h1, h2, h3, h4, p, figure, blockquote, ul, ol, dl, dd { margin: 0; }
+
+ul, ol { padding: 0; }
+
+img { display: block; max-width: 100%; }
+
+table { border-collapse: collapse; }
+
+/* --------------------------------------------------------------------------
+   Page — the 390 column, one gutter, one dark canvas
+   -------------------------------------------------------------------------- */
+
+body {
+  background-color: var(--bg);
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  font-size: var(--step-body-compact);
+  font-weight: var(--font-weight-body);
+  line-height: var(--leading-body);
+  padding: 0 var(--gutter-phone) 72px;   /* D-13: gutter 16-24px at 390 */
+  overflow-x: hidden;                    /* the glow can never scroll the page */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Controls do not inherit font-family from the UA sheet — say it explicitly,
+   so a rendered button carries the same family list as the body text. */
+button, input, select, textarea, optgroup { font: inherit; color: inherit; }
+button { background: none; border: 0; cursor: pointer; }
+code, kbd, samp, pre, tt { font-family: inherit; font-size: inherit; }
+
+a { color: var(--text-1); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Focus: a visible ring on every control, drawn with the outline property
+   (never a shadow — plan §10.1 rule 2). Never reset to none. */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+summary:focus,
+[tabindex]:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* The skip link: first tabbable thing on the page, off-view until focused. */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: var(--gutter-phone);
+  z-index: 10;
+  transform: translateY(-200%);
+  padding: 12px 18px;
+  background-color: var(--surface-2);
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius-pill);
+  color: var(--text-1);
+  font-size: var(--step-h3);
+  font-weight: var(--font-weight-strong);
+}
+.skip-link:focus { transform: none; }
+
+/* The one column. Holds the masthead AND #main-content (plan §10.3). */
+.wrap {
+  max-width: var(--wrap-max);
+  margin: 0 auto;
+}
+
+main { display: block; }
+
+section { margin-bottom: 40px; }
+section[id],
+[id] { scroll-margin-top: 24px; }
+
+/* --------------------------------------------------------------------------
+   Masthead — name, role line, chips, the two CTAs, and the bounded glow
+   -------------------------------------------------------------------------- */
+
+header,
+.masthead {
+  position: relative;
+  padding: 44px 0 32px;
+}
+
+/* The signature move: one soft mint bloom behind the hero. Absolutely
+   positioned inside the header, so its box is bounded by the column and it
+   cannot produce a horizontal scroll at 390. It is a radial, never a wash. */
+.glow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(-1 * var(--gutter));
+  height: 300px;
+  background-image:
+    radial-gradient(58% 62% at 50% 18%, var(--accent-soft), transparent 70%),
+    radial-gradient(86% 76% at 50% 0%, var(--accent-soft), transparent 78%);
+  pointer-events: none;
+}
+
+h1,
+h1.name,
+.name {
+  font-size: var(--step-hero);
+  font-weight: var(--font-weight-strong);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text-1);
+}
+
+.role {
+  max-width: 46ch;
+  margin-top: 14px;
+  font-size: var(--step-body-compact);
+  line-height: var(--leading-body);
+  color: var(--text-2);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 22px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  background-color: var(--surface-2);      /* raised chrome: two steps up */
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius-pill);
+  color: var(--text-2);
+  font-size: var(--step-label);
+  font-weight: var(--font-weight-strong);
+  letter-spacing: var(--track-label);
+}
+
+/* Masthead chips are controls in a thumb's reach: tap-sized, and their type
+   stays above the legibility floor the band is held to. */
+.masthead .chip,
+header .chip {
+  min-height: var(--tap-min);
+  padding: 10px 16px;
+  font-size: var(--step-body-compact);
+}
+
+.chip.live,
+.chip[data-live] {
+  color: var(--accent);
+  border-color: var(--accent-soft);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-min);
+  margin: 4px 8px 4px 0;
+  padding: 6px 24px;
+  background-color: var(--text-1);         /* the ONE sanctioned light fill */
+  border: var(--hairline) solid transparent;
+  border-radius: var(--radius-pill);
+  color: var(--bg);                        /* dark text on the white pill */
+  font-family: var(--font-sans);
+  font-size: var(--step-h3);
+  font-weight: var(--font-weight-strong);
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.cta:hover { background-color: var(--text-2); text-decoration: none; }
+
+.cta.ghost {
+  background-color: transparent;           /* outline pill */
+  border-color: var(--border);
+  color: var(--text-1);
+  font-weight: var(--font-weight-body);
+}
+.cta.ghost:hover {
+  background-color: var(--surface-2);
+  border-color: var(--text-3);
+}
+
+/* --------------------------------------------------------------------------
+   Stat row — three blocks: micro-label, figure, range line
+   -------------------------------------------------------------------------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr;             /* one column at 390 (D-08/D-13) */
+  gap: 12px;
+  margin: 0 0 40px;
+}
+
+.stat { padding: 20px; }
+
+.stat .label { margin-bottom: 8px; }
+
+.stat .figure {
+  display: block;
+  font-size: var(--step-figure);
+  font-weight: var(--font-weight-strong);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+}
+
+.stat .range {
+  margin-top: 4px;
+  font-size: var(--step-meta);
+  line-height: 1.4;
+  color: var(--text-3);
+}
+
+/* --------------------------------------------------------------------------
+   Cards — one surface, one hairline, one radius. Elevation is the fill step.
+   -------------------------------------------------------------------------- */
+
+.card,
+.proj,
+.project-card,
+.stat,
+.skill-box,
+.contact {
+  background-color: var(--surface-1);      /* one step above the page */
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius-card);
+}
+
+.card,
+.proj,
+.project-card,
+.skill-box { padding: 20px; }
+
+.card { margin-bottom: 12px; }
+
+.card h3,
+.proj h3 {
+  font-size: var(--step-h3);
+  font-weight: var(--font-weight-strong);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--text-1);
+  margin-bottom: 4px;
+}
+
+.card h3:last-child { margin-bottom: 0; }
+
+.card a { color: var(--accent); text-decoration: none; }
+.card a:hover { text-decoration: underline; }
+
+/* The card's footer row: the link and the chip sit on one line, wrapping. */
+.card .row,
+.proj .row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* Body copy inside a card is the readable path: never below the floor. */
+.card p,
+.card li {
+  color: var(--text-2);
+  font-size: var(--step-body-compact);
+  line-height: var(--leading-body);
+}
+
+/* Meta lines (employer · dates · place) recede by colour, never by size —
+   the measured floor for resume prose is a hard one (W-31). */
+.card .meta,
+.card .entry-meta,
+.meta,
+.entry-meta { color: var(--text-3); }
+
+/* --------------------------------------------------------------------------
+   Resume prose — the floor: >=17px at 1280, >=16px at 390, ratio >=1.5,
+   measured line boxes inside the cap. :where() keeps this at zero
+   specificity so every component rule below still wins its own element.
+   -------------------------------------------------------------------------- */
+
+:where(#about, #experience, #projects, #skills, #education, #credentials, #contact) :where(p, li) {
+  font-size: var(--step-body-compact);
+  line-height: var(--leading-body);
+  max-width: 70ch;
+  color: var(--text-2);
+}
+
+ul,
+ol { list-style: none; }
+
+/* Every list item is positioned, so the dot below can never resolve against
+   the page box and scatter across the canvas. */
+li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 6px;
+}
+
+li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--text-3);
+}
+
+.two-column-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px 24px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.skill-box {
+  padding: 14px 18px;
+  color: var(--text-2);
+  font-size: var(--step-meta);
+  line-height: 1.45;
+}
+
+/* --------------------------------------------------------------------------
+   Projects — a folio, a title, a line of what it is, a link and a chip
+   -------------------------------------------------------------------------- */
+
+#projects .card,
+#projects .proj,
+#projects .project-card { margin-bottom: 12px; }
+
+.folio,
+.card .folio,
+.project-figure { margin-bottom: 8px; }
+
+/* --------------------------------------------------------------------------
+   Contact — one panel, hairline-separated rows, each led by an icon tile
+   -------------------------------------------------------------------------- */
+
+#contact .card { padding: 4px 20px; }
+
+.row2 {
+  display: flex;
+  flex-direction: column;                  /* label above value at 390 */
+  align-items: flex-start;
+  gap: 6px;
+  padding: 14px 0;
+  border-bottom: var(--hairline) solid var(--border);
+}
+
+.row2:last-child,
+.row2:last-of-type { border-bottom: 0; }
+
+.tile {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  background-color: var(--surface-2);
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius-tile);
+}
+
+.tile img {
+  width: 20px;
+  height: 20px;
+}
+
+.row2 .k { flex: 0 0 auto; }
+
+.row2 .v {
+  min-width: 0;
+  color: var(--text-1);
+  font-size: var(--step-h3);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.row2 .v a { color: var(--accent); }
+
+/* --------------------------------------------------------------------------
+   Portrait — a real photograph, framed like any other tile
+   -------------------------------------------------------------------------- */
+
+.portrait {
+  width: 160px;
+  height: 160px;
+  margin: 0 0 20px;
+  border-radius: var(--radius-tile);
+  border: var(--hairline) solid var(--border);
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   Micro-labels — the one 12px uppercase tracked role, in every carrier
+   -------------------------------------------------------------------------- */
+
+h2,
+.stat .label,
+.folio,
+.card .folio,
+.project-figure,
+.row2 .k,
+.badge,
+.entry-tag,
+.tag {
+  font-size: var(--step-label);
+  font-weight: var(--font-weight-strong);
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: var(--track-label);      /* 0.08em — 0.96px at 12px */
+  color: var(--text-3);
+}
+
+h2 { margin: 0 0 14px; }
+
+.badge,
+.entry-tag,
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  margin-left: 8px;
+  background-color: var(--surface-2);
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius-pill);
+  color: var(--accent);
+  vertical-align: middle;
+}
+
+/* --------------------------------------------------------------------------
+   Footer — the closing block and its section index
+   -------------------------------------------------------------------------- */
+
+footer {
+  margin-top: 44px;
+  padding-top: 22px;
+  border-top: var(--hairline) solid var(--border);
+  color: var(--text-3);
+  font-size: var(--step-meta);
+  line-height: 1.5;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-bottom: 16px;
+}
+
+.footer-nav a {
+  color: var(--text-2);
+  font-size: var(--step-meta);
+}
+.footer-nav a:hover { color: var(--text-1); }
+
+/* --------------------------------------------------------------------------
+   Wider than a phone: the column keeps its width, the rhythm opens up
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 640px) {
+  body { padding: 0 var(--gutter) 96px; }
+
+  .stats { grid-template-columns: repeat(3, 1fr); }
+
+  .card,
+  .proj,
+  .project-card { padding: 22px 24px; }
+
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .two-column-list { grid-template-columns: repeat(2, 1fr); }
+
+  .row2 {
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+  }
+  .row2 .k { min-width: 96px; }
+  .row2 .v { font-size: var(--step-body-compact); }
+}
+
+@media (min-width: 1024px) {
+  body { font-size: var(--step-body); }
+
+  header,
+  .masthead { padding: 64px 0 44px; }
+
+  .glow { height: 360px; }
+
+  .role { font-size: var(--step-h3); }
+
+  .card p,
+  .card li { font-size: var(--step-body); }
+
+  :where(#about, #experience, #projects, #skills, #education, #credentials, #contact) :where(p, li) {
+    font-size: var(--step-body);
+  }
+}

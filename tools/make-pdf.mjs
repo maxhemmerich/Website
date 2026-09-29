@@ -52,8 +52,10 @@ function loadPlaywright() {
   throw new Error('playwright could not be loaded: ' + problems.join(' | '));
 }
 
-// tools/.. is the site root: index.html links css/tokens.css, css/style.css,
-// css/rave.css, css/modern.css, css/manuscript.css and css/print.css.
+// tools/.. is the site root: index.html links css/tokens.css, css/site.css and
+// css/print.css — print.css last, so under print media it wins over the screen
+// zones in site.css. The four-voice stylesheets (style/rave/modern/manuscript)
+// are retired and deleted; nothing here depends on them.
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '..');
 const ENTRY = path.join(ROOT, 'index.html');
