@@ -2,3 +2,5 @@
 node_modules/
 .DS_Store
 Thumbs.db
+# the plan document for this site — working material, never published (the whole repo tree is served)
+plans/

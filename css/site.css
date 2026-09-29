@@ -1,12 +1,13 @@
 /* ==========================================================================
    site.css — THE theme, in one file: reset, layout, every component.
 
-   Implements plan §10.1 (D:/Mirror/plans/maxhemmerich-com-v1.md), the dark
-   one-theme contract that supersedes §3:
-     1. one surface system — page, a card one step up, raised chrome two up;
-        no light surface anywhere except the primary CTA's white pill;
-     2. elevation is a fill step plus a 1px hairline, never a shadow;
-     3. one accent (mint) as text and hairline only, never as a fill;
+   Implements plan §11.2 item 1 with RESUME §5 — the LIGHT language
+   ("cluster C: clean white + one saturated accent"), which supersedes the
+   dark one-theme contract:
+     1. one white surface system — page, cards and chips are all white; the
+        chrome INVERTS, so the primary CTA is a dark pill on a light page;
+     2. elevation is a soft ambient shadow (--shadow-card), not a hairline;
+     3. one accent (blue) as text, hairline, tint and the selected chip fill;
      4. sans only, self-hosted, every text element including controls;
      5. bounded decoration — one radial hero glow, clipped to the column;
      6. mobile-first: the 390px column IS the design, wider only adds width.
@@ -40,7 +41,7 @@ img { display: block; max-width: 100%; }
 table { border-collapse: collapse; }
 
 /* --------------------------------------------------------------------------
-   Page — the 390 column, one gutter, one dark canvas
+   Page — the 390 column, one gutter, one white canvas
    -------------------------------------------------------------------------- */
 
 body {
@@ -65,7 +66,7 @@ a { color: var(--text-1); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* Focus: a visible ring on every control, drawn with the outline property
-   (never a shadow — plan §10.1 rule 2). Never reset to none. */
+   (never a shadow). Never reset to none. */
 a:focus,
 button:focus,
 input:focus,
@@ -116,7 +117,7 @@ header,
   padding: 44px 0 32px;
 }
 
-/* The signature move: one soft mint bloom behind the hero. Absolutely
+/* The signature move: one soft accent bloom behind the hero. Absolutely
    positioned inside the header, so its box is bounded by the column and it
    cannot produce a horizontal scroll at 390. It is a radial, never a wash. */
 .glow {
@@ -160,7 +161,7 @@ h1.name,
   display: inline-flex;
   align-items: center;
   padding: 8px 14px;
-  background-color: var(--surface-2);      /* raised chrome: two steps up */
+  background-color: var(--surface-2);      /* white pill chrome on a white page */
   border: var(--hairline) solid var(--border);
   border-radius: var(--radius-pill);
   color: var(--text-2);
@@ -178,10 +179,12 @@ header .chip {
   font-size: var(--step-body-compact);
 }
 
+/* The selected chip carries the accent as a FILL, with white text. */
 .chip.live,
 .chip[data-live] {
-  color: var(--accent);
-  border-color: var(--accent-soft);
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
 }
 
 .cta {
@@ -191,10 +194,10 @@ header .chip {
   min-height: var(--tap-min);
   margin: 4px 8px 4px 0;
   padding: 6px 24px;
-  background-color: var(--text-1);         /* the ONE sanctioned light fill */
+  background-color: var(--surface-3);     /* dark chrome: the page is white */
   border: var(--hairline) solid transparent;
   border-radius: var(--radius-pill);
-  color: var(--bg);                        /* dark text on the white pill */
+  color: var(--bg);                        /* white text on the dark pill */
   font-family: var(--font-sans);
   font-size: var(--step-h3);
   font-weight: var(--font-weight-strong);
@@ -206,8 +209,8 @@ header .chip {
 .cta:hover { background-color: var(--text-2); text-decoration: none; }
 
 .cta.ghost {
-  background-color: transparent;           /* outline pill */
-  border-color: var(--border);
+  background-color: var(--bg);             /* white pill, outlined */
+  border-color: var(--border-ghost);
   color: var(--text-1);
   font-weight: var(--font-weight-body);
 }
@@ -248,7 +251,7 @@ header .chip {
 }
 
 /* --------------------------------------------------------------------------
-   Cards — one surface, one hairline, one radius. Elevation is the fill step.
+   Cards — one white surface, NO border, one radius. Elevation is the shadow.
    -------------------------------------------------------------------------- */
 
 .card,
@@ -257,8 +260,8 @@ header .chip {
 .stat,
 .skill-box,
 .contact {
-  background-color: var(--surface-1);      /* one step above the page */
-  border: var(--hairline) solid var(--border);
+  background-color: var(--surface-1);      /* white, like the page */
+  box-shadow: var(--shadow-card);          /* the separation is the shadow */
   border-radius: var(--radius-card);
 }
 
@@ -341,7 +344,7 @@ li::before {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: var(--text-3);
+  background-color: var(--marker);
 }
 
 .two-column-list {
@@ -376,7 +379,7 @@ li::before {
 .project-figure { margin-bottom: 8px; }
 
 /* --------------------------------------------------------------------------
-   Contact — one panel, hairline-separated rows, each led by an icon tile
+   Contact — one panel, ruled rows, each led by an icon tile
    -------------------------------------------------------------------------- */
 
 #contact .card { padding: 4px 20px; }
@@ -387,7 +390,7 @@ li::before {
   align-items: flex-start;
   gap: 6px;
   padding: 14px 0;
-  border-bottom: var(--hairline) solid var(--border);
+  border-bottom: var(--hairline) solid var(--rule-row);
 }
 
 .row2:last-child,
@@ -399,7 +402,7 @@ li::before {
   place-items: center;
   width: 38px;
   height: 38px;
-  background-color: var(--surface-2);
+  background-color: var(--accent-soft);    /* the accent as a tint */
   border: var(--hairline) solid var(--border);
   border-radius: var(--radius-tile);
 }
@@ -435,7 +438,8 @@ li::before {
 }
 
 /* --------------------------------------------------------------------------
-   Micro-labels — the one 12px uppercase tracked role, in every carrier
+   Micro-labels — the one 12px sentence-case role, in every carrier.
+   The size stays 12px in the light set; only the case and the tracking moved.
    -------------------------------------------------------------------------- */
 
 h2,
@@ -450,8 +454,8 @@ h2,
   font-size: var(--step-label);
   font-weight: var(--font-weight-strong);
   line-height: 1.4;
-  text-transform: uppercase;
-  letter-spacing: var(--track-label);      /* 0.08em — 0.96px at 12px */
+  text-transform: none;
+  letter-spacing: var(--track-label);      /* normal in the light set (D-06) */
   color: var(--text-3);
 }
 
@@ -478,7 +482,7 @@ h2 { margin: 0 0 14px; }
 footer {
   margin-top: 44px;
   padding-top: 22px;
-  border-top: var(--hairline) solid var(--border);
+  border-top: var(--hairline) solid var(--rule-footer);
   color: var(--text-3);
   font-size: var(--step-meta);
   line-height: 1.5;

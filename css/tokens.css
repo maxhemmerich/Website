@@ -2,41 +2,59 @@
    tokens.css — the ONE source of every colour, size, radius and font face on
    this site. Nothing else lives here: no reset, no layout, no component.
 
-   Source of record: plan §10.2 TOKENS
-   (D:/Mirror/plans/maxhemmerich-com-v1.md), the dark one-theme contract that
-   supersedes §3. Every consumer (css/site.css, css/print.css) reads these by
-   var(--token); a literal hex outside this file is a failing check.
-   Breakpoints the plan states beside a value live in the consumer, not here:
-   site.css applies --step-body at >=1024px and --step-body-compact at <=640px.
+   Source of record: plan §11.2.1 (D:/Website/plans/maxhemmerich-com-v1.md),
+   the LIGHT contract that supersedes §10.2: a white page with exactly one
+   saturated accent (blue #1B6FF5). Every consumer (css/site.css,
+   css/print.css) reads these by var(--token); a literal hex outside this file
+   is a failing check. Breakpoints the plan states beside a value live in the
+   consumer, not here: site.css applies --step-body at >=1024px and
+   --step-body-compact at <=640px.
    ========================================================================== */
 
 :root {
-  /* §10.1 rule 1 — one surface system. Page is --bg; a card is one step up
-     (--surface-1); raised chrome (icon tile, pill chrome) two steps up.
-     No light surface anywhere. */
-  --bg: #0a0a0a;
-  --surface-1: #1b1b1f;
-  --surface-2: #242428;
-  --surface-3: #2f2f2f;
+  /* §11.2.1 — one surface system, on a white page. Page is --bg (white); a
+     card is --surface-1, also white — the light language separates cards with
+     --shadow-card, not with a fill step; --surface-2 is the second raised
+     fill; --surface-3 is the inverted near-black chrome (the pill nav and the
+     filled CTA). */
+  --bg: #FFFFFF;
+  --surface-1: #FFFFFF;
+  --surface-2: #FFFFFF;
+  --surface-3: #1A1A1A;
 
-  /* §10.1 rule 2 — elevation is a fill step plus a 1px hairline, never a
-     shadow. --border is the hairline colour on every .card. */
-  --border: rgba(255,255,255,.08);
+  /* §11.2.1 — on white, elevation is carried by --shadow-card (a soft ambient
+     shadow). --hairline is the 1px border width; --border is its colour on the
+     chips and on the ghost CTA. The two horizontal rules are --rule-row (row
+     separators) and --rule-footer (the footer top rule); --border-ghost is the
+     ghost CTA outline; --marker is the li::before bullet colour.
+     Literal values here are the only place a raw colour is allowed. */
+  --border: rgba(0,0,0,.09);
   --hairline: 1px;
+  --border-ghost: rgba(0,0,0,.12);
+  --rule-row: rgba(0,0,0,.06);
+  --rule-footer: rgba(0,0,0,.08);
+  --marker: #C9CDD3;
+  --shadow-card: 0 6px 24px rgba(30,25,20,.07);
 
-  /* text ladder — --text-1 for h1.name / headings / .v, --text-2 for body
-     copy (p.role, card paragraphs), --text-3 for micro-labels (.label, .k,
-     .folio, .range). text-3 is #8f8f8f, not the brief's #606060: §10.2. */
-  --text-1: #ffffff;
-  --text-2: #a3a3a3;
-  --text-3: #8f8f8f;
+  /* text ladder — --text-1 for h1.name / headings / .v (near-black on white),
+     --text-2 for body copy (p.role, card paragraphs), --text-3 for the
+     micro-labels (.label, .k, .folio, .range). --text-3 is the lightest of the
+     three greys. */
+  --text-1: #212121;
+  --text-2: #5A5A5A;
+  /* v0.3 fix round 1, 2026-09-29: the mock's third rung #8A8A8A measures 3.45:1 against the white page —
+     under W-57's >=4.5:1 for a micro-label. W-57's threshold is the obligation and it is not negotiable, so
+     the TOKEN moved instead: #6E6E6E measures 5.10:1 and stays a visible step lighter than --text-2 (#5A5A5A,
+     6.79:1). Debt to the mock's exact hex, named in the receipt. */
+  --text-3: #6E6E6E;
 
-  /* §10.1 rule 3 — ONE accent. --accent is the only saturated hue on the
-     site (links, rules, .glow core); --accent-2 tints icons and the glow;
-     --accent-soft is the mint alpha subtint. The CTA is white, not mint. */
-  --accent: #56bfa2;
-  --accent-2: #b3ddbf;
-  --accent-soft: rgba(86,191,162,.12);
+  /* §11.2.1 — ONE accent. --accent is the only saturated hue on the site
+     (links, rules, the active chip); --accent-2 is the same blue where an icon
+     or a secondary tint needs it; --accent-soft is the blue alpha subtint
+     (.tile fill). */
+  --accent: #1B6FF5;
+  --accent-2: #1B6FF5;
+  --accent-soft: rgba(27,111,245,.10);
 
   /* geometry — .card is --radius-card (D-03: >=8 of them), .tile and
      img.portrait are --radius-tile, .chip and a.cta are --radius-pill. */
@@ -50,16 +68,17 @@
   --gutter: 22px;
   --gutter-phone: 18px;
 
-  /* §10.1 rule 4 — sans only, self-hosted. Consumed as font-family by
-     body and by every element; the @font-face blocks below are the source. */
+  /* §11.2.1 — sans only, self-hosted. Consumed as font-family by body and by
+     every element; the @font-face blocks below are the source. */
   --font-sans: "Urbanist", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-weight-body: 400;
   --font-weight-strong: 600;
 
   /* type scale — --step-label: h2 section headings, .stat .label, .k,
-     .folio, .chip. --step-meta: .range and secondary meta. --step-h3: card
-     titles. --step-h2: larger sub-heads. --step-figure: .stat .figure.
-     --step-hero: h1.name (clamp). */
+     .folio, .chip, and the micro-labels (size unchanged by the light
+     contract: only their case and tracking move). --step-meta: .range and
+     secondary meta. --step-h3: card titles. --step-h2: larger sub-heads.
+     --step-figure: .stat .figure. --step-hero: h1.name (clamp). */
   --step-label: 12px;
   --step-meta: 14px;
   --step-h3: 17px;
@@ -69,10 +88,11 @@
   --step-body: 17px;              /* site.css applies at >=1024px */
   --step-body-compact: 16px;      /* site.css applies at <=640px; W-75 needs >=16px in the masthead at 390 */
 
-  /* rhythm — --leading-body: body copy. --track-label: uppercase
-     micro-labels. --measure: prose line cap (W-31, 78ch). */
+  /* rhythm — --leading-body: body copy. --track-label: the micro-labels are
+     sentence-case on the light page, so their tracking is neutral (D-06).
+     --measure: prose line cap (W-31, 78ch). */
   --leading-body: 1.6;
-  --track-label: 0.08em;
+  --track-label: normal;
   --measure: 78ch;
 
   /* §10.1 rule 6 — mobile-first. --tap-min: every interactive control at
@@ -90,9 +110,10 @@
 
 /* ==========================================================================
    Urbanist — self-hosted, same-origin, RELATIVE urls under assets/fonts/.
-   §10.1 rule 4: no serif, no monospace, no font from any other host.
-   One variable font per subset: the Google Fonts v18 CSS declares weight 400
-   and 600 against the same two files, so four blocks point at two files.
+   The light contract re-points colours only: the font faces, their weights and
+   their unicode ranges are unchanged, and no face is loaded from any other
+   host. One variable font per subset: the Google Fonts v18 CSS declares weight
+   400 and 600 against the same two files, so four blocks point at two files.
    Weights are the plain numbers — never a `400 600` range.
    ========================================================================== */
 

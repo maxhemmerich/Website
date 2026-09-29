@@ -11,10 +11,13 @@
        card's ground layer as assets/og-base.jpg, and once whole, which writes the
        finished card as assets/og.png.
        Every colour, size and face below is read from css/tokens.css through var(),
-       so the card cannot drift away from the site theme. The motif is CSS only:
-       one bounded radial mint glow and 1px hairlines. No shadow, no illustration,
-       no drawn element. Urbanist is self-hosted under assets/fonts/ and wired by
-       tokens.css, so the card asks no other host for anything.
+       so the card cannot drift away from the site theme. The card is the LIGHT
+       surface: the canvas is the white page (--bg), the name is --text-1, the role
+       is --text-2, the label is --text-3 and the one accent is the single blue
+       --accent (#1B6FF5). The motif is CSS only: one bounded radial glow in
+       --accent-soft and 1px hairlines. No illustration, no drawn element.
+       Urbanist is self-hosted under assets/fonts/ and wired by tokens.css, so the
+       card asks no other host for anything.
        The role line is the approved line, verbatim. The name and the role render
        exactly as authored: no text-transform is applied to either. -->
   <link rel="stylesheet" href="css/tokens.css">
@@ -22,7 +25,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { background-color: var(--bg); font-family: var(--font-sans); }
 
-    /* the 1200x630 stage — the exact card canvas, one dark surface */
+    /* the 1200x630 stage — the exact card canvas, the one light surface */
     .card {
       position: relative;
       width: 1200px;
@@ -31,8 +34,8 @@
       background-color: var(--bg);
     }
 
-    /* bounded decoration: a mint glow behind the copy column. Its box is inside the
-       canvas and .card clips it, so it never becomes a wash across the card. */
+    /* bounded decoration: a soft blue glow behind the copy column. Its box is inside
+       the canvas and .card clips it, so it never becomes a wash across the card. */
     .glow {
       position: absolute;
       left: 0;
