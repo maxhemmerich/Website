@@ -59,6 +59,11 @@
   --accent-2: #1B6FF5;
   --accent-soft: rgba(27,111,245,.10);
   --accent-strong: #0B55CC;
+  /* ADDED 2026-09-30 — the accent AS TEXT. Same value as --accent on the white
+     page; it exists so the dark scheme can raise it without touching the CTA
+     fill (white on --accent is 4.53:1 and must stay there). Consumed by the
+     three rules that paint accent text: .card a, .row2 .v a, .badge/.tag. */
+  --accent-ink: #1B6FF5;
   /* ADDED 2026-09-29, Max's call — the fold header's control face: the same
      blue at 7%, one step lighter than --accent-soft, so a header row reads as
      the face of a button rather than as a form field. Consumed by
@@ -179,4 +184,52 @@
   font-display: swap;
   src: url('../assets/fonts/urbanist-latin-ext.woff2') format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ==========================================================================
+   THE DARK SCHEME (Max, 2026-09-30: "can it match the system in terms of
+   light/dark mode?"). The page follows the OS preference. This is the SAME
+   design, not a second one: the shapes, the sizes, the radii, the one accent
+   and the whole layout are untouched — only the colour tokens swap, so every
+   consumer of var(--token) follows for free and no rule in site.css is
+   duplicated.
+
+   What moves and why:
+     * the surface system inverts (page -> near-black, cards one step up);
+       --surface-3 (the CTA's dark chrome) becomes near-WHITE;
+     * the text ladder inverts to the same three rungs;
+     * --shadow-card goes darker, because a light shadow does not read on a
+       dark page;
+     * --accent does NOT move: white on it is 4.53:1 and it is the CTA's fill.
+       Accent TEXT moves to --accent-ink (#6FA8FF, 6.27:1 on --bg) because
+       #1B6FF5 as text on a dark page is 4.28:1 — under W-57's floor.
+     * the tints rise slightly so the fold wash and the icon tiles stay visible.
+   The print sheet is unaffected: css/print.css forces white paper with
+   !important, so a dark-mode visitor still prints a light resume.
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --bg: #0E1116;
+    --surface-1: #161A21;
+    --surface-2: #1D222B;
+    --surface-3: #F2F4F7;
+
+    --border: rgba(255,255,255,.10);
+    --border-ghost: rgba(255,255,255,.18);
+    --rule-row: rgba(255,255,255,.08);
+    --rule-footer: rgba(255,255,255,.10);
+    --marker: #4A5160;
+    --shadow-card: 0 6px 24px rgba(0,0,0,.45);
+
+    --text-1: #F2F4F7;
+    --text-2: #A9B0BC;
+    --text-3: #8B93A1;
+
+    --accent-ink: #6FA8FF;
+    --accent-soft: rgba(27,111,245,.18);
+    --accent-wash: rgba(27,111,245,.16);
+  }
 }
