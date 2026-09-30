@@ -384,6 +384,7 @@ header .chip {
 .fold.entry { margin: 0; }
 
 .fold.entry > summary {
+  flex-wrap: wrap;                         /* the where/when drops to its own line when it must */
   min-height: 44px;
   padding: 10px 16px;
   background-image: none;
@@ -391,6 +392,23 @@ header .chip {
 }
 
 .fold.entry > summary h3 { margin: 0; }
+
+/* The where/when line, so a CLOSED entry still says which employer and which
+   years (Max, 2026-09-30: "looks kind of empty collapsed"). It is a second line
+   in the control, not a second heading: --step-meta, body weight, the muted
+   third ink, and the row's own 12px gap when it wraps to its own line at phone
+   width. The body keeps the full linked employer line; on paper this one is
+   hidden (print.css), so the sheet still says it once. */
+.fold.entry > summary::after { order: 2; }   /* the chevron stays on the title line */
+
+.fold.entry > summary .meta {
+  order: 3;                                /* ...and the where/when takes the line below */
+  flex-basis: 100%;
+  margin: 0;
+  font-size: var(--step-meta);
+  font-weight: var(--font-weight-body);
+  color: var(--text-3);
+}
 
 /* --------------------------------------------------------------------------
    Cards — one white surface, NO border, one radius. Elevation is the shadow.

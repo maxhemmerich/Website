@@ -291,35 +291,41 @@
     page-break-inside: avoid;
   }
 
+  /* ----------------------------------------------------- 6b. entry rows
+     The entry fold carries the employer and dates in its summary for the closed
+     row on screen. Every entry is forced open on paper, so the sheet would print
+     that line twice — the summary's copy goes, the body's linked one stays. */
+  .fold.entry > summary .meta { display: none !important; }
+
   /* ----------------------------------------------------- 7. project cards
-     Eight cards each cost a folio, a title, a line of description and a
-     footer row on screen. On paper the same words run as one entry per
-     project: title, description. Two of the screen's own labels are interface,
-     not resume: the "Project NN" folio numbers an order the reader is already
-     looking at, and the chip is either a live link (already dropped with the
-     anchor below) or the words "No public link" — a fact about the web page,
-     not about the work. Both leave the sheet (Max's feedback pass,
-     2026-09-30: the folio and the chip were printing, and a resume that says
-     "Project 04 ... No public link" eight times reads as an unformatted
-     export). The title, the description and the entry's order all stay.
-     They cannot be dropped by [data-print="omit"]: `#projects .folio` and
-     `#projects .chip` carry an id and out-specify that attribute selector,
-     so the rule lives here, where the inline treatment used to be. */
+     Each card costs a title, a line of description and a footer row on screen.
+     On paper the same words run as one entry per project: title, description.
+     The chip is interface, not resume: it is either a live link (already
+     dropped with the anchor below) or the words "No public link" — a fact about
+     the web page, not about the work — so it leaves the sheet (Max's feedback
+     pass, 2026-09-30: the chip was printing, and a resume in which every
+     project ends "No public link" reads as an unformatted export). The title,
+     the description and the entry's order all stay. It cannot be dropped by
+     [data-print="omit"]: `#projects .chip` carries an id and out-specifies that
+     attribute selector, so the rule lives here, where the inline treatment used
+     to be.
+     UPDATED 2026-09-30 (Max: "remove project 1, 2, 3… from project headings"):
+     the "Project NN" folio left the markup — on screen and on paper alike — so
+     its two selectors left with it. There is nothing left for them to hide. */
   #projects .card,
   #projects .proj,
   #projects .project-card {
     margin: 0 0 2pt !important;
   }
 
-  #projects .folio,
   #projects .chip {
     display: none !important;
   }
 
   #projects .card h3,
   #projects .proj h3,
-  #projects .card p:not(.folio),
-  #projects .proj p:not(.folio),
+  #projects .card p,
+  #projects .proj p,
   #projects .card .row,
   #projects .proj .row {
     display: inline !important;
