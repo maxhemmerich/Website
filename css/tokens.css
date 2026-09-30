@@ -59,6 +59,11 @@
   --accent-2: #1B6FF5;
   --accent-soft: rgba(27,111,245,.10);
   --accent-strong: #0B55CC;
+  /* ADDED 2026-09-29, Max's call — the fold header's control face: the same
+     blue at 7%, one step lighter than --accent-soft, so a header row reads as
+     the face of a button rather than as a form field. Consumed by
+     .fold > summary only. */
+  --accent-wash: rgba(27,111,245,.07);
 
   /* geometry — .card is --radius-card (D-03: >=8 of them), .tile and
      img.portrait are --radius-tile, .chip and a.cta are --radius-pill. */
@@ -100,10 +105,16 @@
   --measure: 78ch;
 
   /* §10.1 rule 6 — mobile-first. --tap-min: every interactive control at
-     390. --motion: no animation ships. --external-requests: 0 is the
-     allowlist budget W-05 enforces. */
+     390. --external-requests: 0 is the
+     allowlist budget W-05 enforces.
+     --motion CHANGED 2026-09-29 by Max's call: it was `none` — no animation
+     shipped — because a still page was the direction he picked. He then asked
+     for the fold headers to be a real button whose section drops when clicked,
+     so the fold's own box now animates open in 220ms. It is the only motion on
+     the site, it animates nothing but that box, and prefers-reduced-motion
+     turns it off (css/site.css, the fold block). */
   --tap-min: 44px;
-  --motion: none;
+  --motion: 220ms;
   --external-requests: 0;
 
   /* §10.3 — the print omission convention: a selector, applied by

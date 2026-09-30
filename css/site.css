@@ -227,6 +227,12 @@ header .chip {
    The fold — every section is a <details>, and the summary IS the section head.
    The page reads as a site you browse, not a resume you scroll: About, Projects
    and Contact are open on load, the four resume-shaped sections are closed.
+
+   The header is a CONTROL, so it wears the site's control material — the same
+   outlined pill as .chip and a.cta.ghost — with the accent wash across its face
+   so it reads as a button you press and not as a form field. Max approved this
+   treatment on 2026-09-29. Nothing below is a new literal: the fill, the tint,
+   the border colour, the radius and the duration all come from css/tokens.css.
    -------------------------------------------------------------------------- */
 
 .fold { margin: 0; }
@@ -236,8 +242,12 @@ header .chip {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  min-height: var(--tap-min);              /* the toggle is a tap target at 390 */
-  padding: 6px 0;
+  min-height: 58px;                        /* the toggle is a tap target at 390 */
+  padding: 14px 18px;
+  background-color: var(--surface-2);      /* white pill chrome on a white page */
+  background-image: linear-gradient(180deg, var(--accent-wash), transparent 72%);
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius-pill);
   cursor: pointer;
   list-style: none;
 }
@@ -247,23 +257,63 @@ header .chip {
 .fold > summary::marker { content: ""; }
 
 /* H2 is the label. It is the only heading the section gets — never a
-   heading plus a repeated label. */
-.fold > summary h2 { margin: 0; }
+   heading plus a repeated label. On a control face the label is full-strength
+   text, not a muted whisper: it is what the reader aims at. Its size and case
+   are pinned by D-06 — 12px, sentence case — and stay exactly that. */
+.fold > summary h2 {
+  margin: 0;
+  color: var(--text-1);
+  font-weight: var(--font-weight-strong);
+}
 
-/* The chevron: two accent borders, rotated. No motion ships (--motion: none),
-   so the open state is a static rotation, not a transition. */
+/* The chevron: two accent borders, rotated. */
 .fold > summary::after {
   content: "";
   flex: 0 0 auto;
-  width: 9px;
-  height: 9px;
-  margin-right: 5px;
+  width: 10px;
+  height: 10px;
+  margin-right: 6px;
   border-right: 2px solid var(--accent);
   border-bottom: 2px solid var(--accent);
   transform: rotate(45deg);
 }
 
+/* Open and hover are the same signal, and only the accent carries it: the border
+   colour and the chevron. THE LABEL DOES NOT MOVE. Two measured reasons, both
+   found by the run after the first cut of this rule:
+     * --accent as label text on the washed face measures 4.29:1 — under W-57's
+       >=4.5:1 for a micro-label;
+     * --accent-strong as label text is a foreign saturated colour: D-05 allows
+       only the accent itself (or a neutral), and this token sits 41/255 off it
+       in the blue channel.
+   So the label keeps its full-strength neutral ink in every state, and no second
+   blue enters the page. */
+.fold > summary:hover { border-color: var(--accent); }
+.fold[open] > summary { border-color: var(--accent); }
 .fold[open] > summary::after { transform: rotate(-135deg); }
+
+/* The drop (Max, 2026-09-29). A <details> reveals its content by toggling
+   `content-visibility` on its ::details-content box; that box is what animates,
+   and `interpolate-size: allow-keywords` is what lets `block-size: auto` be a
+   transition target at all.
+   DELIBERATELY NOT TOUCHED: content-visibility. Overriding it — or transitioning
+   it — changes what text a reader (and a probe) can extract from a closed fold:
+   the first cut of this rule did both and cost W-33 and W-77 on the next run.
+   The engine's own instant reveal stays; only the box height moves. */
+:root { interpolate-size: allow-keywords; }
+
+.fold::details-content {
+  block-size: 0;
+  overflow: clip;
+  transition: block-size var(--motion) ease-out;
+}
+
+.fold[open]::details-content { block-size: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  :root { interpolate-size: initial; }
+  .fold::details-content { transition: none; }
+}
 
 .fold-body { padding-top: 12px; }
 

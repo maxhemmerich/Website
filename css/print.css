@@ -82,10 +82,16 @@
     margin: 0 0 3pt !important;
   }
 
+  /* The header is a pill on screen (css/site.css, the fold block); paper has no
+     button chrome, so the outline and the radius go with it. The fill and the
+     accent wash are already gone — the sweep in rule 4 clears every background
+     inside .wrap. Nothing else about the summary changes. */
   details > summary {
     display: block !important;
     min-height: 0 !important;
     padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
     list-style: none !important;
     cursor: auto !important;
   }
