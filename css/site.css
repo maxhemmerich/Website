@@ -191,6 +191,31 @@ header .chip {
   color: var(--bg);
 }
 
+/* The availability stamp (Max, 2026-09-30). Exactly one element on the site
+   wears it: the masthead's "Open to work" seal. It is built from the site's own
+   control material — the pill radius, the hairline control border, the accent
+   as a tint (--accent-soft, the same fill .tile uses) — and differs from a chip
+   by two things only: the border is the accent itself, and the element sits on
+   a slight tilt, so it reads as a stamp pressed onto the page rather than as a
+   fourth filter chip. The ink stays full-strength neutral (--text-1): accent
+   text on a tinted face is under W-57's 4.5:1 floor — the same reason the fold
+   label never goes blue. */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  padding: 10px 18px;
+  background-color: var(--accent-soft);
+  border: var(--hairline) solid var(--accent);
+  border-radius: var(--radius-pill);
+  color: var(--text-1);
+  font-size: var(--step-body-compact);
+  font-weight: var(--font-weight-strong);
+  letter-spacing: .04em;
+  margin: 3px 6px;   /* a tilted box is wider than its layout box; this keeps it inside the gutter (W-75) */
+  transform: rotate(-3deg);
+}
+
 .cta {
   display: inline-flex;
   align-items: center;
@@ -225,8 +250,10 @@ header .chip {
 
 /* --------------------------------------------------------------------------
    The fold — every section is a <details>, and the summary IS the section head.
-   The page reads as a site you browse, not a resume you scroll: About, Projects
-   and Contact are open on load, the four resume-shaped sections are closed.
+   The page reads as a site you browse, not a resume you scroll: About and
+   Contact are open on load, the five resume-shaped sections are closed.
+   (CHANGED 2026-09-30, Max's call: Projects used to open on load too — eight
+   expanded cards made the page long, so it now starts closed like the rest.)
 
    The header is a CONTROL, so it wears the site's control material — the same
    outlined pill as .chip and a.cta.ghost — with the accent wash across its face
@@ -591,6 +618,41 @@ footer {
   }
   .row2 .k { min-width: 96px; }
   .row2 .v { font-size: var(--step-body-compact); }
+
+  /* THE PROJECT TILES (Max, 2026-09-30). Eight stacked cards made the section
+     long; the project cards lay out two-up from 640px instead, which halves the
+     section's height without touching a card's internals — every tile keeps its
+     folio, title, one line of what it is, and the link + chip footer row D-09
+     asserts. The tiles stretch to a shared row height so the grid reads as a
+     grid rather than eight floating boxes, and each footer row is pushed to the
+     bottom of its tile so the links line up across a row. */
+  #projects .fold-body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  #projects .card,
+  #projects .proj,
+  #projects .project-card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+  #projects .proj .row { margin-top: auto; }
+
+  /* The portrait sits BESIDE the About copy from 640px up (Max, 2026-09-30): it
+     floats into the text, so the photograph and the opening paragraph share the
+     top of the section. Below 640px it stays the stacked block it was and the
+     phone column is untouched. No DOM change — the float is the whole trick. */
+  #about .portrait {
+    float: left;
+    margin: 4px 22px 10px 0;
+  }
+  #about .fold-body::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
 }
 
 /* --------------------------------------------------------------------------
