@@ -624,12 +624,32 @@ footer {
     min-width: 0;
   }
 
+  /* One top edge for both zones (Max, 2026-09-29). The rail is sticky at the
+     same offset the wrap pads by, so at rest the card's top edge and the top of
+     the content column sit on the same line — before this the sticky offset
+     dropped the rail 32px below a content column that started flush at the top
+     of the window. */
+  .wrap { padding-top: 40px; }
+
+  /* THE RAIL IS A CARD (Max's call, 2026-09-29 — plan §11.9). The rail wears
+     the site's own card material — white surface, --shadow-card, --radius-card,
+     no border — so the 20px radius here obligates exactly what D-03 obligates
+     of every card. --accent-wash across the face is the same tint the fold
+     headers already carry, and it retires the radial bloom at this width only:
+     below 1024px the hero is still a band and the glow still paints. */
   header,
   .masthead {
     position: sticky;
-    top: 32px;
-    padding: 52px 0 0;
+    top: 40px;
+    padding: 26px 24px 22px;
+    background-color: var(--surface-1);
+    background-image: linear-gradient(180deg, var(--accent-wash), transparent 62%);
+    box-shadow: var(--shadow-card);
+    border-radius: var(--radius-card);
+    overflow: hidden;              /* the wash can never paint outside the card */
   }
+
+  .glow { display: none; }
 
   /* The rail sets the measure for the role line, not the 46ch prose cap; its
      size is unchanged. */
@@ -638,7 +658,34 @@ footer {
     font-size: var(--step-h3);
   }
 
-  .glow { height: 340px; }
+  /* The three facts become a ruled list in the rail, not three more pills on a
+     card face — pill chrome there reads as three more buttons, and the contact
+     panel already owns this material (--rule-row hairlines). Below 1024px they
+     are the shipped pills, untouched. */
+  .chips { display: block; margin: 18px 0 22px; }
+
+  .masthead .chip,
+  header .chip {
+    display: flex;
+    width: 100%;
+    min-height: 0;
+    padding: 9px 2px;
+    background-color: transparent;
+    border: 0;
+    border-bottom: var(--hairline) solid var(--rule-row);
+    border-radius: 0;
+    color: var(--text-2);
+    font-size: var(--step-body-compact);
+    font-weight: var(--font-weight-body);
+  }
+
+  .chips > .chip:last-child { border-bottom: 0; }
+
+  /* The two actions are the rail's footer: stacked, full width, the filled pill
+     first. */
+  .masthead-actions { display: grid; gap: 10px; margin-top: 4px; }
+
+  .masthead-actions .cta { width: 100%; margin: 0; }
 
   /* The closing block belongs to the page, not to either zone. */
   footer { grid-column: 1 / -1; }
