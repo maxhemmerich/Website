@@ -219,7 +219,7 @@
 
     --border: rgba(255,255,255,.10);
     --border-ghost: rgba(255,255,255,.18);
-    --rule-row: rgba(255,255,255,.08);
+    --rule-row: rgba(255,255,255,.09);   /* NOT .08: that is a retired dark-build value (D-12) */
     --rule-footer: rgba(255,255,255,.10);
     --marker: #4A5160;
     --shadow-card: 0 6px 24px rgba(0,0,0,.45);

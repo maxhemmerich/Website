@@ -216,10 +216,13 @@ header .chip {
   padding: 6px 12px;
   background-color: transparent;
   border: 2px solid var(--text-1);
-  box-shadow: inset 0 0 0 1px var(--text-1);   /* the second rule of a real stamp */
+  outline: 1px solid var(--text-1);   /* the second rule of a real stamp — an OUTLINE, not an
+                                         inset shadow: D-02 licenses --shadow-card as the only
+                                         elevation on the site and forbids every inset */
+  outline-offset: -5px;
   border-radius: 4px;
   color: var(--text-1);
-  font-size: var(--step-label);
+  font-size: var(--step-body-compact);   /* W-75: every masthead text element is >=16px at 390 */
   font-weight: var(--font-weight-strong);
   line-height: 1.2;
   letter-spacing: .14em;
