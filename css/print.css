@@ -147,15 +147,27 @@
 
   /* ------------------------------------------------- 4. surfaces flatten
      A card is a fill step and a hairline on screen; on paper it is neither.
-     Elevation is removed by removing the surface, never by a shadow.
-     The sweep below is the belt to the braces of the component rule: the
-     theme paints fills on chips, tiles and panels, and a generator that
-     prints backgrounds (page.pdf({ printBackground: true })) must still
-     produce white paper. Only the list dot below re-declares a fill, in ink. */
+     Elevation is removed by removing the surface AND the shadow that carried
+     it — never by half of the pair. The sweep below is the belt to the braces
+     of the component rule: the theme paints fills on chips, tiles and panels,
+     and a generator that prints backgrounds (page.pdf({ printBackground: true }))
+     must still produce white paper. Only the list dot below re-declares a fill,
+     in ink.
+
+     2026-09-30 (Max's feedback pass — "the resume pdf looks unformatted"): the
+     light redesign moved elevation onto --shadow-card, and this sheet never
+     cleared it. A 24px blur is not vector-expressible, so Chromium/Skia
+     rasterised every shadowed region into an uncompressed image XObject: the
+     committed resume.pdf carried 18 of them (420,776 bytes, wrapped in
+     /Subtype /Image with no /Filter), and they printed as soft grey bands
+     across the ruled card rows. W-85's last check ("resume.pdf ... embeds no
+     raster image") was red for exactly this and had never been green since the
+     light build. `box-shadow: none` is what makes the sheet white paper. */
   .wrap,
   .wrap * {
     background-color: transparent !important;
     background-image: none !important;
+    box-shadow: none !important;
   }
 
   .card,
@@ -165,6 +177,7 @@
   .contact {
     background-color: transparent !important;
     background-image: none !important;
+    box-shadow: none !important;
     border: 0 !important;
     border-radius: 0 !important;
     padding: 0 !important;
@@ -200,12 +213,22 @@
     text-decoration: none !important;
   }
 
+  /* Section heading on paper (Max's feedback pass, 2026-09-30: "the resume pdf
+     looks unformatted"). The 9pt tracked label stays — it is the sheet's own
+     scale and the type contract W-76 measures (that rule reads p and li, never
+     h2). What was missing is the section's edge: without one, seven headings at
+     9pt ran into the body and the page read as one grey column. So each section
+     head is followed by a rule, in the same one ink: the section boundary the
+     screen draws with a pill's border, the sheet draws with a line. Nothing
+     else about the scale moves. */
   h2 {
     font-size: 9pt !important;
     font-weight: var(--font-weight-strong) !important;
     line-height: 1.2 !important;
     letter-spacing: var(--track-label) !important;
-    margin: 0 0 2pt !important;
+    margin: 1pt 0 3pt !important;
+    padding-bottom: 1pt !important;
+    border-bottom: 0.5pt solid #000 !important;
     color: #000 !important;
   }
 
@@ -271,9 +294,17 @@
   /* ----------------------------------------------------- 7. project cards
      Eight cards each cost a folio, a title, a line of description and a
      footer row on screen. On paper the same words run as one entry per
-     project: folio, title, description, then the chip. The "Open folder"
-     link is an interface verb with nothing to act on once the sheet is
-     paper, so it is dropped; every fact stays. */
+     project: title, description. Two of the screen's own labels are interface,
+     not resume: the "Project NN" folio numbers an order the reader is already
+     looking at, and the chip is either a live link (already dropped with the
+     anchor below) or the words "No public link" — a fact about the web page,
+     not about the work. Both leave the sheet (Max's feedback pass,
+     2026-09-30: the folio and the chip were printing, and a resume that says
+     "Project 04 ... No public link" eight times reads as an unformatted
+     export). The title, the description and the entry's order all stay.
+     They cannot be dropped by [data-print="omit"]: `#projects .folio` and
+     `#projects .chip` carry an id and out-specify that attribute selector,
+     so the rule lives here, where the inline treatment used to be. */
   #projects .card,
   #projects .proj,
   #projects .project-card {
@@ -281,13 +312,16 @@
   }
 
   #projects .folio,
+  #projects .chip {
+    display: none !important;
+  }
+
   #projects .card h3,
   #projects .proj h3,
-  #projects .card p,
-  #projects .proj p,
+  #projects .card p:not(.folio),
+  #projects .proj p:not(.folio),
   #projects .card .row,
-  #projects .proj .row,
-  #projects .chip {
+  #projects .proj .row {
     display: inline !important;
     margin: 0 !important;
   }
@@ -296,13 +330,6 @@
   #projects .proj .row a,
   #projects .project-link {
     display: none !important;
-  }
-
-  #projects .chip {
-    padding: 0 !important;
-    border: 0 !important;
-    font-size: 8pt !important;
-    letter-spacing: 0 !important;
   }
 
   /* ------------------------------------------------------ 8. contact rows
@@ -379,5 +406,25 @@
   #credentials {
     break-inside: auto;
     page-break-inside: auto;
+  }
+
+  /* ------------------------------------------------------ 11. two last rules
+     (a) .nw — a date range is one unit. Rule 9 sets the education card's head
+     and meta inline so a school costs one line instead of two; the cost of that
+     saving is that a long line can break inside "May 2019 – Aug 2023" and start
+     a line with the dash, which is what the 2026-09-30 feedback pass saw in the
+     PDF. The span is a print-only class: on screen it matches nothing.
+     (b) the omission layer, restated LAST. Rule 2 publishes the convention, but
+     it sits above the component rules of equal specificity that re-assert
+     display — rule 8's `.row2`, which is why the Contact block's Resume row (a
+     link to the very sheet you are holding) needed [data-print="omit"] to be
+     said again down here. An id selector still out-specifies it; the two
+     id-carrying decorations are dropped in rule 7. */
+  .nw {
+    white-space: nowrap !important;
+  }
+
+  [data-print="omit"] {
+    display: none !important;
   }
 }

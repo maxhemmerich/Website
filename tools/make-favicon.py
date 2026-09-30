@@ -6,10 +6,20 @@ Writes BOTH files from one 16x16 pixel-art mark, so `favicon.ico` (repo root) an
 
     python tools/make-favicon.py
 
-The mark is the pixel "M" monogram in the rave palette (plan §3 tokens: --rave-void
-#07060f, --rave-magenta #ff2ea6, --rave-cyan #22e3ff), drawn on the same 16x16 grid
-as the desktop icon set (assets/icons/*.svg, owner A) and as flat <rect>/path pixel
-geometry — no gradients, no anti-aliasing, no external font.
+The mark is the pixel "M" monogram, drawn on the same 16x16 grid as the desktop
+icon set (assets/icons/*.svg) and as flat <rect>/path pixel geometry — no
+gradients, no anti-aliasing, no external font.
+
+RECOLOURED 2026-09-30 (Max: "update the tab icon"). The mark was magenta-on-void
+with a cyan drop shadow — the REJECTED dark build's rave palette (§3: --rave-void
+#07060f, --rave-magenta #ff2ea6, --rave-cyan #22e3ff), which is what a near-black
+square with pink pixels was doing in a tab next to a white, blue-accented page.
+It now carries the shipping light theme: a solid --accent tile with the M knocked
+out in white. Three candidates were rendered at 16/32/48px on both a light and a
+dark tab bar and Max picked this one; flat beat the drop-shadow variant because at
+16px the shadow muddies the counter of the M. SHADOW below is candidate B's
+--accent-strong offset, kept as one constant so the alternative is a one-line
+re-run rather than a re-draw.
 
 favicon.ico carries 16/32/48 px frames. PIL is required (available here).
 """
@@ -19,11 +29,11 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 
-VOID = (7, 6, 15)        # --rave-void     #07060f
-MAGENTA = (255, 46, 166)  # --rave-magenta  #ff2ea6
-CYAN = (34, 227, 255)     # --rave-cyan     #22e3ff
+TILE = (27, 111, 245)     # --accent         #1B6FF5
+MARK = (255, 255, 255)    # --bg             #FFFFFF, knocked out of the tile
+SHADOW = None             # candidate B: (11, 85, 204) --accent-strong
 
-# 16x16 pixel grid. 'M' = magenta stroke, '.' = empty (the void tile shows through).
+# 16x16 pixel grid. 'M' = the mark, '.' = the tile.
 GRID = [
     "................",
     "................",
@@ -45,18 +55,18 @@ GRID = [
 
 
 def pixmap():
-    """16x16 RGB pixmap: void tile, cyan drop-shadow offset (+1,+1), magenta M on top."""
+    """16x16 RGB pixmap: the tile, the optional offset shadow, the mark on top."""
     n = 16
-    px = [[VOID for _ in range(n)] for _ in range(n)]
+    px = [[TILE for _ in range(n)] for _ in range(n)]
+    if SHADOW:
+        for y, row in enumerate(GRID):
+            for x, c in enumerate(row):
+                if c == "M" and x + 1 < n and y + 1 < n:
+                    px[y + 1][x + 1] = SHADOW
     for y, row in enumerate(GRID):
         for x, c in enumerate(row):
             if c == "M":
-                if x + 1 < n and y + 1 < n:
-                    px[y + 1][x + 1] = CYAN
-    for y, row in enumerate(GRID):
-        for x, c in enumerate(row):
-            if c == "M":
-                px[y][x] = MAGENTA
+                px[y][x] = MARK
     return px
 
 
@@ -90,15 +100,17 @@ def svg_d(px, colour):
 
 def write_svg(path):
     px = pixmap()
-    svg = (
+    parts = [
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"'
-        ' role="img" aria-label="Max Hemmerich">\n'
-        '  <title>Max Hemmerich</title>\n'
-        '  <rect width="16" height="16" fill="%s"/>\n'
-        '  <path fill="%s" shape-rendering="crispEdges" d="%s"/>\n'
-        '  <path fill="%s" shape-rendering="crispEdges" d="%s"/>\n'
-        '</svg>\n' % (hexs(VOID), hexs(CYAN), svg_d(px, CYAN), hexs(MAGENTA), svg_d(px, MAGENTA))
-    )
+        ' role="img" aria-label="Max Hemmerich">',
+        '  <title>Max Hemmerich</title>',
+        '  <rect width="16" height="16" fill="%s"/>' % hexs(TILE),
+    ]
+    if SHADOW:
+        parts.append('  <path fill="%s" shape-rendering="crispEdges" d="%s"/>' % (hexs(SHADOW), svg_d(px, SHADOW)))
+    parts.append('  <path fill="%s" shape-rendering="crispEdges" d="%s"/>' % (hexs(MARK), svg_d(px, MARK)))
+    parts.append("</svg>")
+    svg = "\n".join(parts) + "\n"
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
         fh.write(svg)
     return len(svg.encode("utf-8"))

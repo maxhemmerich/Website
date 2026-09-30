@@ -365,6 +365,34 @@ header .chip {
 .fold-body > :last-child { margin-bottom: 0; }
 
 /* --------------------------------------------------------------------------
+   The entry fold — one nested <details class="fold entry"> per Experience
+   position (Max, 2026-09-30: "can each position in experience be its own
+   dropdown? default closed"). The section pill above is the pattern; the
+   entry's is denser and quieter, because it sits inside the section's own card
+   and a second 58px washed pill on one surface would read as a second section
+   head:
+     * 44px tap target (still a real control at 390) instead of 58;
+     * no accent wash. The wash is the section control's own signal; two washes
+       stacked on one card is a second visual theme, and this page gets one;
+     * the card radius, not the pill radius, so it reads as a row inside the
+       position's card and not as another section header;
+     * the label is the entry's own <h3>, sized by .card h3 at --step-h3. No
+       second, repeated title and no new type step.
+   Closed on load — index.html writes no `open` attribute on an entry, and the
+   only thing that opens one is a tap. Every value below is a token from
+   css/tokens.css; nothing new is introduced. */
+.fold.entry { margin: 0; }
+
+.fold.entry > summary {
+  min-height: 44px;
+  padding: 10px 16px;
+  background-image: none;
+  border-radius: var(--radius-card);
+}
+
+.fold.entry > summary h3 { margin: 0; }
+
+/* --------------------------------------------------------------------------
    Cards — one white surface, NO border, one radius. Elevation is the shadow.
    -------------------------------------------------------------------------- */
 

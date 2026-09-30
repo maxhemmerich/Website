@@ -73,7 +73,7 @@
         <span class="chip">4 yrs in regulated research</span>
       </div>
       <div class="masthead-actions">
-        <a class="cta" href="/resume.pdf" data-print="omit">Download resume (PDF)</a>
+        <a class="cta" href="/resume.pdf" target="_blank" rel="noopener" data-print="omit">Download resume (PDF)</a>
       </div>
     </header>
 
@@ -95,43 +95,49 @@
           <summary><h2>Experience</h2></summary>
           <div class="fold-body">
 
+            <!-- Each position is its own <details class="fold entry">, closed on load
+                 (Max, 2026-09-30): the section opens onto a list of roles, and the
+                 bullets belong to the row you open. The entry's own <h3> is the
+                 summary label — never a second, repeated title — and the
+                 .card wrapper stays, so the entry is still a card to every
+                 measurement that reads one. Paper has no folds: css/print.css
+                 forces every entry open, and tools/make-pdf.mjs sets `open` on
+                 every <details> before page.pdf() as it always has. -->
             <article class="card">
-              <h3>Research Analyst &amp; Study Lead</h3>
-              <div class="meta"><a href="https://www.camh.ca/" target="_blank" rel="noopener noreferrer">Centre for Addiction and Mental Health (CAMH)</a> · Aug 2024 – Sep 2026 · Toronto, ON</div>
-              <div class="meta">Programs: <a href="https://www.camh.ca/en/science-and-research/institutes-and-centres/centre-for-youth-bipolar-disorder" target="_blank" rel="noopener noreferrer">Centre for Youth Bipolar Disorder (CYBD)</a> · <a href="https://www.taycohort.ca/" target="_blank" rel="noopener noreferrer">Toronto Adolescent &amp; Youth (TAY) Cohort Study</a></div>
-              <ul>
-                <li>Built a Power Automate flow to scan a shared calendar and automatically surface research visits (3,000–4,000/year) with no staff assigned.</li>
-                <li>Automated EEG lab scheduling with a recurring Power Automate flow, replacing manual weekly availability-block creation for 4 technicians.</li>
-                <li>Built and independently shipped a multi-tab HTML recruitment dashboard for the VIBE study, enabling self-serve monitoring for leadership.</li>
-                <li>Maintained data quality across 3 concurrent study arms using REDCap and Excel in a regulated research environment.</li>
-                <li>Built Python- and Power Automate-supported ingestion and validation workflows for longitudinal datasets with 3,000–4,000 annual event records.</li>
-                <li>Conduct structured diagnostic interviews (KSADS, SCID) and contribute to consensus diagnoses with psychiatry teams.</li>
-                <li>Collect biosamples and perform retinal imaging to explore biomarkers related to brain health and mental illness.</li>
-                <li>Lead MRI and cognitive assessment visits and support EEG acquisition and quality assurance.</li>
-              </ul>
+              <details class="fold entry">
+                <summary><h3>Study Lead</h3></summary>
+                <div class="fold-body">
+                  <div class="meta"><a href="https://www.camh.ca/" target="_blank" rel="noopener noreferrer">Centre for Addiction and Mental Health (CAMH)</a> · Sep 2023 – Sep 2026 · Toronto, ON</div>
+                  <div class="meta">Programs: <a href="https://www.camh.ca/en/science-and-research/institutes-and-centres/centre-for-youth-bipolar-disorder" target="_blank" rel="noopener noreferrer">Centre for Youth Bipolar Disorder (CYBD)</a> · <a href="https://www.taycohort.ca/" target="_blank" rel="noopener noreferrer">Toronto Adolescent &amp; Youth (TAY) Cohort Study</a></div>
+                  <ul>
+                    <li>Built a Power Automate flow to scan a shared calendar and automatically surface research visits (3,000–4,000/year) with no staff assigned.</li>
+                    <li>Automated EEG lab scheduling with a recurring Power Automate flow, replacing manual weekly availability-block creation for 4 technicians.</li>
+                    <li>Built and independently shipped a multi-tab HTML recruitment dashboard for the VIBE study, enabling self-serve monitoring for leadership.</li>
+                    <li>Maintained data quality across 3 concurrent study arms using REDCap and Excel in a regulated research environment.</li>
+                    <li>Built Python- and Power Automate-supported ingestion and validation workflows for longitudinal datasets with 3,000–4,000 annual event records.</li>
+                    <li>Conduct structured diagnostic interviews (KSADS, SCID) and contribute to consensus diagnoses with psychiatry teams.</li>
+                    <li>Collect biosamples and perform retinal imaging to explore biomarkers related to brain health and mental illness.</li>
+                    <li>Lead MRI and cognitive assessment visits and support EEG acquisition and quality assurance.</li>
+                    <li>Managed REDCap databases across concurrent studies under GCP-aligned practices.</li>
+                    <li>Study lead for VIBE, a retinal-imaging study, coordinating across clinical, technical, and ethics stakeholders with responsibility for recruitment targets and regulatory reporting.</li>
+                  </ul>
+                </div>
+              </details>
             </article>
 
             <article class="card">
-              <h3>Research Assistant</h3>
-              <div class="meta"><a href="https://www.camh.ca/" target="_blank" rel="noopener noreferrer">Centre for Addiction and Mental Health (CAMH)</a> · Sep 2023 – Aug 2024 · Toronto, ON</div>
-              <ul>
-                <li>Facilitated MRI and cognitive visits while supporting protocol adherence and participant comfort.</li>
-                <li>Conducted biosample collection and processed clinical data for psychiatric research studies.</li>
-                <li>Built Python and Power Automate workflows to support scheduling and operational processes across a longitudinal cohort.</li>
-                <li>Developed dashboards tracking recruitment, visit completion, and study milestones for team reporting.</li>
-                <li>Managed REDCap databases across concurrent studies under GCP-aligned practices.</li>
-              </ul>
-            </article>
-
-            <article class="card">
-              <h3>Clinical Research Coordinator</h3>
-              <div class="meta"><a href="https://brainlab.med.ubc.ca/" target="_blank" rel="noopener noreferrer">UBC Brain Lab</a> · Oct 2022 – Sep 2023 · Vancouver, BC</div>
-              <ul>
-                <li>Coordinated CAPU RISE, a non-therapeutic clinical trial on cannabinoid effects on stress response, including scheduling, fMRI coordination, and biosample collection.</li>
-                <li>Supported data integrity through reconciliation and adverse-event management.</li>
-                <li>Assisted with the design and submission of a Health Canada clinical trial application.</li>
-                <li>Led study start-up work including REB documentation and site-readiness tasks.</li>
-              </ul>
+              <details class="fold entry">
+                <summary><h3>Clinical Research Coordinator</h3></summary>
+                <div class="fold-body">
+                  <div class="meta"><a href="https://brainlab.med.ubc.ca/" target="_blank" rel="noopener noreferrer">UBC Brain Lab</a> · Sep 2022 – Aug 2023 · Vancouver, BC</div>
+                  <ul>
+                    <li>Coordinated CAPU RISE, a non-therapeutic clinical trial on cannabinoid effects on stress response, including scheduling, fMRI coordination, and biosample collection.</li>
+                    <li>Supported data integrity through reconciliation and adverse-event management.</li>
+                    <li>Assisted with the design and submission of a Health Canada clinical trial application.</li>
+                    <li>Led study start-up work including REB documentation and site-readiness tasks.</li>
+                  </ul>
+                </div>
+              </details>
             </article>
 
           </div>
@@ -144,7 +150,6 @@
           <div class="fold-body">
 
             <article class="card proj">
-              <p class="folio">Project 01</p>
               <h3>Distill</h3>
               <p>AI reading interface that turns articles or pasted text into hierarchical, sectioned summaries. Next.js App Router and TypeScript, using the OpenAI API in a three-pane reading layout that preserves footnotes and references.</p>
               <div class="row">
@@ -154,7 +159,6 @@
             </article>
 
             <article class="card proj">
-              <p class="folio">Project 02</p>
               <h3>VIBE Dashboard</h3>
               <p>HTML/CSS recruitment-metrics dashboard for study leadership, enabling self-serve monitoring.</p>
               <div class="row">
@@ -164,7 +168,6 @@
             </article>
 
             <article class="card proj">
-              <p class="folio">Project 03</p>
               <h3>TAY Coverage Gap Flow</h3>
               <p>Power Automate flow that scans a shared Outlook calendar and surfaces research visits with no staff assigned.</p>
               <div class="row">
@@ -174,7 +177,6 @@
             </article>
 
             <article class="card proj">
-              <p class="folio">Project 04</p>
               <h3>EEG Scheduling Flow</h3>
               <p>Power Automate workflow that replaced manual weekly availability-block creation for 4 technicians.</p>
               <div class="row">
@@ -184,7 +186,6 @@
             </article>
 
             <article class="card proj">
-              <p class="folio">Project 05</p>
               <h3>Retinal OCT Privacy Utility</h3>
               <p>Utility to identify and remove patient-identifying fields from retinal OCT exports before research use.</p>
               <div class="row">
@@ -194,7 +195,6 @@
             </article>
 
             <article class="card proj">
-              <p class="folio">Project 06</p>
               <h3>Chalk</h3>
               <p>SMS habit tracker: text habits daily and track them on a live dashboard. Node.js + Express backend handling Twilio SMS webhooks and cron scheduling, with a React + Vite dashboard reading Supabase.</p>
               <div class="row">
@@ -204,7 +204,6 @@
             </article>
 
             <article class="card proj">
-              <p class="folio">Project 07</p>
               <h3>Mirror</h3>
               <p>An unlaunched interactive prototype. The build went from an approved product specification to a working interactive prototype verified by an automated harness — Next.js App Router, TypeScript and Tailwind, with Vercel as the deploy target.</p>
               <div class="row">
@@ -214,7 +213,6 @@
             </article>
 
             <article class="card proj">
-              <p class="folio">Project 08</p>
               <h3>BeatTheClose</h3>
               <p>NBA player-props analytics tool using Python for Kelly sizing, expected-value calculations, and CLV tracking.</p>
               <div class="row">
@@ -256,24 +254,27 @@
           <summary><h2>Education</h2></summary>
           <div class="fold-body">
 
+            <!-- .nw is a print-only span (css/print.css): the date range is one
+                 unit and must not break after its first year. On screen the class
+                 has no rule at all, so nothing about the page moves. -->
             <article class="card">
               <h3>Google Data Analytics Professional Certificate</h3>
-              <div class="meta">Google Career Certificates, via Coursera · Aug 2026 – Present · Self-paced, online</div>
+              <div class="meta">Google Career Certificates, via Coursera · <span class="nw">Aug 2026 – Present</span> · Self-paced, online</div>
             </article>
 
             <article class="card">
               <h3>University of British Columbia</h3>
-              <div class="meta">BSc, Behavioural Neuroscience · Distinction, GPA 3.9 / 87%, Dean's Honour List · May 2019 – Aug 2023</div>
+              <div class="meta">BSc, Behavioural Neuroscience · Distinction, GPA 3.9 / 87%, Dean's Honour List · <span class="nw">May 2019 – Aug 2023</span></div>
             </article>
 
             <article class="card">
               <h3>Simon Fraser University</h3>
-              <div class="meta">Studies in Economics · GPA 3.9, Dean's Honour List, Alumni Scholarship · Jan 2018 – Apr 2019</div>
+              <div class="meta">Studies in Economics · GPA 3.9, Dean's Honour Roll, Alumni Scholarship · <span class="nw">Jan 2018 – Apr 2019</span></div>
             </article>
 
             <article class="card">
               <h3>North Island College</h3>
-              <div class="meta">Studies in Mathematics · Jan 2015 – Dec 2015</div>
+              <div class="meta">Studies in Mathematics · <span class="nw">Jan 2015 – Dec 2015</span></div>
             </article>
 
           </div>
@@ -323,10 +324,10 @@
                 <span class="k">LinkedIn:</span>
                 <span class="v"><a href="https://linkedin.com/in/max-hemmerich/" target="_blank" rel="noopener noreferrer">linkedin.com/in/max-hemmerich/</a></span>
               </div>
-              <div class="row2">
+              <div class="row2" data-print="omit">
                 <span class="tile" data-print="omit"><img src="/assets/icons/about.svg" width="16" height="16" alt=""></span>
                 <span class="k">Resume:</span>
-                <span class="v"><a href="/resume.pdf">Download resume (PDF)</a></span>
+                <span class="v"><a href="/resume.pdf" target="_blank" rel="noopener">Download resume (PDF)</a></span>
               </div>
             </div>
           </div>
