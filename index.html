@@ -91,7 +91,14 @@
       </section>
 
       <section id="experience">
-        <details class="fold">
+        <!-- The seven section folds are one accordion (Max, 2026-09-30): the six
+             below share name="sections", so opening any one of them closes
+             whichever other is open. About and Contact carry no name — they are
+             the page's two ends and stay open. Attribute only, no script: the site
+             still ships zero JavaScript (plan §10.3, W-84). Paper has no folds, so
+             tools/make-pdf.mjs takes the name off before it force-opens every
+             <details> — inside one exclusive group only one can stay open. -->
+        <details class="fold" name="sections">
           <summary><h2>Experience</h2></summary>
           <div class="fold-body">
 
@@ -145,7 +152,7 @@
       </section>
 
       <section id="projects">
-        <details class="fold">
+        <details class="fold" name="sections">
           <summary><h2>Projects</h2></summary>
           <div class="fold-body">
 
@@ -226,7 +233,7 @@
       </section>
 
       <section id="publications">
-        <details class="fold">
+        <details class="fold" name="sections">
           <summary><h2>Publications</h2></summary>
           <div class="fold-body">
 
@@ -259,7 +266,7 @@
       </section>
 
       <section id="skills">
-        <details class="fold">
+        <details class="fold" name="sections">
           <summary><h2>Core Skills</h2></summary>
           <div class="fold-body">
             <div class="card">
@@ -283,7 +290,7 @@
       </section>
 
       <section id="education">
-        <details class="fold">
+        <details class="fold" name="sections">
           <summary><h2>Education</h2></summary>
           <div class="fold-body">
 
@@ -310,7 +317,7 @@
       </section>
 
       <section id="credentials">
-        <details class="fold">
+        <details class="fold" name="sections">
           <summary><h2>Credentials</h2></summary>
           <div class="fold-body">
             <div class="card">

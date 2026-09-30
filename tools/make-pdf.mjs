@@ -133,7 +133,13 @@ async function main() {
     // printed resume carries every word it carried before the fold existed. css/print.css
     // says the same thing where the engine honours ::details-content; this is the
     // generator of record and does not depend on that.
+    //
+    // The six middle section folds share name="sections" (the screen accordion,
+    // Max 2026-09-30): inside one exclusive group only one <details> can be open,
+    // so forcing `open` on all of them would silently leave six sections shut —
+    // the name comes off first, and the group is a screen affordance only.
     await page.evaluate(() => {
+      document.querySelectorAll('details[name]').forEach((d) => { d.removeAttribute('name'); });
       document.querySelectorAll('details:not([open])').forEach((d) => { d.open = true; });
     });
 
