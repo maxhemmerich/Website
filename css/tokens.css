@@ -13,27 +13,44 @@
 
 :root {
   /* §11.2.1 — one surface system, on a white page. Page is --bg (white); a
-     card is --surface-1, also white — the light language separates cards with
-     --shadow-card, not with a fill step; --surface-2 is the second raised
-     fill; --surface-3 is the inverted near-black chrome (the pill nav and the
-     filled CTA). */
+     card is --surface-1, also white, and it is separated from the page by
+     --border: ONE hairline, on every card, on screen and on paper alike.
+     --surface-2 is the second raised fill; --surface-3 is the inverted
+     near-black chrome (the pill nav and the filled CTA).
+
+     LAW CHANGE, 2026-09-30 (Max: "on light mode the shading doesn't blend in
+     to background"). The separation used to be --shadow-card, a 0 6px 24px 7%
+     shadow; on white that reads as a grey slab under a 78px row and a grey
+     halo around every card, and his screenshot of the Experience rows is what
+     caught it. A hairline was the ORIGINAL wording of this obligation (§11.2.1,
+     v0.3: "1px hairline on every card") — the shadow-only treatment was a
+     build-side substitution the v0.5 debt list still carried as unratified, so
+     this reverts to the ratified rule on his call. Two stances were rendered in
+     situ at 390 and 1280 and he picked this one; the tightened-shadow stance
+     still left a grey line hugging every row. D-01/D-02/D-03 were re-pointed to
+     the hairline in the same pass. The dark scheme follows: --border is
+     rgba(255,255,255,.10) there, and the dark card is a FILL STEP (--surface-1
+     above --bg), so it never depended on an elevation at all. */
   --bg: #FFFFFF;
   --surface-1: #FFFFFF;
   --surface-2: #FFFFFF;
   --surface-3: #1A1A1A;
 
-  /* §11.2.1 — on white, elevation is carried by --shadow-card (a soft ambient
-     shadow). --hairline is the 1px border width; --border is its colour on the
-     chips and on the ghost CTA. The two horizontal rules are --rule-row (row
-     separators) and --rule-footer (the footer top rule); --border-ghost is the
-     ghost CTA outline; --marker is the li::before bullet colour.
-     Literal values here are the only place a raw colour is allowed. */
+  /* §11.2.1 — --hairline is the 1px border width and --border is its colour: on
+     the cards, the chips and the ghost CTA. The two horizontal rules are
+     --rule-row (row separators) and --rule-footer (the footer top rule);
+     --border-ghost is the ghost CTA outline; --marker is the li::before bullet
+     colour. Literal values here are the only place a raw colour is allowed. */
   --border: rgba(0,0,0,.09);
   --hairline: 1px;
   --border-ghost: rgba(0,0,0,.12);
   --rule-row: rgba(0,0,0,.06);
   --rule-footer: rgba(0,0,0,.08);
   --marker: #C9CDD3;
+  /* RETIRED as a treatment 2026-09-30 (see the law-change note above): nothing
+     consumes this any more — a card takes --border. It stays DEFINED, with its
+     value, because LEDGER.json's token map still lists it by name and value, and
+     a build must not quietly drop a token a sealed record refers to. */
   --shadow-card: 0 6px 24px rgba(30,25,20,.07);
 
   /* text ladder — --text-1 for h1.name / headings / .v (near-black on white),
@@ -198,8 +215,10 @@
      * the surface system inverts (page -> near-black, cards one step up);
        --surface-3 (the CTA's dark chrome) becomes near-WHITE;
      * the text ladder inverts to the same three rungs;
-     * --shadow-card goes darker, because a light shadow does not read on a
-       dark page;
+     * --shadow-card is retired (see the light block) — it stays defined for the
+       sealed ledger's token map, and the card edge on dark is --border,
+       rgba(255,255,255,.10), which reads on a fill-stepped card with no
+       elevation at all;
      * --accent does NOT move: white on it is 4.53:1 and it is the CTA's fill.
        Accent TEXT moves to --accent-ink (#6FA8FF, 6.27:1 on --bg) because
        #1B6FF5 as text on a dark page is 4.28:1 — under W-57's floor.

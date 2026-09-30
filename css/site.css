@@ -6,7 +6,8 @@
    dark one-theme contract:
      1. one white surface system — page, cards and chips are all white; and
         exactly one filled control, the primary CTA, which carries the accent;
-     2. elevation is a soft ambient shadow (--shadow-card), not a hairline;
+     2. a card is separated by ONE hairline (--border); there is no elevation
+        token in use (2026-09-30 — see css/tokens.css);
      3. one accent (blue) as text, hairline, tint, the selected chip fill and
         the filled CTA;
      4. sans only, self-hosted, every text element including controls;
@@ -217,8 +218,8 @@ header .chip {
   background-color: transparent;
   border: 2px solid var(--text-1);
   outline: 1px solid var(--text-1);   /* the second rule of a real stamp — an OUTLINE, not an
-                                         inset shadow: D-02 licenses --shadow-card as the only
-                                         elevation on the site and forbids every inset */
+                                         inset shadow: D-02 forbids every shadow on the site,
+                                         insets included (2026-09-30 — cards take a hairline) */
   outline-offset: -5px;
   border-radius: 4px;
   color: var(--text-1);
@@ -411,7 +412,11 @@ header .chip {
 }
 
 /* --------------------------------------------------------------------------
-   Cards — one white surface, NO border, one radius. Elevation is the shadow.
+   Cards — one surface, ONE hairline, one radius (Max, 2026-09-30). On the
+   white page the card and the page are the same colour, so the hairline is the
+   whole separation: the ambient shadow this rule used to carry read as a grey
+   band under the short Experience rows and a grey halo around every card. On
+   dark the card is a fill step, so it never depended on either.
    -------------------------------------------------------------------------- */
 
 .card,
@@ -420,9 +425,15 @@ header .chip {
 .skill-box,
 .contact {
   background-color: var(--surface-1);      /* white, like the page */
-  box-shadow: var(--shadow-card);          /* the separation is the shadow */
+  border: var(--hairline) solid var(--border);   /* the separation is one hairline */
   border-radius: var(--radius-card);
 }
+
+/* The Experience entries: the row inside the wrapper is ALREADY a bordered pill
+   (the fold control is .fold.entry > summary), so the wrapper is not a surface —
+   a second hairline 20px outside the first reads as a double border. This is the
+   state the owner approved in the rendered stance, pixel for pixel. */
+#experience .card { border: 0; }
 
 .card,
 .proj,
@@ -757,9 +768,9 @@ footer {
   .wrap { padding-top: 40px; }
 
   /* THE RAIL IS A CARD (Max's call, 2026-09-29 — plan §11.9). The rail wears
-     the site's own card material — white surface, --shadow-card, --radius-card,
-     no border — so the 20px radius here obligates exactly what D-03 obligates
-     of every card. --accent-wash across the face is the same tint the fold
+     the site's own card material — white surface, --radius-card, and the same
+     one --border hairline every card wears (2026-09-30) — so the 20px radius
+     here obligates exactly what D-03 obligates of every card. --accent-wash across the face is the same tint the fold
      headers already carry, and it retires the radial bloom at this width only:
      below 1024px the hero is still a band and the glow still paints. */
   header,
@@ -769,7 +780,7 @@ footer {
     padding: 26px 24px 22px;
     background-color: var(--surface-1);
     background-image: linear-gradient(180deg, var(--accent-wash), transparent 62%);
-    box-shadow: var(--shadow-card);
+    border: var(--hairline) solid var(--border);
     border-radius: var(--radius-card);
     overflow: hidden;              /* the wash can never paint outside the card */
   }
