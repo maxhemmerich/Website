@@ -593,15 +593,55 @@ footer {
   .row2 .v { font-size: var(--step-body-compact); }
 }
 
+/* --------------------------------------------------------------------------
+   THE TWO-ZONE DESKTOP (Max, 2026-09-29 — plan §11.8).
+
+   Below 1024px nothing here applies: the 390 column is still the design.
+   From 1024 up, the width that used to be margin becomes a second zone — the
+   masthead becomes a sticky rail and the content keeps the shipped column. No
+   markup, no class, no DOM change: the rail is the existing header, moved, so
+   no probe needed re-pointing. Because it sticks, the name, the resume CTA and
+   the availability chips stay in view while the sections fold open and shut —
+   which is the part of the page a visitor actually acts on.
+
+   The content column is still capped at --wrap-max, so the prose measure W-31
+   measures is the shipped one. Values are tokens: --rail-w and --rail-gap.
+   -------------------------------------------------------------------------- */
+
 @media (min-width: 1024px) {
   body { font-size: var(--step-body); }
 
+  .wrap {
+    max-width: calc(var(--wrap-max) + var(--rail-w) + var(--rail-gap));
+    display: grid;
+    grid-template-columns: var(--rail-w) minmax(0, 1fr);
+    column-gap: var(--rail-gap);
+    align-items: start;            /* the rail is content-height, so it can stick */
+  }
+
+  main {
+    max-width: var(--wrap-max);
+    min-width: 0;
+  }
+
   header,
-  .masthead { padding: 64px 0 44px; }
+  .masthead {
+    position: sticky;
+    top: 32px;
+    padding: 52px 0 0;
+  }
 
-  .glow { height: 360px; }
+  /* The rail sets the measure for the role line, not the 46ch prose cap; its
+     size is unchanged. */
+  .role {
+    max-width: none;
+    font-size: var(--step-h3);
+  }
 
-  .role { font-size: var(--step-h3); }
+  .glow { height: 340px; }
+
+  /* The closing block belongs to the page, not to either zone. */
+  footer { grid-column: 1 / -1; }
 
   .card p,
   .card li { font-size: var(--step-body); }

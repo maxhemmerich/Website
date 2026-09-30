@@ -72,8 +72,17 @@
   --radius-pill: 999px;
 
   /* §10.3 .wrap — the one column: max-width, centred, page gutter.
-     --gutter-phone is the 390px gutter; 720px keeps prose at ~70ch (W-31). */
+     --gutter-phone is the 390px gutter; 720px keeps prose at ~70ch (W-31).
+     CHANGED 2026-09-29 (Max's call, plan §11.8): from 1024px up the page is two
+     zones — a sticky masthead rail plus the content column — so the width that
+     used to be margin carries the name, the role line, the chips and both CTAs.
+     --rail-w is the rail (fluid: 280px at 1024, 340px from ~1308 up);
+     --rail-gap is the channel between the zones. --wrap-max still caps the
+     CONTENT column, so every prose line keeps its shipped measure and W-31 is
+     untouched. Both are consumed by css/site.css only (.wrap at >=1024px). */
   --wrap-max: 720px;
+  --rail-w: clamp(280px, 26vw, 340px);
+  --rail-gap: 56px;
   --gutter: 22px;
   --gutter-phone: 18px;
 
