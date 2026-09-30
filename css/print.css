@@ -60,7 +60,7 @@
     padding: 0 !important;
     font-family: var(--font-sans) !important;
     font-size: 11pt !important;
-    line-height: 1.2 !important;
+    line-height: 1.22 !important;
   }
 
   /* --------------------------------------- 2. the omission layer (1) leaves
@@ -125,12 +125,13 @@
   header,
   .masthead {
     padding: 0 !important;
+    margin: 0 0 4pt !important;
   }
 
   h1,
   h1.name,
   .name {
-    font-size: 15pt !important;
+    font-size: 16pt !important;
     font-weight: var(--font-weight-strong) !important;
     line-height: 1.05 !important;
     letter-spacing: 0 !important;
@@ -185,7 +186,7 @@
   }
 
   section {
-    margin: 0 0 5pt !important;
+    margin: 0 0 7pt !important;
   }
 
   /* ------------------------------------------------------ 5. print type (3)
@@ -197,14 +198,14 @@
   .meta,
   .entry-meta {
     font-size: 11pt !important;
-    line-height: 1.2 !important;
+    line-height: 1.22 !important;
     max-width: none !important;
     color: #000 !important;
   }
 
   #main-content p,
   #main-content li {
-    margin: 0 0 1pt !important;
+    margin: 0 0 1.25pt !important;
   }
 
   #main-content a,
@@ -221,14 +222,20 @@
      head is followed by a rule, in the same one ink: the section boundary the
      screen draws with a pill's border, the sheet draws with a line. Nothing
      else about the scale moves. */
+  /* Section rhythm (Max's feedback pass, 2026-09-30: "the resume pdf looks unformatted").
+     The sheet had been compressed until sections carried no gap and the heading was smaller
+     than the body it labels, so the page read as one grey column. Both are reversed here: the
+     heading steps up to 10pt, its rule gets heavier, and it takes real space above, so a
+     section boundary is legible on the sheet without a machine reading it. Rule 5's type
+     contract is untouched -- W-76 reads p and li, and neither of them moves. */
   h2 {
-    font-size: 9pt !important;
+    font-size: 10pt !important;
     font-weight: var(--font-weight-strong) !important;
     line-height: 1.2 !important;
     letter-spacing: var(--track-label) !important;
-    margin: 1pt 0 3pt !important;
-    padding-bottom: 1pt !important;
-    border-bottom: 0.5pt solid #000 !important;
+    margin: 2pt 0 3.5pt !important;
+    padding-bottom: 2pt !important;
+    border-bottom: 0.75pt solid #000 !important;
     color: #000 !important;
   }
 
@@ -355,14 +362,21 @@
     color: #000 !important;
   }
 
-  /* -------------------------------------------- 9. education and the footer */
+  /* -------------------------------------------- 9. education and the footer
+     Each school is two lines: the institution, then the degree line under it. Rule 9 used to set
+     this head and meta INLINE to save a line per school, and the cost was a line ending on a
+     dangling separator whenever the degree line wrapped past the head -- which is the sloppiness
+     Max saw on 2026-09-30 ("the resume pdf looks unformatted"). Block costs one line on the two
+     short entries, holds the long one where it already was, and reads as a list instead of a
+     paragraph. The print-only .nw span keeps a date range whole either way. */
   #education .card {
     margin: 0 0 2pt !important;
   }
 
   #education .card h3,
   #education .card .meta {
-    display: inline !important;
+    display: block !important;
+    margin: 0 !important;
   }
 
   footer {
