@@ -15,7 +15,8 @@
      6. mobile-first: the 390px column IS the design, wider only adds width;
      7. the seven sections fold behind <details class="fold">: the page reads as
         a site you browse, not a document you scroll. All seven are toggles;
-        About, Projects and Contact are open on load.
+        About and Contact are open on load. (Until 2026-10-01 Projects was an
+        eighth section, an open-on-load one — it is off the page for now.)
 
    Every colour, radius, size and family below comes from var(--token) in
    css/tokens.css. A literal value in this file is a failing check.

@@ -91,13 +91,15 @@
       </section>
 
       <section id="experience">
-        <!-- The seven section folds are one accordion (Max, 2026-09-30): the six
+        <!-- The section folds are one accordion (Max, 2026-09-30): the five
              below share name="sections", so opening any one of them closes
              whichever other is open. About and Contact carry no name — they are
              the page's two ends and stay open. Attribute only, no script: the site
              still ships zero JavaScript (plan §10.3, W-84). Paper has no folds, so
              tools/make-pdf.mjs takes the name off before it force-opens every
-             <details> — inside one exclusive group only one can stay open. -->
+             <details> — inside one exclusive group only one can stay open.
+             (Projects was the sixth member of this group until 2026-10-01, when
+             the section left the page.) -->
         <details class="fold" name="sections">
           <summary><h2>Experience</h2></summary>
           <div class="fold-body">
@@ -151,86 +153,11 @@
         </details>
       </section>
 
-      <section id="projects">
-        <details class="fold" name="sections">
-          <summary><h2>Projects</h2></summary>
-          <div class="fold-body">
-
-            <article class="card proj">
-              <h3>Distill</h3>
-              <p>AI reading interface that turns articles or pasted text into hierarchical, sectioned summaries. Next.js App Router and TypeScript, using the OpenAI API in a three-pane reading layout that preserves footnotes and references.</p>
-              <div class="row">
-                <a href="projects/distill.html">Open the case study ›</a>
-                <a class="chip live" href="https://distill.wiki/" target="_blank" rel="noopener noreferrer">distill.wiki</a>
-              </div>
-            </article>
-
-            <article class="card proj">
-              <h3>VIBE Dashboard</h3>
-              <p>HTML/CSS recruitment-metrics dashboard for study leadership, enabling self-serve monitoring.</p>
-              <div class="row">
-                <a href="projects/vibe-dashboard.html">Open the case study ›</a>
-                <span class="chip">No public link</span>
-              </div>
-            </article>
-
-            <article class="card proj">
-              <h3>TAY Coverage Gap Flow</h3>
-              <p>Power Automate flow that scans a shared Outlook calendar and surfaces research visits with no staff assigned.</p>
-              <div class="row">
-                <a href="projects/coverage-gap-flow.html">Open the case study ›</a>
-                <span class="chip">No public link</span>
-              </div>
-            </article>
-
-            <article class="card proj">
-              <h3>EEG Scheduling Flow</h3>
-              <p>Power Automate workflow that replaced manual weekly availability-block creation for 4 technicians.</p>
-              <div class="row">
-                <a href="projects/eeg-scheduling-flow.html">Open the case study ›</a>
-                <span class="chip">No public link</span>
-              </div>
-            </article>
-
-            <article class="card proj">
-              <h3>Retinal OCT Privacy Utility</h3>
-              <p>Utility to identify and remove patient-identifying fields from retinal OCT exports before research use.</p>
-              <div class="row">
-                <a href="projects/retinal-oct-privacy.html">Open the case study ›</a>
-                <span class="chip">No public link</span>
-              </div>
-            </article>
-
-            <article class="card proj">
-              <h3>Chalk</h3>
-              <p>SMS habit tracker: text habits daily and track them on a live dashboard. Node.js + Express backend handling Twilio SMS webhooks and cron scheduling, with a React + Vite dashboard reading Supabase.</p>
-              <div class="row">
-                <a href="projects/chalk.html">Open the case study ›</a>
-                <span class="chip">No public link</span>
-              </div>
-            </article>
-
-            <article class="card proj">
-              <h3>Mirror</h3>
-              <p>An unlaunched interactive prototype. The build went from an approved product specification to a working interactive prototype verified by an automated harness — Next.js App Router, TypeScript and Tailwind, with Vercel as the deploy target.</p>
-              <div class="row">
-                <a href="projects/mirror.html">Open the case study ›</a>
-                <span class="chip">No public link</span>
-              </div>
-            </article>
-
-            <article class="card proj">
-              <h3>BeatTheClose</h3>
-              <p>NBA player-props analytics tool using Python for Kelly sizing, expected-value calculations, and CLV tracking.</p>
-              <div class="row">
-                <a href="projects/beattheclose.html">Open the case study ›</a>
-                <span class="chip">No public link</span>
-              </div>
-            </article>
-
-          </div>
-        </details>
-      </section>
+      <!-- Projects is off the page for now (Max, 2026-10-01: he wants to look the
+           case studies over before they are public). Nothing else moved: the
+           /projects/ pages are still on disk, the footer link is gone with the
+           section, and every #projects rule in the stylesheets is untouched, so
+           reverting this commit puts the section back exactly where it was. -->
 
       <section id="publications">
         <details class="fold" name="sections">
@@ -375,7 +302,6 @@
       <nav class="footer-nav" aria-label="Sections" data-print="omit">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
         <a href="#publications">Publications</a>
         <a href="#skills">Core Skills</a>
         <a href="#education">Education</a>
