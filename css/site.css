@@ -794,6 +794,20 @@ footer {
 
   .glow { display: none; }
 
+  /* Max, 2026-10-01: the name was clipped at EVERY rail width, not just one —
+     "Hemmerich" needs 4.86em, and the card's inner box is rail - 50px, so the
+     band's 62px step could never fit it (42px of overflow at the 280px rail,
+     13px at 340px; the card's overflow:hidden cut the rest). At this width the
+     hero is sized against the rail it sits in: /5.05 leaves ~4% slack and keeps
+     the widest word inside the card at every rail width, while still clearing
+     the >=52px D-06 obliges at 1280 (55.6px there). Below 1024px the band is
+     unchanged — the name has 189px of slack at 390. */
+  h1,
+  h1.name,
+  .name {
+    font-size: min(var(--step-hero), calc((var(--rail-w) - 50px) / 5.05));
+  }
+
   /* The rail sets the measure for the role line, not the 46ch prose cap; its
      size is unchanged. */
   .role {
