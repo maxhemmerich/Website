@@ -71,14 +71,20 @@ a { color: var(--text-1); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* Focus: a visible ring on every control, drawn with the outline property
-   (never a shadow). Never reset to none. */
-a:focus,
-button:focus,
-input:focus,
-select:focus,
-textarea:focus,
-summary:focus,
-[tabindex]:focus {
+   (never a shadow). Never reset to none.
+   Scoped to :focus-visible (2026-10-01): the ring is for KEYBOARD users. The
+   bare :focus form also matched a mouse click — and every section fold is a
+   <summary>, which focuses on click — so clicking a fold painted a 2px blue
+   rectangle on the page. :focus-visible matches Tab (and text fields) only, so
+   the ring still shows for the input method that needs it. W-38 tabs, so it
+   stays green. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
