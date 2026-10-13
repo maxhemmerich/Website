@@ -91,7 +91,7 @@
       </section>
 
       <section id="experience">
-        <!-- The section folds are one accordion (Max, 2026-09-30): the five
+        <!-- The section folds are one accordion (Max, 2026-09-30): the six
              below share name="sections", so opening any one of them closes
              whichever other is open. About and Contact carry no name — they are
              the page's two ends and stay open. Attribute only, no script: the site
@@ -153,11 +153,38 @@
         </details>
       </section>
 
-      <!-- Projects is off the page for now (Max, 2026-10-01: he wants to look the
-           case studies over before they are public). Nothing else moved: the
-           /projects/ pages are still on disk, the footer link is gone with the
-           section, and every #projects rule in the stylesheets is untouched, so
-           reverting this commit puts the section back exactly where it was. -->
+      <!-- Projects came back on 2026-10-13 with two entries (Max's call): the Mirror
+           prototype and Anna Hemmerich's site. The other six case studies stay off
+           the page on the 2026-10-01 hold (their /projects/ pages remain on disk and
+           in sitemap.xml), so this is a TWO-CARD section, not the old seven-card one.
+           Reverting this commit takes the section off again; the old full set is one
+           `git show 1f49bee^:index.html` away. -->
+
+      <section id="projects">
+        <details class="fold" name="sections">
+          <summary><h2>Projects</h2></summary>
+          <div class="fold-body">
+
+            <article class="card proj">
+              <h3>Mirror</h3>
+              <p>Interactive prototype built from an approved product specification: Next.js App Router and TypeScript, with every user-facing surface walked by an automated review harness before it ships.</p>
+              <div class="row">
+                <a href="projects/mirror.html">Open the case study ›</a>
+                <a class="chip live" href="/mirror/">maxhemmerich.com/mirror</a>
+              </div>
+            </article>
+
+            <article class="card proj">
+              <h3>Anna Hemmerich — painter</h3>
+              <p>Portfolio site for a painter: twenty works, one page each, on a static build with no JavaScript, laid out from seven reference sites she chose.</p>
+              <div class="row">
+                <a class="chip live" href="https://annahemmerich.com/" target="_blank" rel="noopener noreferrer">annahemmerich.com</a>
+              </div>
+            </article>
+
+          </div>
+        </details>
+      </section>
 
       <section id="publications">
         <details class="fold" name="sections">
@@ -302,6 +329,7 @@
       <nav class="footer-nav" aria-label="Sections" data-print="omit">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
         <a href="#publications">Publications</a>
         <a href="#skills">Core Skills</a>
         <a href="#education">Education</a>
