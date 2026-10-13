@@ -464,6 +464,14 @@ header .chip {
 .card a { color: var(--accent-ink); text-decoration: none; }
 .card a:hover { text-decoration: underline; }
 
+/* A filled CTA inside a card keeps its white label. `.card a` (0,1,1) outranks the
+   .cta rule (0,1,0), so the pill's label was painted the same blue as the pill it
+   sits on. Measured live on /mirror/ 2026-10-13 before this rule: color
+   rgb(27,111,245) on background rgb(27,111,245) — an invisible button. The home
+   page never showed it because its only CTA sits in .masthead-actions, not a card. */
+.card a.cta,
+.card a.cta:hover { color: var(--bg); text-decoration: none; }
+
 /* The card's footer row: the link and the chip sit on one line, wrapping. */
 .card .row,
 .proj .row {
